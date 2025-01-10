@@ -288,7 +288,7 @@ class PageHTML:
                     sous_titre = subtitle.get("sous_titre", "")
 
                     if prefixID == "vo":
-                        html_content += f"<div><span title=\"the vo stringId from the game : <strong>{stringID}</strong> \"><{divType}><perso>{perso}</perso> {sous_titre}</{divType}></span></div>\n"
+                        html_content += f"<div><span title=\"the vo stringId from the game : {stringID} \"><{divType}><perso>{perso}</perso> {sous_titre}</{divType}></span></div>\n"
                     else:
                         html_content += f"<div><{divType}><perso>{perso}</perso> {sous_titre}</{divType}></div>\n"
 

@@ -51,7 +51,7 @@ V坐在床上。 Panam 可以坐在 V 对面。（就像 Lizzie 的 Braindances�
 愤怒的帕纳姆说着最后一句话就离开了！,,1735146218671463,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 任务结束,,1735146262371852,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 当帕纳姆说出她的最后一句话时，衣服消失了,,1735148577111890,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-他们在V的最后一句话中赤身裸体,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V的最后一句话他们全裸了,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [显性活动]哦，好的。,,1735148603319961,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 后来……他们还躺在床上，赤裸着。,,1735148655590069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 巴拿马叶,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ V再次出现在关闭的金碧面前,,1735148683898389,COMMENT,COMMENT,Rendez-v
 过了一会儿，V 灵机一动，联系了Panam：,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [喝]巴拿马...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 不管怎样，昨天我们在荒地抓到了一个人，并在他身上发现了一张在 Konpeki Plaza 套房过夜的通行证。你告诉我关于金佩基的事……,,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-如果可以安排抵达酒店和前往套房。就像在 Konpeki Plaza 的“抢劫”任务中，我们跟随 Jackie 进入续集一样……有可能用 Panam 取代 Jackie 吗？这种修改可以吗？ ...否则它会直接在续集中开始。,,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+如果可能的话，V 和Panam 会去市中心的一家服装店，那里有试衣间。,,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 帕纳姆走进试衣间，穿上了一套不同的衣服。,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam 和 V 抵达 Konpeki 后将选择服装。,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 如果商店在酒吧旁边，他们就一起步行去商店。 （Panam密切关注V。）否则，他们可以在商店见面,,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Panam 和 V 抵达 Konpeki 后将选择服装。,,1735583834222710,COMMENT,COMME
 [说]让我们谈谈我们对 Konpeki 的计划......,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [说] 那么，你准备好了吗？,,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 帕纳姆和 V 离开市中心的商店。,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-如果可以安排抵达酒店和前往套房。就像在 Konpeki Plaza 的“抢劫”任务中一样，我们跟随 Jackie 进入续集……是否有可能用 Panam 取代 Jackie？这种修改可以吗？ ...否则它会直接在续集中开始。,,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+如果可以安排抵达酒店和前往套房。就像在 Konpeki Plaza 的“抢劫”任务中，我们跟随 Jackie 进入续集一样……有可能用 Panam 取代 Jackie 吗？这种修改可以吗？ ...否则它会直接在续集中开始。,,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 任务开始,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [说]巴拿马……,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [走到床上]我信任一个人……,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ V 必须前往 Konpeki 套件的特定区域才能启动动画。要么动画自
 一段时间后...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 “环聊 - Konpeki”>“床”>“移动到床上”,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [躺在床上],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【坐等巴拿马换车】,,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+这就像电影《风月俏佳人》中的场景，朱莉娅·罗伯特每次进出试衣间时都穿着不同的衣服。 （对于那些还记得这部电影的人；）,,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

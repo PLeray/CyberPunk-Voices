@@ -31,6 +31,14 @@
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
+                            "stringId": "1973374808950292480",
+                            "femaleVariant": "Tiens, tiens\u2026",
+                            "maleVariant": "Tiens, tiens\u2026",
+                            "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1b62d5eef02fc000.wem",
+                            "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1b62d5eef02fc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/vset/vset_v"
+                        },
+                        {
                             "stringId": "1735040679408670",
                             "femaleVariant": "Salut V, comment \u00e7a va ? Tu sais quoi, hier j'ai pens\u00e9 \u00e0 toi !",
                             "maleVariant": "Salut V, comment \u00e7a va ? Tu sais quoi, hier j'ai pens\u00e9 \u00e0 toi !",
@@ -180,20 +188,20 @@
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
-                            "stringId": "3823267547856580608",
-                            "femaleVariant": "Hum, peut-\u00eatre bien...",
-                            "maleVariant": "Hum, peut-\u00eatre bien...",
-                            "female_vo_path": "ep1/{}/vo/v_mq301_f_350ef99407453000.wem",
-                            "male_vo_path": "ep1/{}/vo/v_mq301_m_350ef99407453000.wem",
-                            "quest_path": "ep1/{}/subtitles/quest/mq301/mq301_04_frame"
-                        },
-                        {
                             "stringId": "1973374915334619140",
                             "femaleVariant": "Hum\u2026",
                             "maleVariant": "Hum\u2026",
                             "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1b62d607b52fc004.wem",
                             "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1b62d607b52fc004.wem",
                             "quest_path": "base/{}/subtitles/quest/vset/vset_v"
+                        },
+                        {
+                            "stringId": "1815332981933133828",
+                            "femaleVariant": "Allez\u2026 Pourquoi pas.",
+                            "maleVariant": "Allez\u2026 Pourquoi pas.",
+                            "female_vo_path": "base/{}/vo/v_q114_f_19315bbaa12cd004.wem",
+                            "male_vo_path": "base/{}/vo/v_q114_m_19315bbaa12cd004.wem",
+                            "quest_path": "base/{}/subtitles/quest/q114/q114_03b_training"
                         },
                         {
                             "stringId": "1735769077098714",
@@ -1025,6 +1033,22 @@
                             "quest_path": "base/{}/subtitles/quest/sq004/sq004_01_call"
                         },
                         {
+                            "stringId": "1683799724993933312",
+                            "femaleVariant": "Je pr\u00e9f\u00e9rerais changer de sujet, si \u00e7a te d\u00e9range pas.",
+                            "maleVariant": "Je pr\u00e9f\u00e9rerais changer de sujet, si \u00e7a te d\u00e9range pas.",
+                            "female_vo_path": "base/{}/vo/panam_q103_f_175e0eedc129f000.wem",
+                            "male_vo_path": "base/{}/vo/panam_q103_f_175e0eedc129f000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q103/q103_15_roadhouse_bar"
+                        },
+                        {
+                            "stringId": "1812856450388922368",
+                            "femaleVariant": "Hm. OK.",
+                            "maleVariant": "Hm. OK.",
+                            "female_vo_path": "base/{}/vo/v_sq027_f_19288f5632351000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq027_m_19288f5632351000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq027/sq027_06_panzer"
+                        },
+                        {
                             "stringId": "1897947471907270676",
                             "femaleVariant": "Et toi\u00a0?",
                             "maleVariant": "Et toi\u00a0?",
@@ -1131,112 +1155,112 @@
                     "playlist": [
                         {
                             "stringId": "1735827222153488",
-                            "femaleVariant": "[Dire] Parlons de notre plan pour le Konpeki...",
-                            "maleVariant": "[Dire] Parlons de notre plan pour le Konpeki...",
+                            "femaleVariant": "[Say] Let's talk about our plan for Konpeki...",
+                            "maleVariant": "[Say] Let's talk about our plan for Konpeki...",
                             "female_vo_path": "ACTION",
                             "male_vo_path": "ACTION",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
                             "stringId": "1725507041219186688",
-                            "femaleVariant": "Bon, d'accord. J'\u00e9tais au Konpeki Plaza le soir o\u00f9 c'est arriv\u00e9.",
-                            "maleVariant": "Bon, d'accord. J'\u00e9tais au Konpeki Plaza le soir o\u00f9 c'est arriv\u00e9.",
+                            "femaleVariant": "All right, then. Konpeki Plaza \u2013 I was there the night it happened.",
+                            "maleVariant": "All right, then. Konpeki Plaza \u2013 I was there the night it happened.",
                             "female_vo_path": "base/{}/vo/v_q112_f_17f23b83094e1000.wem",
                             "male_vo_path": "base/{}/vo/v_q112_m_17f23b83094e1000.wem",
                             "quest_path": "base/{}/subtitles/quest/q112/q112_00b_secret_meeting"
                         },
                         {
                             "stringId": "3359190432872767488",
-                            "femaleVariant": "T'inqui\u00e8te pas pour \u00e7a.",
-                            "maleVariant": "T'inqui\u00e8te pas pour \u00e7a.",
+                            "femaleVariant": "Don't worry 'bout it.",
+                            "maleVariant": "Don't worry 'bout it.",
                             "female_vo_path": "ep1/{}/vo/v_q302_f_2e9e3de6a445a000.wem",
                             "male_vo_path": "ep1/{}/vo/v_q302_m_2e9e3de6a445a000.wem",
                             "quest_path": "ep1/{}/subtitles/quest/q302/q302_07_oath"
                         },
                         {
                             "stringId": "1893700992943071232",
-                            "femaleVariant": "Ouais, mais\u2026",
-                            "maleVariant": "Ouais, mais\u2026",
+                            "femaleVariant": "Yes, but\u2026",
+                            "maleVariant": "Yes, but\u2026",
                             "female_vo_path": "base/{}/vo/panam_sq004_f_1a47c705132d2000.wem",
                             "male_vo_path": "base/{}/vo/panam_sq004_f_1a47c705132d2000.wem",
                             "quest_path": "base/{}/subtitles/quest/sq004/sq004_04_drive"
                         },
                         {
                             "stringId": "1953091246979936256",
-                            "femaleVariant": "Alors, tu t'es d\u00e9cid\u00e9e\u00a0?",
-                            "maleVariant": "Alors, tu t'es d\u00e9cid\u00e9e\u00a0?",
+                            "femaleVariant": "Make up your mind yet?",
+                            "maleVariant": "Make up your mind yet?",
                             "female_vo_path": "base/{}/vo/v_scene_panam_default_f_1b1ac6242629f000.wem",
                             "male_vo_path": "base/{}/vo/v_scene_panam_default_m_1b1ac6242629f000.wem",
                             "quest_path": "ep1/{}/subtitles/overlays_quest/panam/panam_default"
                         },
                         {
                             "stringId": "1699504372115435520",
-                            "femaleVariant": "Ouais. Enfin, je crois.",
-                            "maleVariant": "Ouais. Enfin, je crois.",
+                            "femaleVariant": "Yeah. I mean, I think so.",
+                            "maleVariant": "Yeah. I mean, I think so.",
                             "female_vo_path": "base/{}/vo/panam_q104_f_1795da38da29f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q104_f_1795da38da29f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q104/q104_07c_nomads_arrive"
                         },
                         {
                             "stringId": "1724409002612019200",
-                            "femaleVariant": "Ce plan, t'en penses quoi\u00a0?",
-                            "maleVariant": "Ce plan, t'en penses quoi\u00a0?",
+                            "femaleVariant": "Plan \u2013 what's your take?",
+                            "maleVariant": "Plan \u2013 what's your take?",
                             "female_vo_path": "base/{}/vo/v_q005_f_17ee54da002cd000.wem",
                             "male_vo_path": "base/{}/vo/v_q005_m_17ee54da002cd000.wem",
                             "quest_path": "base/{}/subtitles/quest/q005/q005_01_plan"
                         },
                         {
                             "stringId": "2302325911451791360",
-                            "femaleVariant": "C'est un bon plan, V\u2026 Hum, tu sais ce que Saul m'a dit, un jour\u00a0?",
-                            "maleVariant": "C'est un bon plan, V\u2026 Hum, tu sais ce que Saul m'a dit, un jour\u00a0?",
+                            "femaleVariant": "It's a good plan, V... Hmm, do you know what Saul once told me?",
+                            "maleVariant": "It's a good plan, V... Hmm, do you know what Saul once told me?",
                             "female_vo_path": "base/{}/vo/panam_q202_f_1ff38137dd42f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q202_f_1ff38137dd42f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q202/q202_01_motel"
                         },
                         {
                             "stringId": "1863176122928852992",
-                            "femaleVariant": "Il m'a dit que le seul moment o\u00f9 une personne est vraiment libre, c'est\u2026 quand elle sait\u2026 qu'elle a plus rien \u00e0 perdre.",
-                            "maleVariant": "Il m'a dit que le seul moment o\u00f9 une personne est vraiment libre, c'est\u2026 quand elle sait\u2026 qu'elle a plus rien \u00e0 perdre.",
+                            "femaleVariant": "That anyone is truly free just once \u2013 when they know they have nothing to lose.",
+                            "maleVariant": "That anyone is truly free just once \u2013 when they know they have nothing to lose.",
                             "female_vo_path": "base/{}/vo/panam_q202_f_19db54cff129f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q202_m_19db54cff129f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q202/q202_01_motel"
                         },
                         {
                             "stringId": "2251564761051492352",
-                            "femaleVariant": "Merci, c'est gentil de me le rappeler\u2026",
-                            "maleVariant": "Merci, c'est gentil de me le rappeler\u2026",
+                            "femaleVariant": "Sure, keep remindin' me\u2026",
+                            "maleVariant": "Sure, keep remindin' me\u2026",
                             "female_vo_path": "base/{}/vo/v_q203_f_1f3f2a388b42f000.wem",
                             "male_vo_path": "base/{}/vo/v_q203_m_1f3f2a388b42f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q203/q203_05_afterlife"
                         },
                         {
                             "stringId": "1824363324853841920",
-                            "femaleVariant": "J'ai dit un truc qu'il fallait pas\u00a0?",
-                            "maleVariant": "J'ai dit un truc qu'il fallait pas\u00a0?",
+                            "femaleVariant": "Did I say something wrong?",
+                            "maleVariant": "Did I say something wrong?",
                             "female_vo_path": "base/{}/vo/panam_q202_f_195170c72f29f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q202_f_195170c72f29f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q202/q202_04a_badlands_travel"
                         },
                         {
-                            "stringId": "3509981927846547456",
-                            "femaleVariant": "T'inqui\u00e8te.",
-                            "maleVariant": "T'inqui\u00e8te.",
-                            "female_vo_path": "ep1/{}/vo/v_ow_sa_f_30b5f5f779559000.wem",
-                            "male_vo_path": "ep1/{}/vo/v_ow_sa_m_30b5f5f779559000.wem",
-                            "quest_path": "ep1/{}/subtitles/open_world/sandbox_activities/sa_ep1_courier_outro_muammar_dam"
+                            "stringId": "1856382367987212288",
+                            "femaleVariant": "Huh? What? W-why?",
+                            "maleVariant": "Huh? What, why?",
+                            "female_vo_path": "base/{}/vo/v_q115_f_19c331ed9b2d2000.wem",
+                            "male_vo_path": "base/{}/vo/v_q115_m_19c331ed9b2d2000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q115/q115_02d_misty"
                         },
                         {
                             "stringId": "1882333620088885248",
-                            "femaleVariant": "Parce que je tiens vraiment \u00e0 toi. Mais j'ai peur de dire ou de faire un truc stupide, et\u2026 et de me retrouver seule dans le d\u00e9sert.",
-                            "maleVariant": "Parce que je tiens vraiment \u00e0 toi. Mais j'ai peur de dire ou de faire un truc stupide, et\u2026 et de me retrouver seule dans le d\u00e9sert.",
+                            "femaleVariant": "Because I truly care this time. Yet I fear I'll do or say something foolish \u2013 and be left alone in the desert.",
+                            "maleVariant": "Because I truly care this time. Yet I fear I'll do or say something foolish \u2013 and be left alone in the desert.",
                             "female_vo_path": "base/{}/vo/panam_sq027_f_1a1f6474562c5000.wem",
                             "male_vo_path": "base/{}/vo/panam_sq027_m_1a1f6474562c5000.wem",
                             "quest_path": "base/{}/subtitles/quest/sq027/sq027_04_preparations_panam"
                         },
                         {
                             "stringId": "1795337918150733824",
-                            "femaleVariant": "Hmpf. Ouais.",
-                            "maleVariant": "Hmpf. Ouais.",
+                            "femaleVariant": "Mhm.",
+                            "maleVariant": "Mhm.",
                             "female_vo_path": "base/{}/vo/v_q203_f_18ea52530f29f000.wem",
                             "male_vo_path": "base/{}/vo/v_q203_m_18ea52530f29f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q203/q203_05_afterlife"
@@ -1258,6 +1282,100 @@
                 {
                     "etape_number": 11,
                     "etape_position": 0,
+                    "identifiant": "0037",
+                    "title": "5.01-Aguilar",
+                    "comment": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
+                    "playlist_lien": "",
+                    "playlist": [
+                        {
+                            "stringId": "1734904017055777",
+                            "femaleVariant": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
+                            "maleVariant": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
+                            "female_vo_path": "COMMENT",
+                            "male_vo_path": "COMMENT",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1902560011682299904",
+                            "femaleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
+                            "maleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
+                            "female_vo_path": "base/{}/vo/v_sq030_f_1a6740401c2fc000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq030_m_1a6740401c2fc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq030/sq030_09_pier"
+                        },
+                        {
+                            "stringId": "1735756411635207",
+                            "femaleVariant": "[Activer empreinte d'Aguilar]",
+                            "maleVariant": "[Activer empreinte d'Aguilar]",
+                            "female_vo_path": "ACTION",
+                            "male_vo_path": "ACTION",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1853019730599550976",
+                            "femaleVariant": "Ben merde, t'as vraiment une sale gueule.",
+                            "maleVariant": "Ben merde, t'as vraiment une sale gueule.",
+                            "female_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
+                            "male_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q115/q115_02d_misty"
+                        },
+                        {
+                            "stringId": "3689606690401263616",
+                            "femaleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
+                            "maleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
+                            "female_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
+                            "male_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/mq304/mq304_06_kurts_wake"
+                        },
+                        {
+                            "stringId": "1807202839143190528",
+                            "femaleVariant": "Hein\u00a0? Quoi\u00a0?",
+                            "maleVariant": "Hein\u00a0? Quoi\u00a0?",
+                            "female_vo_path": "base/{}/vo/panam_sq027_f_1914796840351000.wem",
+                            "male_vo_path": "base/{}/vo/panam_sq027_f_1914796840351000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq027/sq027_08_camp_saved"
+                        },
+                        {
+                            "stringId": "1814477562995036160",
+                            "femaleVariant": "Oh, merde.",
+                            "maleVariant": "Oh, merde.",
+                            "female_vo_path": "base/{}/vo/panam_sq027_f_192e51bae33c5000.wem",
+                            "male_vo_path": "base/{}/vo/panam_sq027_f_192e51bae33c5000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq027/sq027_06_panzer"
+                        },
+                        {
+                            "stringId": "1735756509206727",
+                            "femaleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
+                            "maleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
+                            "female_vo_path": "ACTION",
+                            "male_vo_path": "ACTION",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "2248159134078902280",
+                            "femaleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
+                            "maleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
+                            "female_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
+                            "male_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
+                            "quest_path": "base/{}/subtitles/quest/vset/vset_panam"
+                        },
+                        {
+                            "stringId": "1782321871533883392",
+                            "femaleVariant": "Ouais, \u00e7a peut marcher.",
+                            "maleVariant": "Ouais, \u00e7a peut marcher.",
+                            "female_vo_path": "base/{}/vo/v_sq026_f_18bc144c8c2fc000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq026_m_18bc144c8c2fc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq026/sq026_08_plan"
+                        }
+                    ],
+                    "blocs_precedents": [
+                        "0012"
+                    ],
+                    "blocs_suivants": []
+                },
+                {
+                    "etape_number": 11,
+                    "etape_position": 1,
                     "identifiant": "0040",
                     "title": "[Dire]_Alors,_t'es_partante",
                     "comment": ":  [Dire] Alors, t'es partante ?",
@@ -1374,84 +1492,6 @@
                     "blocs_suivants": [
                         "0035"
                     ]
-                },
-                {
-                    "etape_number": 11,
-                    "etape_position": 1,
-                    "identifiant": "0037",
-                    "title": "5.01-Aguilar",
-                    "comment": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
-                    "playlist_lien": "",
-                    "playlist": [
-                        {
-                            "stringId": "1734904017055777",
-                            "femaleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
-                            "maleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
-                            "female_vo_path": "COMMENT",
-                            "male_vo_path": "COMMENT",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1902560011682299904",
-                            "femaleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
-                            "maleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
-                            "female_vo_path": "base/{}/vo/v_sq030_f_1a6740401c2fc000.wem",
-                            "male_vo_path": "base/{}/vo/v_sq030_m_1a6740401c2fc000.wem",
-                            "quest_path": "base/{}/subtitles/quest/sq030/sq030_09_pier"
-                        },
-                        {
-                            "stringId": "1735756411635207",
-                            "femaleVariant": "[Activer empreinte d'Aguilar]",
-                            "maleVariant": "[Activer empreinte d'Aguilar]",
-                            "female_vo_path": "ACTION",
-                            "male_vo_path": "ACTION",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1853019730599550976",
-                            "femaleVariant": "Ben merde, t'as vraiment une sale gueule.",
-                            "maleVariant": "Ben merde, t'as vraiment une sale gueule.",
-                            "female_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
-                            "male_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
-                            "quest_path": "base/{}/subtitles/quest/q115/q115_02d_misty"
-                        },
-                        {
-                            "stringId": "3689606690401263616",
-                            "femaleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
-                            "maleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
-                            "female_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
-                            "male_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
-                            "quest_path": "ep1/{}/subtitles/quest/mq304/mq304_06_kurts_wake"
-                        },
-                        {
-                            "stringId": "2248159134078902280",
-                            "femaleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
-                            "maleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
-                            "female_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
-                            "male_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
-                            "quest_path": "base/{}/subtitles/quest/vset/vset_panam"
-                        },
-                        {
-                            "stringId": "1735756509206727",
-                            "femaleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
-                            "maleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
-                            "female_vo_path": "ACTION",
-                            "male_vo_path": "ACTION",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1782321871533883392",
-                            "femaleVariant": "Ouais, \u00e7a peut marcher.",
-                            "maleVariant": "Ouais, \u00e7a peut marcher.",
-                            "female_vo_path": "base/{}/vo/v_sq026_f_18bc144c8c2fc000.wem",
-                            "male_vo_path": "base/{}/vo/v_sq026_m_18bc144c8c2fc000.wem",
-                            "quest_path": "base/{}/subtitles/quest/sq026/sq026_08_plan"
-                        }
-                    ],
-                    "blocs_precedents": [
-                        "0012"
-                    ],
-                    "blocs_suivants": []
                 }
             ]
         },
@@ -1470,8 +1510,8 @@
                     "playlist": [
                         {
                             "stringId": "1735567787641759",
-                            "femaleVariant": "Panam et V font du shopping dans une boutique du centre ville.",
-                            "maleVariant": "Panam et V font du shopping dans une boutique du centre ville.",
+                            "femaleVariant": "S'il est possible que V et Panam aillent dans un magasin de v\u00eatements o\u00f9 il y a une cabien d'essage",
+                            "maleVariant": "S'il est possible que V et Panam aillent dans un magasin de v\u00eatements o\u00f9 il y a une cabien d'essage",
                             "female_vo_path": "COMMENT",
                             "male_vo_path": "COMMENT",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
@@ -1531,6 +1571,22 @@
                             "female_vo_path": "ep1/{}/vo/v_mq303_f_2d8abe92183c5000.wem",
                             "male_vo_path": "ep1/{}/vo/v_mq303_m_2d8abe92183c5000.wem",
                             "quest_path": "ep1/{}/subtitles/quest/mq303/mq303_03_finale"
+                        },
+                        {
+                            "stringId": "1736440090987447",
+                            "femaleVariant": "[S'asseoir et attendre que Panam se change]",
+                            "maleVariant": "[S'asseoir et attendre que Panam se change]",
+                            "female_vo_path": "ACTION",
+                            "male_vo_path": "ACTION",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1736440090987448",
+                            "femaleVariant": "Ce serait une phase comme dans le film \"Pretty Woman\", o\u00f9 Julia Robert rentre et sort d'une cabine avec des tenus diff\u00e9rentes \u00e0 chaque fois.",
+                            "maleVariant": "Ce serait une phase comme dans le film \"Pretty Woman\", o\u00f9 Julia Robert rentre et sort d'une cabine avec des tenus diff\u00e9rentes \u00e0 chaque fois.",
+                            "female_vo_path": "COMMENT",
+                            "male_vo_path": "COMMENT",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
                             "stringId": "1735576178488210",
@@ -2880,20 +2936,28 @@
                             "quest_path": "ep1/{}/subtitles/quest/q302/q302_07_oath"
                         },
                         {
-                            "stringId": "2262118194987360264",
-                            "femaleVariant": "H\u00e9 h\u00e9.",
-                            "maleVariant": "H\u00e9 h\u00e9.",
-                            "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1f64a8835c2b6008.wem",
-                            "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1f64a8835c2b6008.wem",
+                            "stringId": "2262179491535872008",
+                            "femaleVariant": "Ha ha ha ha\u00a0!",
+                            "maleVariant": "Ha ha ha ha\u00a0!",
+                            "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1f64e043132b6008.wem",
+                            "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1f64e043132b6008.wem",
                             "quest_path": "base/{}/subtitles/quest/vset/vset_v"
                         },
                         {
                             "stringId": "1735146208634254",
-                            "femaleVariant": "Panam se rassoit sur sa premi\u00e8re phrase",
-                            "maleVariant": "Panam se rassoit sur sa premi\u00e8re phrase",
+                            "femaleVariant": "Panam est vex\u00e9e, elle se rassoit vivement sur sa premi\u00e8re phrase !",
+                            "maleVariant": "Panam est vex\u00e9e, elle se rassoit vivement sur sa premi\u00e8re phrase !",
                             "female_vo_path": "COMMENT",
                             "male_vo_path": "COMMENT",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1751742351315431424",
+                            "femaleVariant": "Quoi ?",
+                            "maleVariant": "Quoi ?",
+                            "female_vo_path": "base/{}/vo/v_q104_f_184f70632c29f000.wem",
+                            "male_vo_path": "base/{}/vo/v_q104_m_184f70632c29f000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q104/q104_02_av_shotdown"
                         },
                         {
                             "stringId": "1631462611877781512",
@@ -2969,8 +3033,8 @@
                         },
                         {
                             "stringId": "1735146218671463",
-                            "femaleVariant": "Panam s'en va (furieuse) en disant sa derni\u00e8re phrase",
-                            "maleVariant": "Panam s'en va (furieuse) en disant sa derni\u00e8re phrase",
+                            "femaleVariant": "Furieuse, Panam s'en va en disant sa derni\u00e8re phrase !",
+                            "maleVariant": "Furieuse, Panam s'en va en disant sa derni\u00e8re phrase !",
                             "female_vo_path": "COMMENT",
                             "male_vo_path": "COMMENT",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
@@ -3008,64 +3072,64 @@
                     "playlist": [
                         {
                             "stringId": "1735148655590069",
-                            "femaleVariant": "Plus tard... ils sont toujours sur le lit, allong\u00e9 nus.",
-                            "maleVariant": "Plus tard... ils sont toujours sur le lit, allong\u00e9 nus.",
+                            "femaleVariant": "Later... they are still on the bed, lying naked.",
+                            "maleVariant": "Later... they are still on the bed, lying naked.",
                             "female_vo_path": "COMMENT",
                             "male_vo_path": "COMMENT",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
                             "stringId": "2008211146618302464",
-                            "femaleVariant": "Je voulais pas te r\u00e9veiller.",
-                            "maleVariant": "Je voulais pas te r\u00e9veiller.",
+                            "femaleVariant": "I didn't want to wake you.",
+                            "maleVariant": "I didn't want to wake you.",
                             "female_vo_path": "base/{}/vo/panam_q203_f_1bde9965dc29f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q203_m_1bde9965dc29f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q203/q203_02d_panam"
                         },
                         {
                             "stringId": "1735860454689494",
-                            "femaleVariant": "[Toucher] Salut",
-                            "maleVariant": "[Toucher] Salut",
+                            "femaleVariant": "[Touch] Hello",
+                            "maleVariant": "[Touch] Hello",
                             "female_vo_path": "ACTION",
                             "male_vo_path": "ACTION",
                             "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
                         },
                         {
                             "stringId": "1978036625878044672",
-                            "femaleVariant": "Salut\u2026",
-                            "maleVariant": "Salut\u2026",
+                            "femaleVariant": "Hey\u2026",
+                            "maleVariant": "Hey\u2026",
                             "female_vo_path": "base/{}/vo/v_sq029_f_1b7365d4c62c5000.wem",
                             "male_vo_path": "base/{}/vo/v_sq029_m_1b7365d4c62c5000.wem",
                             "quest_path": "base/{}/subtitles/quest/sq029/sq029_05_morning_after"
                         },
                         {
-                            "stringId": "1539042075245015040",
-                            "femaleVariant": "T'as bien dormi\u00a0?",
-                            "maleVariant": "T'as bien dormi\u00a0?",
-                            "female_vo_path": "base/{}/vo/panam_q104_f_155bc69cfd5bf000.wem",
-                            "male_vo_path": "base/{}/vo/panam_q104_f_155bc69cfd5bf000.wem",
-                            "quest_path": "base/{}/subtitles/quest/q104/q104_01a_roadhouse_meeting"
+                            "stringId": "1897947471152295988",
+                            "femaleVariant": "Hey. Did you sleep all right?",
+                            "maleVariant": "Hey. Did you sleep all right?",
+                            "female_vo_path": "base/{}/vo/panam_sq004_f_1a56dd2b54623034.wem",
+                            "male_vo_path": "base/{}/vo/panam_sq004_f_1a56dd2b54623034.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq004/sq004_09_morning_after"
                         },
                         {
                             "stringId": "3302620291439247360",
-                            "femaleVariant": "Ouais... Le temps s'est un peu arr\u00eat\u00e9 pour moi.",
-                            "maleVariant": "Ouais... Le temps s'est un peu arr\u00eat\u00e9 pour moi.",
+                            "femaleVariant": "Yeah... Time kinda stopped for me.",
+                            "maleVariant": "Yeah... Time kinda stopped for me.",
                             "female_vo_path": "ep1/{}/vo/v_q307_f_2dd543a8333bc000.wem",
                             "male_vo_path": "ep1/{}/vo/v_q307_m_2dd543a8333bc000.wem",
                             "quest_path": "ep1/{}/subtitles/quest/q307/q307_08_misty"
                         },
                         {
                             "stringId": "1665019849495670784",
-                            "femaleVariant": "Bon\u2026 J'y vais.",
-                            "maleVariant": "Bon\u2026 J'y vais.",
+                            "femaleVariant": "So\u2026 I'm off.",
+                            "maleVariant": "So\u2026 I'm off.",
                             "female_vo_path": "base/{}/vo/panam_q103_f_171b56bb4129f000.wem",
                             "male_vo_path": "base/{}/vo/panam_q103_f_171b56bb4129f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q103/q103_06b_nomad_camp"
                         },
                         {
                             "stringId": "2262179491753975816",
-                            "femaleVariant": "Hmm\u2026",
-                            "maleVariant": "Hmm\u2026",
+                            "femaleVariant": "Heh...",
+                            "maleVariant": "Heh...",
                             "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1f64e043202b6008.wem",
                             "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1f64e043202b6008.wem",
                             "quest_path": "ep1/{}/subtitles/quest/q307/q307_09_cutscene"

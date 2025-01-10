@@ -8,7 +8,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 [Напиток],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Пьет] Итак, чем ты занимаешься в эти дни?",,1734887624815712,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Итак, чем ты занимаешься в эти дни?",,1734887658486519,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Диалог, если возможно заставить Ви и Панам пойти в укромный уголок и заставить Ви показать ей поведенческий отпечаток Агилара...",,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Диалог, если возможно заставить Ви и Панам пойти в укромный угол и заставить Ви показать ей поведенческий отпечаток Агилара...",,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Ви и Панам целуются,,1734910406863562,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Панам делает несколько глотков, прежде чем ответить. Потом, когда она говорит, она злится все больше и больше...",,1734912057581613,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 И/ИЛИ,,1734912403652319,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 "Чуть позже у Ви возникает идея, и он связывается с Панамом:",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Пить] Панам...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Так или иначе, вчера мы поймали парня в Бесплодных землях и нашли у него пропуск на ночь в номер в Конпеки Плаза. Ты рассказал мне о Конпеки…",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Если можно успеть приехать в отель и поехать в номер. Как и в квесте «Ограбление» на Конпеки Плаза, где мы следуем за Джеки в продолжение... Можно ли заменить Джеки Панамом? Возможна ли такая модификация? ... В противном случае оно начинается прямо в сиквеле.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если есть возможность, Ви и Панам идут в магазин одежды в центре города, где есть примерочная.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Панам входит в примерочную и выходит в другом наряде.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Панам и Ви выберут одежду по прибытии в Конпеки.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Если магазин находится рядом с баром, они идут в магазин вместе. (Панам внимательно следует за Ви.) В противном случае они могут встретиться в магазине.",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 [Сказать] Давай поговорим о нашем плане на Конпеки...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Скажи] Итак, ты готов?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Панам и Ви выходят из магазина в центре города.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Если можно успеть приехать в отель и поехать в номер. Как в квесте ""Ограбление"" на Конпеки Плаза, где мы следуем за Джеки в продолжение... Можно ли заменить Джеки на Панама? Возможна ли такая модификация? ... В противном случае оно начинается прямо в сиквеле.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если можно успеть приехать в отель и поехать в номер. Как и в квесте «Ограбление» на Конпеки Плаза, где мы следуем за Джеки в продолжение... Можно ли заменить Джеки Панамом? Возможна ли такая модификация? ... В противном случае оно начинается прямо в сиквеле.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 НАЧАЛО КВЕСТА,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Скажи] Панам…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 (Собирается сесть на кровать) Я кому-то доверял...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 Спустя некоторое время...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 «Hangout – Konpeki» > «Кровать» > «Перейти к кровати»,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Ложиться на кровать],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Сиди и жди, пока Панам изменится]",,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Это будет сцена, как в фильме «Красотка», где Джулия Роберт каждый раз входит и выходит из примерочной в разных нарядах. (Для тех, кто помнит этот фильм ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

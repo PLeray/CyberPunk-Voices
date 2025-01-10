@@ -2,7 +2,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 V geht zum Treffpunkt.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Trinken] Ich freue mich so, dich zu sehen.",,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Trinken] Ich bin froh, dass du deine Meinung nicht geändert hast.","[Trinken] Ich bin froh, dass du deine Meinung nicht geändert hast.",1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
-Sie gehen in die Bar und trinken etwas (wie in der Mod „Lizzie's Braindances: Places of Night City > Bar in Downtown“),,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Sie setzen sich an die Bar und trinken etwas (wie in der Mod „Lizzie's Braindances: Places of Night City > Bar in Downtown“).,,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Warten Sie auf Panam],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam kommt am Treffpunkt in der Nähe der Bar an ...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Trinken],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -27,7 +27,7 @@ Wie so?,,1735056446949704,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Du bist verrückt! Wenn man Ihre Vergangenheit bedenkt, müssen Sie sich darüber im Klaren sein!",,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Ja, sicher, es ist ein Problem ... Lass mich darüber nachdenken!",,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Der Pass ist 48 Stunden lang gültig... Sag es mir schnell, denn danach ist er tot.",,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Panam, vielleicht habe ich eine Lösung für den Konpeki-Plan. Könnten Sie versuchen, einen Namen zu registrieren?",,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Panam, ich habe vielleicht eine Lösung für den Konpeki-Plan. Könnten Sie versuchen, einen Namen zu registrieren?",,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Wenn Sie möchten ... Welchen Namen soll ich verwenden?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Versuchen Sie es mit Aguilar Nubiola,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Versuchen Sie es mit Anders Hellman,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ V erscheint wieder vor dem geschlossenen Konpeki,,1735148683898389,COMMENT,COMME
 Wenig später hat V eine Idee und kontaktiert Panam:,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Getränk] Panam...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Wie auch immer, gestern haben wir einen Typen in den Badlands erwischt und bei ihm einen Pass für eine Nacht in einer Suite im Konpeki Plaza gefunden. Du hast mir von Konpeki erzählt ...",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Wenn es möglich ist, die Ankunft im Hotel und den Gang zur Suite zu organisieren. Wie bei der Suche nach „dem Überfall“ am Konpeki Plaza, wo wir Jackie zur Fortsetzung folgen ... Ist es möglich, Jackie durch Panam zu ersetzen? Ist eine solche Änderung möglich? ... Ansonsten geht es direkt in der Fortsetzung los.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Wenn möglich, gehen V und Panam zu einem Bekleidungsgeschäft in der Innenstadt, wo es eine Umkleidekabine gibt.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam betritt die Umkleidekabine und kommt mit einem anderen Outfit wieder heraus.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Panam und V werden das Outfit auswählen lassen, wenn sie in Konpeki ankommen.",,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Liegt der Laden neben der Bar, gehen sie gemeinsam zum Laden. (Panam folgt V dicht.) Ansonsten können sie sich im Laden treffen",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Wie in der Lizzies-Braindance-Mod mit „Hangout – Konpeki“ und mit Panam.,,
 [Sag] Lass uns über unseren Plan für Konpeki reden ...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Sag] Also, bist du bereit dafür?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam und V verlassen den Laden in der Innenstadt.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Wenn es möglich ist, die Ankunft im Hotel und den Gang zur Suite zu organisieren. Wie in der Quest „The Heist“ am Konpeki Plaza, wo wir Jackie zur Fortsetzung folgen ... Ist es möglich, Jackie durch Panam zu ersetzen? Ist eine solche Änderung möglich? ... Ansonsten geht es direkt in der Fortsetzung los.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Wenn es möglich ist, die Ankunft im Hotel und den Gang zur Suite zu organisieren. Wie bei der Suche nach „dem Überfall“ am Konpeki Plaza, wo wir Jackie zur Fortsetzung folgen ... Ist es möglich, Jackie durch Panam zu ersetzen? Ist eine solche Änderung möglich? ... Ansonsten geht es direkt in der Fortsetzung los.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Beginn der Quest,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Sag] Panam…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Setzt sich aufs Bett] Ich habe jemandem vertraut ...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ Panam und V betreten die Suite. Sie küssen sich und setzen sich auf die Couch.,
 Nach einer Weile...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 „Hangout – Konpeki“ > „Bett“ > „Ins Bett gehen“,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Auf dem Bett liegen],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Sitzen und warten, bis Panam sich verändert]",,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Es wäre eine Sequenz wie im Film „Pretty Woman“, wo Julia Robert jedes Mal mit unterschiedlichen Outfits eine Umkleidekabine betritt und verlässt. (Für diejenigen, die sich an diesen Film erinnern ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

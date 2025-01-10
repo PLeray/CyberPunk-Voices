@@ -43,7 +43,7 @@ Jeśli chcesz…,,1735061089758378,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vou
 "[Powiedz] Więc, co robisz obecnie?",,1735142209504692,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Picie] Myślałem, że pogodziłeś się z Saulem…",,1735142588439618,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 V siada na łóżku. Panam mógłby usiąść naprzeciwko V. (jak w przypadku Lizzie's Braindances: mod DollHouse),,1735146101955345,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-Po chwili nic nie mówiąc...,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Po chwili bez słowa...,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam przychodzi i siada na łóżku obok V. (Jak w modzie Lizzie's Braindances: DollHouse),,1735146139634145,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Wypowiadając ostatnie zdanie, Panam pochyla się i opiera o łóżko (jak w modzie Lizzie's Braindances: DollHouse) ",,1735146177514793,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam kładzie się obok niego…,,1735146190854713,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ V pojawia się ponownie przed zamkniętymi Konpekami,,1735148683898389,COMMENT,C
 Nieco później V ma pomysł i kontaktuje się z Panamem:,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Pij] Panam...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Tak czy siak wczoraj złapaliśmy gościa w Badlands i znaleźliśmy u niego przepustkę na nocleg w apartamencie w Konpeki Plaza. Opowiadałeś mi o Konpekach…,,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Jeśli to możliwe, uda nam się zorganizować przyjazd do hotelu i wyjazd do apartamentu. Podobnie jak w poszukiwaniu „napadu” na Konpeki Plaza, gdzie podążamy za Jackiem do kontynuacji… Czy da się zastąpić Jackie Panamem? Czy taka modyfikacja jest możliwa? ... W przeciwnym razie zaczyna się bezpośrednio w sequelu.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Jeśli to możliwe, V i Panam udają się do sklepu odzieżowego w centrum miasta, gdzie znajduje się przymierzalnia.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam wchodzi do przymierzalni i wychodzi w innym stroju.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam i V będą mieli wybrany strój po przybyciu do Konpeków.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Jeśli sklep znajduje się obok baru, idą do niego razem. (Panam uważnie podąża za V.) W przeciwnym razie mogą spotkać się w sklepie",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Podobnie jak w modzie Lizzies-Braindance z „Hangout - Konpeki” i z Panamem.,
 [Powiedz] Porozmawiajmy o naszym planie na Konpeki...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Powiedz] Więc, jesteś na to gotowy?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam i V wychodzą ze sklepu w centrum miasta.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Jeśli to możliwe, uda nam się zorganizować przyjazd do hotelu i wyjazd do apartamentu. Podobnie jak w zadaniu „Napad” w Konpeki Plaza, gdzie podążamy za Jackiem do kontynuacji... Czy da się zastąpić Jackie Panamem? Czy taka modyfikacja jest możliwa? ... W przeciwnym razie zaczyna się bezpośrednio w sequelu.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Jeśli to możliwe, uda nam się zorganizować przyjazd do hotelu i wyjazd do apartamentu. Podobnie jak w poszukiwaniu „napadu” na Konpeki Plaza, gdzie podążamy za Jackiem do kontynuacji… Czy da się zastąpić Jackie Panamem? Czy taka modyfikacja jest możliwa? ... W przeciwnym razie zaczyna się bezpośrednio w sequelu.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 POCZĄTEK ZADANIA,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Powiedz] Panam…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Idę usiąść na łóżku] Zaufałam komuś...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ Panam i V wchodzą do apartamentu. Całują się i idą usiąść na kanapie.,,1
 Po chwili...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 """Hangout - Konpeki"" > ""Łóżko"" > ""Przejdź do łóżka""",,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Połóż się na łóżku],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Usiądź i poczekaj, aż Panam się zmieni]",,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Byłaby to sekwencja jak z filmu „Pretty Woman”, gdzie Julia Robert wchodzi i wychodzi z przymierzalni za każdym razem w innym stroju. (Dla tych, którzy pamiętają ten film ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

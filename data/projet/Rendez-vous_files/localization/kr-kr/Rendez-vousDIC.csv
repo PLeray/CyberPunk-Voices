@@ -2,7 +2,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 V는 미팅 장소로 이동합니다.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [음주] 만나서 너무 기뻐요.,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [마십니다] 마음이 바뀌지 않아서 다행이에요.,[음주] 마음이 바뀌지 않아서 다행이에요.,1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
-그들은 바에 가서 술을 마십니다(모드 Lizzie's Braindances: Places of Night City > Bar in Downtown에서처럼).,,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그들은 바에 앉아서 술을 마십니다(모드 Lizzie's Braindances: Places of Night City > Bar in Downtown에서처럼).,,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [파남을 기다려요],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 파남은 바 근처 미팅 장소에 도착합니다...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [마시다],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -27,7 +27,7 @@ V는 파남에게서 메시지를 받습니다.,,1735040401780488,COMMENT,COMMEN
 "당신은 미쳤어요! 당신의 과거를 생각해보면, 당신은 거기에서 건배해야 합니다!",,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "응, 확실히 문제가 있어… 생각해 볼게!",,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 패스는 48시간 동안 유효합니다... 그 이후에는 소멸되니까 빨리 말씀해주세요.,,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"파남 씨, 콘페키 계획에 대한 해결책이 있을지도 모르겠습니다. 이름을 등록해 보시겠어요?",,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam 나는 Konpeki 계획에 대한 해결책을 가지고 있을 수 있습니다. 이름을 등록해 보시겠어요?,,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 원한다면… 어떤 이름을 사용해야 할까요?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Aguilar Nubiola를 사용해보십시오,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 앤더스 헬만(Anders Hellman)과 함께 해보세요,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ V 마지막 문장에서 알몸이네,,1735148591380400,COMMENT,COMMENT,Rendez-v
 잠시 후 V는 아이디어를 얻었고 Panam에게 연락했습니다.,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [마신다] 파남...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "어쨌든, 어제 우리는 Badlands에서 한 남자를 붙잡았고 그에게서 Konpeki Plaza의 스위트룸에서 하룻밤을 보낼 수 있는 패스를 찾았습니다. 콘페키에 대해 말씀해주셨는데...",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 ""강탈"" 탐색에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+가능하다면 뷔와 파남은 피팅룸이 있는 시내의 옷가게로 향한다.,,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 파남과 뷔는 콘페키에 도착하면 의상을 선택하게 됩니다.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 가게가 바 옆에 있으면 함께 가게까지 걸어갑니다. (파남은 뷔를 바짝 따라다닌다.) 아니면 매장에서 만나도 된다.,,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ V 마지막 문장에서 알몸이네,,1735148591380400,COMMENT,COMMENT,Rendez-v
 [말] 곤페키 계획에 대해 이야기해보자...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[말] 그래서, 당신은 그것을 할 준비가 되셨나요?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 파남과 뷔는 시내 매장을 떠난다.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 ""강도"" 퀘스트에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 ""강탈"" 탐색에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 퀘스트 시작,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [말] 파남…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [침대에 앉으러 가며] 누군가를 믿었는데..,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ Panam은 거의 다시 옷을 입었습니다.,,1735859520752215,COMMENT,COMMENT
 잠시 후...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 「ハングアウト - 紺碧」＞「ベッド」＞「ベッドに移動」,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [ベッドに横になる],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[座ってパナムが変わるのを待ちます],,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+映画『プリティ・ウーマン』のような、ジュリア・ロバートが毎回違う衣装で試着室に出入りするようなシーケンスになるだろう。 (この映画を覚えている人のために;),,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

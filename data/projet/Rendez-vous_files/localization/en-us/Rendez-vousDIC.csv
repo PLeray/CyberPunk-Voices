@@ -2,7 +2,7 @@ femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
 V goes to the meeting point.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Drinking] I'm so happy to see you.,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Drink] I'm glad you haven't changed your mind.,[Drinking] I'm glad you haven't changed your mind.,1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
-They go to the bar and have a drink (Like in the mod Lizzie's Braindances: Places of Night City > Bar in Downtown),,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+They go to sit at the bar and have a drink (Like in the mod Lizzie's Braindances: Places of Night City > Bar in Downtown),,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Wait for Panam],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam arrives at the meeting point near the bar...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Drink],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -61,7 +61,7 @@ V reappears in front of the closed Konpeki,,1735148683898389,COMMENT,COMMENT,Ren
 "A little later, V has an idea and contacts Panam:",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Drink] Panam...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Anyway, yesterday we caught a guy in the Badlands and found on him a pass for a night in a suite at Konpeki Plaza. You told me about Konpeki…",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"If it is possible to manage the arrival at the hotel and going to the suite. As in the quest for ""the heist"" at Konpeki Plaza where we follow Jackie to the sequel... Is it possible to replace Jackie with Panam? Is this kind of modification possible? ... Otherwise it starts directly in the sequel.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If possible, V and Panam go to a clothing store downtown, where there is a fitting room.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam enters the fitting room and comes out with a different outfit.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam and V will have the outfit selected when they arrive at Konpeki.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "If the shop is next to the bar, they walk to the shop together. (Panam follows V closely.) Otherwise, they can meet at the store",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Panam and V will have the outfit selected when they arrive at Konpeki.,,17355838
 [Say] Let's talk about our plan for Konpeki...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Say] So, are you up for it?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam and V leave the downtown store.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"If it is possible to manage the arrival at the hotel and going to the suite. As in the quest ""the heist"" at Konpeki Plaza where we follow Jackie to the sequel... Is it possible to replace Jackie with Panam? Is this kind of modification possible? ... Otherwise it starts directly in the sequel.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If it is possible to manage the arrival at the hotel and going to the suite. As in the quest for ""the heist"" at Konpeki Plaza where we follow Jackie to the sequel... Is it possible to replace Jackie with Panam? Is this kind of modification possible? ... Otherwise it starts directly in the sequel.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 START OF QUEST,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Say] Panam…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Going to sit on the bed] I trusted someone...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ Either V must go to a specific area of ​​the Konpeki suite for the animation
 After a while...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 """Hangout - Konpeki"" > ""Bed"" > ""Move to the bed""",,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Lie on the bed],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Sit and wait for Panam to change],,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"It would be a sequence like in the film ""Pretty Woman"", where Julia Robert enters and leaves a fitting room with different outfits each time. (For those who remember this film ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

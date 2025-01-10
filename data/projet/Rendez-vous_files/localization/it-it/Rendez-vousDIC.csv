@@ -57,11 +57,11 @@ Sono nudi sull'ultima frase di V,,1735148591380400,COMMENT,COMMENT,Rendez-vous_f
 Panam se ne va,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 V riappare davanti al Konpeki chiuso,,1735148683898389,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Se la prenotazione è stata effettuata a nome Aguilar Nubiola, V riceve un messaggio da uno sconosciuto. È Aguilar! (Ma impossibile rispondere, ovviamente…)",,1735149083786826,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-Finirò per pensare che la tua propensione a rubarmi l'identità sia una forma di adulazione nei miei confronti... Proverò un grande piacere nell'ascoltarti implorarmi durante la mia prossima visita in Carolina del Nord. Ma è anche certo che la notte segue ogni giorno e non ti salverà.,,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Finirò per pensare che la tua propensione a rubarmi l'identità sia una forma di adulazione nei miei confronti... Proverò un grande piacere nell'ascoltarti implorarmi durante la mia prossima visita in Carolina del Nord. Ma è anche certo che la notte segue ogni giorno, non ti salverà.",,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Poco dopo, V ha un'idea e contatta Panam:",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Bere] Panam...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Comunque, ieri abbiamo catturato un ragazzo nelle Badlands e gli abbiamo trovato un pass per una notte in una suite al Konpeki Plaza. Mi hai parlato di Konpeki...",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Se possibile organizzare l'arrivo in hotel e la sistemazione in suite. Come nella ricerca della ""rapina"" a Konpeki Plaza dove seguiamo Jackie fino al seguito... È possibile sostituire Jackie con Panam? E' possibile questo tipo di modifica? ... Altrimenti si inizia direttamente nel seguito.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Se possibile, V e Panam vanno in un negozio di abbigliamento in centro, dove c'è un camerino.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam entra nel camerino ed esce con un vestito diverso.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam e V avranno l'abito selezionato quando arriveranno a Konpeki.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Se il negozio è vicino al bar, si recano insieme al negozio. (Panam segue da vicino V.) Altrimenti possono incontrarsi al negozio",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Panam e V avranno l'abito selezionato quando arriveranno a Konpeki.,,17355838342
 [Dì] Parliamo del nostro piano per Konpeki...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Dillo] Allora, sei pronto?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam e V lasciano il negozio del centro.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"Se possibile organizzare l'arrivo in hotel e la sistemazione in suite. Come nella missione ""La rapina"" a Konpeki Plaza dove seguiamo Jackie fino al seguito... È possibile sostituire Jackie con Panam? E' possibile questo tipo di modifica? ... Altrimenti si inizia direttamente nel seguito.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Se possibile organizzare l'arrivo in hotel e la sistemazione in suite. Come nella ricerca della ""rapina"" a Konpeki Plaza dove seguiamo Jackie fino al seguito... È possibile sostituire Jackie con Panam? E' possibile questo tipo di modifica? ... Altrimenti si inizia direttamente nel seguito.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 INIZIO DELLA MISSIONE,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Dì] Panam...,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Va a sedersi sul letto] Mi sono fidato di qualcuno...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ O V deve recarsi in un'area specifica della suite Konpeki affinché l'animazione
 Dopo un po...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 """Hangout - Konpeki"" > ""Letto"" > ""Spostati sul letto""",,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Sdraiati sul letto],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Siediti e aspetta che Panam cambi],,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Sería una secuencia como en la película “Pretty Woman”, donde Julia Robert entra y sale de un probador con outfits diferentes cada vez. (Para los que recuerdan esta película ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv

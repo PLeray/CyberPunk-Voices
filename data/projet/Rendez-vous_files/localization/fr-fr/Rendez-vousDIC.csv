@@ -61,7 +61,7 @@ V réapparaît devant le Konpeki porte close,,1735148683898389,COMMENT,COMMENT,R
 "Un peu plus tard, V a une idée et contacte Panam :",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Boire] Panam ...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Bref, hier on a choppé un gars dans les Badlands et on a trouvé sur lui un pass pour une nuit dans une suite du Konpeki Plaza. Tu m'avais parlé du Konpeki …",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"S'il est possible de gérer l'arrivée à l'hôtel et d'aller dans la suite. Comme dans la quête ""du casse"" au Konpeki Plaza où l'on suit Jackie jusqu'à la suite... Est-il possible de remplacer Jackie par Panam ? Est ce possible ce genre de modification ? ... Sinon ça commence direct dans la suite.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"S'il est possible que V et Panam aillent dans un magasin de vêtements du centre ville, où il y a une cabine d'essayage.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam rentre dans cabine essayage et ressort avec une tenue différente.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam et V auront la tenue selectionnée en arrivant au Konpeki.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "Si la boutique est à côté du bar, ils vont ensemble à la boutique à pied. (Panam suit V de près.) Sinon, ils peuvent se retrouver à la boutique",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -76,7 +76,7 @@ Panam et V auront la tenue selectionnée en arrivant au Konpeki.,,17355838342227
 [Dire] Parlons de notre plan pour le Konpeki...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 "[Dire] Alors, t'es partante ?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 Panam et V sortent de la boutique du centre ville.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
-"S'il est possible de gérer l'arrivée à l'hôtel et d'aller dans la suite. Comme dans la quête """"du casse"""" au Konpeki Plaza où l'on suit Jackie jusqu'à la suite... Est-il possible de remplacer Jackie par Panam ? Est ce possible ce genre de modification ? ... Sinon ça commence direct dans la suite.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"S'il est possible de gérer l'arrivée à l'hôtel et d'aller dans la suite. Comme dans la quête ""du casse"" au Konpeki Plaza où l'on suit Jackie jusqu'à la suite... Est-il possible de remplacer Jackie par Panam ? Est ce possible ce genre de modification ? ... Sinon ça commence direct dans la suite.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 DÉBUT DE QUÊTE,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Dire] Panam…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [Aller s'asseoir sur le lit] J'ai fait confiance à quelqu'un...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
@@ -106,3 +106,5 @@ Soit V doit se rendre dans une zone précise de la suite du Konpeki pour que l'a
 Après un temps…,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
 """Hangout - Konpeki"" > ""Bed"" > ""Move to the bed""",,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
 [S'allonger sur le lit],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[S'asseoir et attendre que Panam se change],,1736440090987447,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Ce serait une séquence comme dans le film ""Pretty Woman"", où Julia Robert rentre et sort d'une cabine d'essayage avec des tenus différentes à chaque fois. (Pour ceux qui se souviennent de ce film ;)",,1736440090987448,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
