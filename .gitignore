@@ -1,0 +1,23 @@
+# Ignorer tous les fichiers commençant par 'Base_' et terminant par '.json' dans 'data/BDDjson'
+data/BDDjson/Base_*.json
+
+application.log
+userconfig.ini
+__pycache__/Cblock.cpython-311.pyc
+__pycache__/Cetape.cpython-311.pyc
+__pycache__/CligneManuelle.cpython-311.pyc
+__pycache__/CpageHTML.cpython-311.pyc
+__pycache__/CprojetSequence.cpython-311.pyc
+__pycache__/Csequence.cpython-311.pyc
+__pycache__/Ctooltip.cpython-311.pyc
+__pycache__/CuserConfig.cpython-311.pyc
+__pycache__/custom_types.cpython-311.pyc
+__pycache__/data_loader.cpython-311.pyc
+__pycache__/filtrage.cpython-311.pyc
+__pycache__/general_functions.cpython-311.pyc
+__pycache__/global_variables.cpython-311.pyc
+__pycache__/LectureOgg.cpython-311.pyc
+__pycache__/log_config.cpython-311.pyc
+__pycache__/playlist_functions.cpython-311.pyc
+__pycache__/recherche_functions.cpython-311.pyc
+

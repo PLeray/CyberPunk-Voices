@@ -122,6 +122,67 @@ language_dropdown.pack(side=tk.LEFT, padx=5, pady=5)
 text_label = tk.Label(button_frame, text="Use left click to listen to a line, right click to add a line to the playlist. Multiple selection is possible and addition to the playlist with the Add selection to playlist button.", font=("Arial", 10))
 text_label.pack(side=tk.LEFT, padx=5, pady=5)
 
+# Ajouter un bouton pour traiter toutes les langues
+process_button = tk.Button(
+    button_frame,
+    text="Process All Languages",
+    command=lambda: process_all_languages(root)  # Appeler la fonction avec root
+)
+process_button.pack(side=tk.LEFT, padx=5, pady=5)
+
+def process_all_languages(root):
+    """Parcours toutes les langues et effectue les opérations requises."""
+    # Sauvegarder la langue actuelle
+    langue_initiale = global_variables.user_config.get("SETTINGS", "LANGUAGE")
+    print(f"Langue initiale : {langue_initiale}")
+
+    for langue in localization_languages:
+        print(f"Traitement de la langue : {langue}")
+
+        # Changer la langue
+        maj_Langue(langue)
+        global_variables.user_config.set("SETTINGS", "LANGUAGE", langue)
+        print(f"Langue mise à jour : {langue}")
+
+        # Fermer la fenêtre projet si elle est ouverte
+        if global_variables.projet_instance is not None:
+            fermer_projet_instance()
+
+        # Ouvrir une nouvelle instance de la fenêtre projet
+        ouvrir_projet_instance(root)
+
+        # Générer les fichiers .ogg
+        try:
+            if hasattr(global_variables.projet_instance, "generate_Ogg"):
+                global_variables.projet_instance.generate_Ogg()
+                print(f"Fichiers .ogg générés pour la langue : {langue}")
+            else:
+                print("Méthode generate_Ogg non disponible.")
+        except Exception as e:
+            print(f"Erreur lors de la génération des fichiers .ogg : {e}")
+
+        # Générer la page HTML
+        try:
+            if hasattr(global_variables.projet_instance, "generate_project_html"):
+                global_variables.projet_instance.generate_project_html()
+                print(f"Page HTML générée pour la langue : {langue}")
+            else:
+                print("Méthode generate_project_html non disponible.")
+        except Exception as e:
+            print(f"Erreur lors de la génération de la page HTML : {e}")
+
+        # Pause entre les langues pour éviter les conflits de ressources (optionnel)
+        time.sleep(2)
+
+    # Restauration de la langue initiale
+    print(f"Restauration de la langue initiale : {langue_initiale}")
+    maj_Langue(langue_initiale)
+    global_variables.user_config.set("SETTINGS", "LANGUAGE", langue_initiale)
+    if global_variables.projet_instance is not None:
+        fermer_projet_instance()
+    ouvrir_projet_instance(root)
+
+
 # Ajouter une commande lors de la sélection
 def on_language_selected(event):
     global_variables.dataSound = None
