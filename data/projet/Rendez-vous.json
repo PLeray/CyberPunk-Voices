@@ -1202,11 +1202,11 @@
                             "quest_path": "base/{}/subtitles/quest/q202/q202_01_motel"
                         },
                         {
-                            "stringId": "1795337918150733824",
-                            "femaleVariant": "Hmpf. Ouais.",
-                            "maleVariant": "Hmpf. Ouais.",
-                            "female_vo_path": "base/{}/vo/v_q203_f_18ea52530f29f000.wem",
-                            "male_vo_path": "base/{}/vo/v_q203_m_18ea52530f29f000.wem",
+                            "stringId": "2251564761051492352",
+                            "femaleVariant": "Merci, c'est gentil de me le rappeler\u2026",
+                            "maleVariant": "Merci, c'est gentil de me le rappeler\u2026",
+                            "female_vo_path": "base/{}/vo/v_q203_f_1f3f2a388b42f000.wem",
+                            "male_vo_path": "base/{}/vo/v_q203_m_1f3f2a388b42f000.wem",
                             "quest_path": "base/{}/subtitles/quest/q203/q203_05_afterlife"
                         },
                         {
@@ -1226,24 +1226,25 @@
                             "quest_path": "ep1/{}/subtitles/open_world/sandbox_activities/sa_ep1_courier_outro_muammar_dam"
                         },
                         {
-                            "stringId": "1896726950297350144",
-                            "femaleVariant": "Non.",
-                            "maleVariant": "Non.",
-                            "female_vo_path": "base/{}/vo/v_sq004_f_1a52871cac623000.wem",
-                            "male_vo_path": "base/{}/vo/v_sq004_m_1a52871cac623000.wem",
-                            "quest_path": "base/{}/subtitles/quest/sq004/sq004_08_farm"
-                        },
-                        {
                             "stringId": "1882333620088885248",
                             "femaleVariant": "Parce que je tiens vraiment \u00e0 toi. Mais j'ai peur de dire ou de faire un truc stupide, et\u2026 et de me retrouver seule dans le d\u00e9sert.",
                             "maleVariant": "Parce que je tiens vraiment \u00e0 toi. Mais j'ai peur de dire ou de faire un truc stupide, et\u2026 et de me retrouver seule dans le d\u00e9sert.",
                             "female_vo_path": "base/{}/vo/panam_sq027_f_1a1f6474562c5000.wem",
                             "male_vo_path": "base/{}/vo/panam_sq027_m_1a1f6474562c5000.wem",
                             "quest_path": "base/{}/subtitles/quest/sq027/sq027_04_preparations_panam"
+                        },
+                        {
+                            "stringId": "1795337918150733824",
+                            "femaleVariant": "Hmpf. Ouais.",
+                            "maleVariant": "Hmpf. Ouais.",
+                            "female_vo_path": "base/{}/vo/v_q203_f_18ea52530f29f000.wem",
+                            "male_vo_path": "base/{}/vo/v_q203_m_18ea52530f29f000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q203/q203_05_afterlife"
                         }
                     ],
                     "blocs_precedents": [],
                     "blocs_suivants": [
+                        "0040",
                         "0037"
                     ]
                 }
@@ -1257,96 +1258,9 @@
                 {
                     "etape_number": 11,
                     "etape_position": 0,
-                    "identifiant": "0037",
-                    "title": "5.01-Aguilar",
-                    "comment": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
-                    "playlist_lien": "",
-                    "playlist": [
-                        {
-                            "stringId": "1734904017055777",
-                            "femaleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
-                            "maleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
-                            "female_vo_path": "COMMENT",
-                            "male_vo_path": "COMMENT",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1902560011682299904",
-                            "femaleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
-                            "maleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
-                            "female_vo_path": "base/{}/vo/v_sq030_f_1a6740401c2fc000.wem",
-                            "male_vo_path": "base/{}/vo/v_sq030_m_1a6740401c2fc000.wem",
-                            "quest_path": "base/{}/subtitles/quest/sq030/sq030_09_pier"
-                        },
-                        {
-                            "stringId": "1735756411635207",
-                            "femaleVariant": "[Activer empreinte d'Aguilar]",
-                            "maleVariant": "[Activer empreinte d'Aguilar]",
-                            "female_vo_path": "ACTION",
-                            "male_vo_path": "ACTION",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1853019730599550976",
-                            "femaleVariant": "Ben merde, t'as vraiment une sale gueule.",
-                            "maleVariant": "Ben merde, t'as vraiment une sale gueule.",
-                            "female_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
-                            "male_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
-                            "quest_path": "base/{}/subtitles/quest/q115/q115_02d_misty"
-                        },
-                        {
-                            "stringId": "3689606690401263616",
-                            "femaleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
-                            "maleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
-                            "female_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
-                            "male_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
-                            "quest_path": "ep1/{}/subtitles/quest/mq304/mq304_06_kurts_wake"
-                        },
-                        {
-                            "stringId": "2248159134078902280",
-                            "femaleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
-                            "maleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
-                            "female_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
-                            "male_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
-                            "quest_path": "base/{}/subtitles/quest/vset/vset_panam"
-                        },
-                        {
-                            "stringId": "1735756509206727",
-                            "femaleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
-                            "maleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
-                            "female_vo_path": "ACTION",
-                            "male_vo_path": "ACTION",
-                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
-                        },
-                        {
-                            "stringId": "1782321871533883392",
-                            "femaleVariant": "Ouais, \u00e7a peut marcher.",
-                            "maleVariant": "Ouais, \u00e7a peut marcher.",
-                            "female_vo_path": "base/{}/vo/v_sq026_f_18bc144c8c2fc000.wem",
-                            "male_vo_path": "base/{}/vo/v_sq026_m_18bc144c8c2fc000.wem",
-                            "quest_path": "base/{}/subtitles/quest/sq026/sq026_08_plan"
-                        }
-                    ],
-                    "blocs_precedents": [
-                        "0012"
-                    ],
-                    "blocs_suivants": [
-                        "0013"
-                    ]
-                }
-            ]
-        },
-        {
-            "numero": 12,
-            "y": 1245,
-            "width": 783,
-            "blocs": [
-                {
-                    "etape_number": 12,
-                    "etape_position": 0,
-                    "identifiant": "0013",
-                    "title": "5.1-I take it we've got a deal",
-                    "comment": "[Dire] Alors, t'es partante ?",
+                    "identifiant": "0040",
+                    "title": "[Dire]_Alors,_t'es_partante",
+                    "comment": ":  [Dire] Alors, t'es partante ?",
                     "playlist_lien": "",
                     "playlist": [
                         {
@@ -1455,21 +1369,99 @@
                         }
                     ],
                     "blocs_precedents": [
-                        "0037"
+                        "0012"
                     ],
                     "blocs_suivants": [
                         "0035"
                     ]
+                },
+                {
+                    "etape_number": 11,
+                    "etape_position": 1,
+                    "identifiant": "0037",
+                    "title": "5.01-Aguilar",
+                    "comment": "Un dialogue, s'il est possible de faire en sorte que V et Panam aillent dans un coin discret et que V lui montre l\u2019empreinte comportementale d\u2019Aguilar\u2026",
+                    "playlist_lien": "",
+                    "playlist": [
+                        {
+                            "stringId": "1734904017055777",
+                            "femaleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
+                            "maleVariant": "Cas ou V se montre devant panam avec le masque d'Aguilar",
+                            "female_vo_path": "COMMENT",
+                            "male_vo_path": "COMMENT",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1902560011682299904",
+                            "femaleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
+                            "maleVariant": "J'ai une id\u00e9e, un plan. Mais\u2026 je sais pas si \u00e7a va marcher.",
+                            "female_vo_path": "base/{}/vo/v_sq030_f_1a6740401c2fc000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq030_m_1a6740401c2fc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq030/sq030_09_pier"
+                        },
+                        {
+                            "stringId": "1735756411635207",
+                            "femaleVariant": "[Activer empreinte d'Aguilar]",
+                            "maleVariant": "[Activer empreinte d'Aguilar]",
+                            "female_vo_path": "ACTION",
+                            "male_vo_path": "ACTION",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1853019730599550976",
+                            "femaleVariant": "Ben merde, t'as vraiment une sale gueule.",
+                            "maleVariant": "Ben merde, t'as vraiment une sale gueule.",
+                            "female_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
+                            "male_vo_path": "base/{}/vo/panam_q115_f_19b73fa0942d2000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q115/q115_02d_misty"
+                        },
+                        {
+                            "stringId": "3689606690401263616",
+                            "femaleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
+                            "maleVariant": "Ce n'est que mon humble avis, bien s\u00fbr. Mais si tu n'es pas d'accord, je peux toujours... te persuader.",
+                            "female_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
+                            "male_vo_path": "ep1/{}/vo/mq304_assassin_male_mq304_f_33341dbc8e45a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/mq304/mq304_06_kurts_wake"
+                        },
+                        {
+                            "stringId": "2248159134078902280",
+                            "femaleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
+                            "maleVariant": "Super impressionnant\u00a0! Je suis bluff\u00e9e.",
+                            "female_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
+                            "male_vo_path": "base/{}/vo/panam_vs_vset_panam_f_1f3310d23952a008.wem",
+                            "quest_path": "base/{}/subtitles/quest/vset/vset_panam"
+                        },
+                        {
+                            "stringId": "1735756509206727",
+                            "femaleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
+                            "maleVariant": "[D\u00e9sctiver empreinte d'Aguilar]",
+                            "female_vo_path": "ACTION",
+                            "male_vo_path": "ACTION",
+                            "quest_path": "Rendez-vous_files/{}/Rendez-vousDIC.csv"
+                        },
+                        {
+                            "stringId": "1782321871533883392",
+                            "femaleVariant": "Ouais, \u00e7a peut marcher.",
+                            "maleVariant": "Ouais, \u00e7a peut marcher.",
+                            "female_vo_path": "base/{}/vo/v_sq026_f_18bc144c8c2fc000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq026_m_18bc144c8c2fc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq026/sq026_08_plan"
+                        }
+                    ],
+                    "blocs_precedents": [
+                        "0012"
+                    ],
+                    "blocs_suivants": []
                 }
             ]
         },
         {
-            "numero": 13,
-            "y": 1345,
+            "numero": 12,
+            "y": 1245,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 13,
+                    "etape_number": 12,
                     "etape_position": 0,
                     "identifiant": "0035",
                     "title": "6.0-Shopping",
@@ -1870,7 +1862,7 @@
                         }
                     ],
                     "blocs_precedents": [
-                        "0013"
+                        "0040"
                     ],
                     "blocs_suivants": [
                         "0036"
@@ -1879,12 +1871,12 @@
             ]
         },
         {
-            "numero": 14,
-            "y": 1445,
+            "numero": 13,
+            "y": 1345,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 14,
+                    "etape_number": 13,
                     "etape_position": 0,
                     "identifiant": "0036",
                     "title": "6.1-GOKonpeki",
@@ -1910,12 +1902,12 @@
             ]
         },
         {
-            "numero": 15,
-            "y": 1545,
+            "numero": 14,
+            "y": 1445,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 15,
+                    "etape_number": 14,
                     "etape_position": 0,
                     "identifiant": "0016",
                     "title": "6.1-[Sit]-It_is_awesome",
@@ -2046,12 +2038,12 @@
             ]
         },
         {
-            "numero": 16,
-            "y": 1645,
+            "numero": 15,
+            "y": 1545,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 16,
+                    "etape_number": 15,
                     "etape_position": 0,
                     "identifiant": "0038",
                     "title": "Comme_dans_le_mod_Lizzies-Braindance_avec__Hangout_-_Konpeki__et_avec_Panam",
@@ -2123,7 +2115,7 @@
                     ]
                 },
                 {
-                    "etape_number": 16,
+                    "etape_number": 15,
                     "etape_position": 1,
                     "identifiant": "0039",
                     "title": "Sacr\u00e9e_vue,_hein",
@@ -2189,12 +2181,12 @@
             ]
         },
         {
-            "numero": 17,
-            "y": 1745,
+            "numero": 16,
+            "y": 1645,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 17,
+                    "etape_number": 16,
                     "etape_position": 0,
                     "identifiant": "0017",
                     "title": "7.0-Will_you_say_something",
@@ -2269,12 +2261,12 @@
             ]
         },
         {
-            "numero": 18,
-            "y": 1845,
+            "numero": 17,
+            "y": 1745,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 18,
+                    "etape_number": 17,
                     "etape_position": 0,
                     "identifiant": "0033",
                     "title": "8.0-Reminded_me_of_jackie",
@@ -2340,12 +2332,12 @@
             ]
         },
         {
-            "numero": 19,
-            "y": 1945,
+            "numero": 18,
+            "y": 1845,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 19,
+                    "etape_number": 18,
                     "etape_position": 0,
                     "identifiant": "0018",
                     "title": "8.1-Trusted someone",
@@ -2436,12 +2428,12 @@
             ]
         },
         {
-            "numero": 20,
-            "y": 2045,
+            "numero": 19,
+            "y": 1945,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 20,
+                    "etape_number": 19,
                     "etape_position": 0,
                     "identifiant": "0019",
                     "title": "9.A0-I cant_make_any_plans_for_the_future",
@@ -2497,7 +2489,7 @@
                     ]
                 },
                 {
-                    "etape_number": 20,
+                    "etape_number": 19,
                     "etape_position": 1,
                     "identifiant": "0020",
                     "title": "9.B0-Dead in a few months",
@@ -2555,12 +2547,12 @@
             ]
         },
         {
-            "numero": 21,
-            "y": 2145,
+            "numero": 20,
+            "y": 2045,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 21,
+                    "etape_number": 20,
                     "etape_position": 0,
                     "identifiant": "0021",
                     "title": "10.0-if_I_gotta_die",
@@ -2643,12 +2635,12 @@
             ]
         },
         {
-            "numero": 22,
-            "y": 2245,
+            "numero": 21,
+            "y": 2145,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 22,
+                    "etape_number": 21,
                     "etape_position": 0,
                     "identifiant": "0023",
                     "title": "11.0-Come here",
@@ -2747,12 +2739,12 @@
             ]
         },
         {
-            "numero": 23,
-            "y": 2345,
+            "numero": 22,
+            "y": 2245,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 23,
+                    "etape_number": 22,
                     "etape_position": 0,
                     "identifiant": "0024",
                     "title": "12.A0-Your_wish_is_our_command",
@@ -2864,7 +2856,7 @@
                     ]
                 },
                 {
-                    "etape_number": 23,
+                    "etape_number": 22,
                     "etape_position": 1,
                     "identifiant": "0025",
                     "title": "12.B0-Often enought",
@@ -3002,12 +2994,12 @@
             ]
         },
         {
-            "numero": 24,
-            "y": 2445,
+            "numero": 23,
+            "y": 2345,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 24,
+                    "etape_number": 23,
                     "etape_position": 0,
                     "identifiant": "0026",
                     "title": "13.0-I_didnt_want_to_wake_you",
@@ -3090,12 +3082,12 @@
             ]
         },
         {
-            "numero": 25,
-            "y": 2545,
+            "numero": 24,
+            "y": 2445,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 25,
+                    "etape_number": 24,
                     "etape_position": 0,
                     "identifiant": "0022",
                     "title": "13.A1-Oh_no",
@@ -3231,7 +3223,7 @@
                     ]
                 },
                 {
-                    "etape_number": 25,
+                    "etape_number": 24,
                     "etape_position": 1,
                     "identifiant": "0027",
                     "title": "13.B1-Euh_wait",
@@ -3313,12 +3305,12 @@
             ]
         },
         {
-            "numero": 26,
-            "y": 2645,
+            "numero": 25,
+            "y": 2545,
             "width": 783,
             "blocs": [
                 {
-                    "etape_number": 26,
+                    "etape_number": 25,
                     "etape_position": 0,
                     "identifiant": "0034",
                     "title": "14-Fin",

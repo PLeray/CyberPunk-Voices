@@ -61,6 +61,17 @@ class Etape:
             fill=global_variables.Couleur_Etape, outline=outline_color, width=4 if outline_color else 1, tags=("etape", self.numero)
         )
 
+        # Dessiner le texte pour le numéro de l'étape
+        step_label = f"Step {self.numero}"
+        canvas.create_text(
+            15, step_top + 10,  # Position en haut à gauche de l'étape
+            anchor="nw",  # Alignement du texte en haut à gauche
+            text=step_label,
+            fill="black",  # Couleur du texte
+            font=("Arial", 7),  # Police et taille
+            tags=("etape_label", self.numero)
+        )
+
         # Dessiner les blocs dans l'étape
         for i, block in enumerate(self.blocs):
             is_source = block in selected_to_connect_blocks["green"]
