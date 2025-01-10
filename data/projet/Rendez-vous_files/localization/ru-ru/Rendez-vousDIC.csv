@@ -1,0 +1,108 @@
+femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
+Ви идет к месту встречи.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Пьет] Я так рада тебя видеть.,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Пить] Я рад, что ты не передумал.","[Пьет] Я рад, что ты не передумал.",1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Они идут посидеть в баре и выпить (Как в моде Lizzie's Braindances: Places of Night City > Bar in Downtown),,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Ждать Панама],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам прибывает на место встречи возле бара...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Напиток],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Пьет] Итак, чем ты занимаешься в эти дни?",,1734887624815712,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Итак, чем ты занимаешься в эти дни?",,1734887658486519,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Диалог, если возможно заставить Ви и Панам пойти в укромный уголок и заставить Ви показать ей поведенческий отпечаток Агилара...",,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Ви и Панам целуются,,1734910406863562,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Панам делает несколько глотков, прежде чем ответить. Потом, когда она говорит, она злится все больше и больше...",,1734912057581613,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+И/ИЛИ,,1734912403652319,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Ви получает сообщение от Панама.,,1735040401780488,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Привет, Ви, как дела? Знаешь что, вчера я думал о тебе!",,1735040679408670,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Я думаю о тебе только один раз в день, но это длится 24 часа!",,1735040846812203,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"О, ты милый! <3 <3 <3",,1735056244885189,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Сол хотел, чтобы мы уничтожили все, что могло связать нас с этим парнем... Но эй, я оставил пропуск, думая о тебе, на всякий случай...",,1735056295732630,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Не знаю, что с этим делать, а потом... Конпеки для меня не самое лучшее воспоминание...",,1735056326435636,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Хорошо, это глупо! Я собираюсь разрушить перевал, Саул прав.",,1735056379716323,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Нет, подожди! Как эта штука работает?",,1735056393052657,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Что ж, вы заходите на их сайт, вводите имя и резервация сделана…",,1735056411224054,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Хорошо… возможно, у меня есть идея! Хотели бы вы этим воспользоваться?",,1735056425988329,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Как же так?,,1735056446949704,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Мы оба идем! Мы проводим классный вечер в Конпеки. Это могло бы быть здорово, как вы думаете?",,1735056484397280,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Ты сумасшедший! Учитывая твое прошлое, ты, должно быть, там поджарен!",,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Да, конечно, это проблема… Дай мне подумать об этом!",,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Пропуск действителен 48 часов… Скажите скорее, потому что после этого он мертв.",,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Панам, возможно, у меня есть решение по плану Конпеки. Не могли бы вы попробовать зарегистрировать имя?",,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Если хочешь… Какое имя мне следует использовать?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Попробуйте с Агиларом Нубиолой,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Попробуйте это с Андерсом Хеллманом,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Умный! Я пытаюсь, подожди...",,1735060913044546,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Его передали на запись. Должно быть хорошо!,,1735060935091683,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Так что ты скажешь? У нас это будет сегодня вечером в Конпеки?,,1735060982596671,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Я даже не знаю... Конпеки - не мой стиль!,,1735061008088637,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Я собираюсь внести свою лепту в декор... У меня даже чертовски подходящего наряда нет!,,1735061024059582,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Это не проблема. Ты управлял Конпеки, так что позволь мне позаботиться о нашей одежде. Встретимся в центре, сходим за покупками!",,1735061039903586,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Это все еще опасно, вас могут узнать! И блин, мы тут про Арасаку говорим!",,1735061055747094,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Слушай, давай встретимся в баре в центре и поговорим об этом, ладно?",,1735061077597131,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Если ты хочешь…,,1735061089758378,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Скажи] Итак, что ты делаешь в эти дни?",,1735142209504692,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Пьет] Я думал, ты помирилась с Саулом…",,1735142588439618,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Ви сидит на кровати. Панам мог сидеть напротив В. (Как в моде Lizzie's Braindances: DollHouse),,1735146101955345,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Через некоторое время ничего не сказав...,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам садится на кровать рядом с Ви (как в моде Lizzie's Braindances: DollHouse).,,1735146139634145,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Произнося последнее предложение, Панам наклоняется и опирается на кровать (как в моде Lizzie's Braindances: DollHouse). ",,1735146177514793,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам ложится рядом с ним…,,1735146190854713,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Панам обижается, быстро садится на первое предложение!",,1735146208634254,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"В ярости Панам уходит, произнеся свое последнее предложение!",,1735146218671463,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+КОНЕЦ КВЕСТА,,1735146262371852,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Одежда исчезает, когда слышно, как Панам произносит свое последнее предложение.",,1735148577111890,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Они обнажены в последнем предложении V.,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Явные действия] Ох, окей.",,1735148603319961,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Позже... они все еще лежат на кровати обнаженные.,,1735148655590069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панамские листья,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Ви снова появляется перед закрытой Конпеки.,,1735148683898389,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если бронирование было сделано под именем Агилар Нубиола, Ви получает сообщение от незнакомца. Это Агилар! (Но ответить, конечно, невозможно...)",,1735149083786826,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"В конечном итоге я подумаю, что ваша склонность украсть мою личность - это форма лести по отношению ко мне... Я буду получать огромное удовольствие, слушая ваши умоляющие меня во время моего следующего визита в Северную Каролину. Но несомненно и то, что за каждым днем ​​следует ночь, она вас не спасет.",,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Чуть позже у Ви возникает идея, и он связывается с Панамом:",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Пить] Панам...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Так или иначе, вчера мы поймали парня в Бесплодных землях и нашли у него пропуск на ночь в номер в Конпеки Плаза. Ты рассказал мне о Конпеки…",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если можно успеть приехать в отель и поехать в номер. Как и в квесте «Ограбление» на Конпеки Плаза, где мы следуем за Джеки в продолжение... Можно ли заменить Джеки Панамом? Возможна ли такая модификация? ... В противном случае оно начинается прямо в сиквеле.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам входит в примерочную и выходит в другом наряде.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам и Ви выберут одежду по прибытии в Конпеки.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если магазин находится рядом с баром, они идут в магазин вместе. (Панам внимательно следует за Ви.) В противном случае они могут встретиться в магазине.",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Как в моде Lizzies-Braindance с ""Тусовкой - Конпеки"" и с Панамом.",,1735584121915575,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Активировать след Агилара],,1735756411635207,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Отключить след Агилара],,1735756509206727,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Отправить сообщение в Панам],,1735769077098714,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Скажи] Не обращай внимания на Саула. Это перейдет к нему.,,1735769360126834,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Говорит] Может быть, Саул прав...",,1735769421066106,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Скажи] Не преувеличивай.,,1735826347203087,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Скажи] Могу ли я чем-нибудь помочь тебе?,,1735826373383827,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Сказать] Давай поговорим о нашем плане на Конпеки...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Скажи] Итак, ты готов?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам и Ви выходят из магазина в центре города.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Если можно успеть приехать в отель и поехать в номер. Как в квесте ""Ограбление"" на Конпеки Плаза, где мы следуем за Джеки в продолжение... Можно ли заменить Джеки на Панама? Возможна ли такая модификация? ... В противном случае оно начинается прямо в сиквеле.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+НАЧАЛО КВЕСТА,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Скажи] Панам…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+(Собирается сесть на кровать) Я кому-то доверял...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Скажи] Я не могу ничего предсказать на будущее.,,1735855065255565,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Говорит] Я умру через несколько месяцев, верно?",,1735855145057790,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Скажи] Я бы хотел, чтобы меня помнили…",,1735855287877249,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Ложись] Иди сюда.,,1735856480847855,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Скажи] Довольно часто, да.",,1735857543721684,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Прикосновение] Нет, совсем нет.",,1735857606826433,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Вставать] О нет...,,1735858958994359,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Вставай] Насчет прошлой ночи…,,1735859033963587,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам снова почти одета.,,1735859520752215,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Прикосновение] Привет!,,1735860454689494,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Тусовка – Конпеки» > «Вместе выглянем наружу»,,1736440090987431,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Панам и Ви входят в номер. Они целуются и идут сидеть на диване.,,1736440090987432,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Тусовка — Конпеки» > «Обниматься»,,1736440090987433,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Тусовка – Конпеки» > «Танец»,,1736440090987434,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Тусовка – Конпеки» > «Поцелуй за столом»,,1736440090987435,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Тусовка — Конпеки» > «Сидеть на земле»,,1736440090987436,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Поцеловать],,1736440090987437,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Выйти на террасу],,1736440090987438,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[подойди ближе],,1736440090987439,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Визит продолжается],,1736440090987440,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Панам ложится на диван, положив голову на ноги Ви.",,1736440090987441,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Полюбоваться видом],,1736440090987442,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Либо Ви должен перейти в определенную область пакета Konpeki, чтобы анимация запустилась. Либо анимация запускается автоматически.",,1736440090987443,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Спустя некоторое время...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+«Hangout – Konpeki» > «Кровать» > «Перейти к кровати»,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Ложиться на кровать],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv

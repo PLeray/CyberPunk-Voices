@@ -1,0 +1,941 @@
+
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rendez-vous</title>
+        
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #ffffff;
+                    margin: 0;
+                    padding: 20px;
+                }
+                .step-container {
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    border-top: 1px solid #bbbbbb;
+                    background-color: #f4f4f4;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                }
+                .step-title {
+                    font-size: 9px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    position: absolute;
+                    color:  #bbbbbb;
+                    top: 10px;
+                    left: 10px;
+                }
+                .block-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 100px; /* Augmente l'espacement entre les blocs */
+                    flex-wrap: wrap;
+                }
+                .block {
+                    padding: 10px;
+                    padding-top: 0px;
+                    padding-right: 25px;
+                    border-top: 2px solid #33acff;
+                    border-bottom: 2px solid #33acff;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    width: 400px;
+                    text-align: left;
+                    position: relative; /* Permet au bouton d’être positionné par rapport au bloc */
+                }
+                .block-subtitles {
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
+                .block-subtitles div {
+                    font-weight: normal;
+                }
+                .block-subtitles div normal {
+                    color:  #444444;
+                }                
+                .block-subtitles div perso {
+                    font-weight: bold;
+                    color:  #33acff;
+                }
+                .block-subtitles div commentaire {
+                    font-weight: normal;
+                    color:  #4b00a0;
+                    font-style: oblique;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }      
+                .block-subtitles div action {
+                    font-weight: normal;
+                    color:  #00598c;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }   
+                .block-subtitles div message-sent {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #dcf8c6;
+                    margin-left: auto;
+                }  
+                .block-subtitles div message-received {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #f1f1f1;
+                    margin-right: auto;
+                }                                                                             
+                svg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 10000px; /* Ajusté pour inclure toutes les étapes */
+                    pointer-events: none;
+                }
+                line {
+                    stroke: #33acff;
+                    stroke-width: 2;
+                }
+                .audio-button {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #33acff;
+                    border: 3px solid white;
+                    border-radius: 50%;
+                    position: absolute; /* Permet de placer le bouton indépendamment */
+                    top: 50%; /* Centre verticalement le bouton */
+                    right: -30px; /* Aligne le bouton à droite du bloc */
+                    transform: translateY(-50%); /* Ajuste pour un centrage parfait */
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                .audio-button:hover {
+                    background-color: #007bb5;
+                }
+                .audio-button::before {
+                    content: '';
+                    position: absolute;
+                    transition: all 0.3s ease;
+                }
+                .audio-button.play::before {
+                    width: 0;
+                    height: 0;
+                    border-left: 15px solid white;
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                }
+                .audio-button.pause::before {
+                    width: 10px;
+                    height: 20px;
+                    background-color: white;
+                    box-shadow: 15px 0 0 white;
+                }                
+                .audio-button::after {
+                    /* Tooltip */
+                    content: "Cliquez sur le bouton ci-dessous pour lire ou arrêter le fichier audio";
+                    position: absolute;
+                    top: -35px; /* Décalage au-dessus du bouton */
+                    right: 50%; /* Centré horizontalement par rapport au bouton */
+                    transform: translateX(50%);
+                    background-color: #000;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+                    z-index: 10;
+                }
+                .audio-button:hover::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .menu-langues {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .menu-langues a {
+                    text-decoration: none;
+                    margin: 0 7px;
+                    color: #000; /* Couleur par défaut */
+                }
+                .menu-langues a:hover {
+                    border-bottom: 2px solid #e74c3c; /* Soulignement rouge au survol */
+                }
+                .menu-langues .current {
+                    font-weight: bold;
+                    padding: 5px 7px;
+                    border: 2px solid #e74c3c; /* Entouré d'une bordure rouge */
+                    border-radius: 5px; /* Bordures arrondies */
+                    color: #000; /* Couleur bleue pour la langue courante */
+                }                
+            </style>
+        </head>
+<body>
+<h1 style='text-align:center;'>Rendez-vous</h1>
+<div class='menu-langues'>
+<a href='../de-de/Rendez-vous.html' class=''>Deutsch</a> | <a href='../en-us/Rendez-vous.html' class=''>English</a> | <a href='../es-es/Rendez-vous.html' class=''>Spanish</a> | <a href='../fr-fr/Rendez-vous.html' class=''>Français</a> | <a href='../it-it/Rendez-vous.html' class=''>Italiano</a> | <a href='../jp-jp/Rendez-vous.html' class='current'>日本語 (Japanese)</a> | <a href='../kr-kr/Rendez-vous.html' class=''>한국어 (Korean)</a> | <a href='../pl-pl/Rendez-vous.html' class=''>Polish</a> | <a href='../pt-br/Rendez-vous.html' class=''>Português</a> | <a href='../ru-ru/Rendez-vous.html' class=''>Russian</a> | <a href='../zh-cn/Rendez-vous.html' class=''>中文 (Simplified Chinese)</a></div>
+<div class='step-container'>
+<div class='step-title'>Step 1</div>
+<div class='block-container'>
+<div class='block' id='block-0028'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> クエストの開始</commentaire></div>
+<div><commentaire><perso></perso> Vはパナムからメッセージを受け取ります</commentaire></div>
+<div><message-received><perso></perso> こんにちは、V、お元気ですか？昨日、私はあなたのことを思い出しました。</message-received></div>
+<div><message-sent><perso></perso> あなたのことを考えるのは1日に1回だけですが、それは24時間続きます。</message-sent></div>
+<div><message-received><perso></perso> ああ、かわいいですね！ <3 <3 <3</message-received></div>
+<div><message-received><perso></perso> とにかく、昨日私たちはバッドランズで男を捕まえ、紺碧プラザのスイートでの一晩のパスを見つけました。紺碧の話をしてくれましたね…</message-received></div>
+<div><message-received><perso></perso> ソールは、私たちとこの男を繋ぐものはすべて破壊してほしいと思っていました...でも、念のためにあなたのことを考えてパスを残しておきました...</message-received></div>
+<div><message-sent><perso></perso> それで何ができるか分からないけど…紺碧は私にとって最高の思い出ではない…</message-sent></div>
+<div><message-received><perso></perso> わかりました、それは愚かです！パスを破壊するつもりだ、ソールは正しい。</message-received></div>
+<div><message-sent><perso></perso> 待ってください！これはどのように機能するのでしょうか?</message-sent></div>
+<div><message-received><perso></perso> さて、サイトにアクセスして名前を入力すると予約が完了します...</message-received></div>
+<div><message-sent><perso></perso> わかりました…アイデアがあるかもしれません!ぜひ活用してみてはいかがでしょうか？</message-sent></div>
+<div><message-received><perso></perso> どうして？</message-received></div>
+<div><message-sent><perso></perso> 二人とも行きますよ！紺碧で優雅な夜を過ごします。これはいいかもしれません、どう思いますか？</message-sent></div>
+<div><message-received><perso></perso> 頭がおかしいよ！あなたの過去を考えると、そこで乾杯するに違いありません！</message-received></div>
+<div><message-sent><perso></perso> そうですね、それは問題です…考えさせてください!</message-sent></div>
+<div><message-received><perso></perso> パスは 48 時間有効です…それを過ぎると無効になるため、すぐに教えてください。</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 2</div>
+<div class='block-container'>
+<div class='block' id='block-0029'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 少し後、V はアイデアを思いついて Panam に連絡します。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>3823267547856580608</strong> "><vo><perso>V : </perso> はあ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973374915334619140</strong> "><vo><perso>V : </perso> これは…</vo></span></div>
+<div><action><perso></perso> [パナムにメッセージを送る]</action></div>
+<div><message-sent><perso></perso> パナム 紺碧計画の解決策があるかも知れません。名前を登録してみてはいかがでしょうか？</message-sent></div>
+<div><message-received><perso></perso> 希望する場合は…どのような名前を使用すればよいでしょうか?</message-received></div>
+<audio id="audio-0029" src="ogg/Sound-0029.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0029')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 3</div>
+<div class='block-container'>
+<div class='block' id='block-0030'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> アギラール・ヌビオラを試してみる</message-sent></div>
+</div>
+</div>
+<div class='block' id='block-0031'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> アンダース・ヘルマンと一緒に試してみる</message-sent></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 4</div>
+<div class='block-container'>
+<div class='block' id='block-0032'>
+<div class='block-subtitles'>
+<div><message-received><perso></perso> 頭がいい！頑張ってます、待ってください...</message-received></div>
+<div><message-received><perso></perso> 録音のために渡されました。それは良いはずです！</message-received></div>
+<div><message-sent><perso></perso> それで、何と言いますか？今晩は紺碧でやりますか？</message-sent></div>
+<div><message-received><perso></perso> よくわかりません...紺碧は私のスタイルではありません!</message-received></div>
+<div><message-received><perso></perso> 私は装飾で自分の役割を果たすつもりです...私はクソ適切な服さえ持っていません!</message-received></div>
+<div><message-sent><perso></perso> それは問題ではありません。あなたが紺碧を管理したので、私たちの服の世話をさせてください。センターで会いましょう、買い物に行きます！</message-sent></div>
+<div><message-received><perso></perso> まだ危険です、認識される可能性があります!そしてくそー、ここではアラサカのことを話しているんだ！</message-received></div>
+<div><message-sent><perso></perso> ほら、ダウンタウンのこのバーで会って、それについて話しましょう、いいですか？</message-sent></div>
+<div><message-received><perso></perso> あなたが望むなら…</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 5</div>
+<div class='block-container'>
+<div class='block' id='block-0002'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Vは待ち合わせ場所に行きます。</commentaire></div>
+<div><action><perso></perso> [パナムを待って]</action></div>
+<div><commentaire><perso></perso> パナムはバーの近くの待ち合わせ場所に到着します...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848059551784</strong> "><vo><perso>Panam : </perso> V？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3389921432679321600</strong> "><vo><perso>V : </perso> えーと、あんたは？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136385546775486464</strong> "><vo><perso>Panam : </perso> フフッ、いいね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> フッ</vo></span></div>
+<div><commentaire><perso></perso> Vとパナムがキス</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1856113477382119424</strong> "><vo><perso>V : </perso> パナム</vo></span></div>
+<div><commentaire><perso></perso> 彼らはバーに行き、飲み物を飲みます（MOD「Lizzie's Braindances: Places of Night City > Bar in Downtown」のように）</commentaire></div>
+<audio id="audio-0002" src="ogg/Sound-0002.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0002')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 6</div>
+<div class='block-container'>
+<div class='block' id='block-0003'>
+<div class='block-subtitles'>
+<div><action><perso></perso> 【お酒】お会いできてとても嬉しいです。</action></div>
+<div><span title="the vo stringId from the game : <strong>1732696322113064960</strong> "><vo><perso>V : </perso> 会えて嬉しいよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1895260328437100560</strong> "><vo><perso>Panam : </perso> 本気にしていいの？ 私は相当しつこいよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1780702616903966720</strong> "><vo><perso>V : </perso> 楽しみが一つ増えた</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> はあ？ 意味不明</vo></span></div>
+<audio id="audio-0003" src="ogg/Sound-0003.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0003')"></button>
+</div>
+</div>
+<div class='block' id='block-0004'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [飲酒] 考えが変わっていなくて良かったです。</action></div>
+<div><span title="the vo stringId from the game : <strong>1845833987246387200</strong> "><vo><perso>V : </perso> 来てくれて嬉しいよ。気が変わったらどうしようかと</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695241105570394112</strong> "><vo><perso>Panam : </perso> 当たり前でしょ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947299147600752640</strong> "><vo><perso>V : </perso> それは頼もしいな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> 黙ってて、V。時間が必要なんだ。それだけよ</vo></span></div>
+<audio id="audio-0004" src="ogg/Sound-0004.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0004')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 7</div>
+<div class='block-container'>
+<div class='block' id='block-0005'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] それで、最近は何をしていますか?</action></div>
+<div><span title="the vo stringId from the game : <strong>1764950158609465344</strong> "><vo><perso>V : </perso> 最近は何してるんだ？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703287379660800</strong> "><vo><perso>Panam : </perso> まあ、それはこっちに着いてから…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1834755541237886976</strong> "><vo><perso>V : </perso> 話せよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672027962631385088</strong> "><vo><perso>Panam : </perso> その話はしたくない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2231532716946550784</strong> "><vo><perso>V : </perso> パナム…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1791180838146478080</strong> "><vo><perso>Panam : </perso> そうこなくっちゃ。助かる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949978583044</strong> "><vo><perso>Panam : </perso> あー、V…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773676286296002560</strong> "><vo><perso>Panam : </perso> 困ってるんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703824653225984</strong> "><vo><perso>V : </perso> 当ててやろう。ソウルだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773704191755489280</strong> "><vo><perso>Panam : </perso> お見通しか</vo></span></div>
+<audio id="audio-0005" src="ogg/Sound-0005.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0005')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 8</div>
+<div class='block-container'>
+<div class='block' id='block-0007'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [飲酒] サウルと和解したと思ったのですが…</action></div>
+<div><span title="the vo stringId from the game : <strong>1782192144563638272</strong> "><vo><perso>V : </perso> ソウルとは仲直りしたかと思ったが</vo></span></div>
+<div><commentaire><perso></perso> パナムは答える前に数口飲みます。そして、彼女が話すと、彼女はますます怒ります...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1882216617480048640</strong> "><vo><perso>Panam : </perso> クラン全員の前で叱りつけられた。大恥をかかされたよ！</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835599499677528064</strong> "><vo><perso>V : </perso> また？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1935971665480118272</strong> "><vo><perso>Panam : </perso> やめてよ！ 本当なら、そこは私じゃなくて――</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1946030493684854784</strong> "><vo><perso>Panam : </perso> やっぱり…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953166016303984640</strong> "><vo><perso>Panam : </perso> もうどうすればいいかわからない</vo></span></div>
+<audio id="audio-0007" src="ogg/Sound-0007.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0007')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 9</div>
+<div class='block-container'>
+<div class='block' id='block-0008'>
+<div class='block-subtitles'>
+<div><action><perso></perso> ［言う］サウルには注意を払わないでください。それは彼に伝わります。</action></div>
+<div><span title="the vo stringId from the game : <strong>1761834655837450240</strong> "><vo><perso>V : </perso> ソウルなら心配ない。きっとわかってくれる</vo></span></div>
+<div><action><perso></perso> 【ドリンク】パナム...</action></div>
+<div><span title="the vo stringId from the game : <strong>1886657562660171776</strong> "><vo><perso>V : </perso> パナム</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1804041973262520320</strong> "><vo><perso>V : </perso> 最初に会った時とはえらい違いだな。ソウルを出し抜くなんて考えたことすらなかったろ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751574754396082176</strong> "><vo><perso>V : </perso> 想像つかないな…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> 私は変革を求めてた。でもソウルは何も変えようとしない臆病者だ。あいつがいる限り、クランに未来はない</vo></span></div>
+<audio id="audio-0008" src="ogg/Sound-0008.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0008')"></button>
+</div>
+</div>
+<div class='block' id='block-0009'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] サウルの言うことは正しいかもしれない...</action></div>
+<div><span title="the vo stringId from the game : <strong>1896559853671952388</strong> "><vo><perso>V : </perso> パナム、悪いが… ソウルの方が正しい</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1817173075543511040</strong> "><vo><perso>Panam : </perso> そりゃ悩みもするよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1774799202323918848</strong> "><vo><perso>Panam : </perso> うるさいよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3233251041668595712</strong> "><vo><perso>V : </perso> ソミ、落ち着け</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> 私は変革を求めてた。でもソウルは何も変えようとしない臆病者だ。あいつがいる限り、クランに未来はない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953190108704927744</strong> "><vo><perso>Panam : </perso> 仮にあんたの言う通りだとしても、それが何？ 問題はわかってる。解決方法がわからないだけよ</vo></span></div>
+<audio id="audio-0009" src="ogg/Sound-0009.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0009')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 10</div>
+<div class='block-container'>
+<div class='block' id='block-0010'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [言う] どちらも誇張しないでください</action></div>
+<div><span title="the vo stringId from the game : <strong>1953696690837413888</strong> "><vo><perso>V : </perso> おおげさに言いすぎだろ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953175673303068672</strong> "><vo><perso>Panam : </perso> それは… わかった、完璧な家族なんていないって言いたいんでしょ？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2008402713098448896</strong> "><vo><perso>V : </perso> 確かに</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953187199586004992</strong> "><vo><perso>Panam : </perso> 私は自分に正直でありたい。自分が何を求め、何を恐れてるのか、自分で確かめたいんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812593566245261312</strong> "><vo><perso>V : </perso> どういう感じかはよくわかる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> ありがとう、助かるよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> あんたは？</vo></span></div>
+<audio id="audio-0010" src="ogg/Sound-0010.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0010')"></button>
+</div>
+</div>
+<div class='block' id='block-0011'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [言う] 何か手伝うことはできますか？</action></div>
+<div><span title="the vo stringId from the game : <strong>3270787955500969984</strong> "><vo><perso>V : </perso> 俺にできることは？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949995360260</strong> "><vo><perso>Panam : </perso> ダメよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672044600160284672</strong> "><vo><perso>Panam : </perso> 私なら大丈夫。今までだって、一人でやってきたんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683799724993933312</strong> "><vo><perso>Panam : </perso> 何か… 別の話をしようか</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1667620261151240192</strong> "><vo><perso>V : </perso> わかった…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> あんたは？</vo></span></div>
+<audio id="audio-0011" src="ogg/Sound-0011.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0011')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 11</div>
+<div class='block-container'>
+<div class='block' id='block-0012'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] 紺碧の計画について話しましょう...</action></div>
+<div><span title="the vo stringId from the game : <strong>1725507041219186688</strong> "><vo><perso>V : </perso> わかった。俺はあの夜――紺碧プラザの例の現場にいたんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3359190432872767488</strong> "><vo><perso>V : </perso> 気にするな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1893700992943071232</strong> "><vo><perso>Panam : </perso> そうだけどさ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953091246979936256</strong> "><vo><perso>V : </perso> もう腹は決まったか？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1699504372115435520</strong> "><vo><perso>Panam : </perso> うん… まあ、たぶんね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1724409002612019200</strong> "><vo><perso>V : </perso> この計画――どう思う？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2302325911451791360</strong> "><vo><perso>Panam : </perso> 合格にしとく… あのさ… 前にソウルがこんなこと言ってたんだ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1863176122928852992</strong> "><vo><perso>Panam : </perso> 人が本当に自由になれるのは、失うものは何もないと、わかった時だって</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795337918150733824</strong> "><vo><perso>V : </perso> ああ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363324853841920</strong> "><vo><perso>Panam : </perso> どういうこと？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3509981927846547456</strong> "><vo><perso>V : </perso> 任せろ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950297350144</strong> "><vo><perso>V : </perso> 何が？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882333620088885248</strong> "><vo><perso>Panam : </perso> 本気で想ってるからよ。バカなことを言ったりして、急に捨てられるのが怖いの</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 12</div>
+<div class='block-container'>
+<div class='block' id='block-0037'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 対話、V と Panam を目立たない隅に行き、V にアギラールの行動の痕跡を見せてもらうことができれば...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1902560011682299904</strong> "><vo><perso>V : </perso> ひとつ考えというか、計画はある。でも… 上手くいくかはわからない</vo></span></div>
+<div><action><perso></perso> [アギラールの足跡をアクティブにする]</action></div>
+<div><span title="the vo stringId from the game : <strong>1853019730599550976</strong> "><vo><perso>Panam : </perso> ちょっと、ホントに顔色が悪いじゃない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3689606690401263616</strong> "><vo><perso>Mq304 : </perso> もちろん、これは私の持論でしかない。ただ同意しない場合は… 力ずくで説得するしかないな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2248159134078902280</strong> "><vo><perso>Panam : </perso> やるね！ ちょっと悔しいけど</vo></span></div>
+<div><action><perso></perso> [Aguilarの足跡を無効にする]</action></div>
+<div><span title="the vo stringId from the game : <strong>1782321871533883392</strong> "><vo><perso>V : </perso> 上手くいくかもな</vo></span></div>
+<audio id="audio-0037" src="ogg/Sound-0037.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0037')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 13</div>
+<div class='block-container'>
+<div class='block' id='block-0013'>
+<div class='block-subtitles'>
+<div><action><perso></perso> ］うるせえ、おまえは。</action></div>
+<div><span title="the vo stringId from the game : <strong>3236363351082635264</strong> "><vo><perso>V : </perso> 取引成立だな？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> うん、いい考えだね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973377369874874372</strong> "><vo><perso>V : </perso> はあ、楽しくなりそうだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1761779916546371584</strong> "><vo><perso>Panam : </perso> それに… あんた一人じゃ勝ち目ないじゃない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1883902597646737408</strong> "><vo><perso>V : </perso> もちろんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824331668780609536</strong> "><vo><perso>V : </perso> よく考えたら、またアラサカ相手に盗みを働くってわけか</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1772146926270672896</strong> "><vo><perso>Panam : </perso> ハッ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1530043192202760192</strong> "><vo><perso>Panam : </perso> 今ので最後みたいだね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812631457889587200</strong> "><vo><perso>Panam : </perso> よし、じゃあいくよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1904223843040378880</strong> "><vo><perso>V : </perso> ああ、行こう</vo></span></div>
+<div><commentaire><perso></perso> お店がバーの隣にある場合、彼らは一緒にお店まで歩きます。 (パナムは V をよくフォローします。) それ以外の場合は、店で会うことができます。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1940242179245694980</strong> "><vo><perso>V : </perso> ひとりで行く</vo></span></div>
+<audio id="audio-0013" src="ogg/Sound-0013.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0013')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 14</div>
+<div class='block-container'>
+<div class='block' id='block-0035'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> ホテルに到着してスイートルームに行くまでをなんとかできれば。続編でジャッキーを追って紺碧広場での「強盗」のクエストのように…ジャッキーをパナムに置き換えることは可能ですか？このような改造は可能でしょうか？ ... それ以外の場合は、直接続編から始まります。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1885355494001319940</strong> "><vo><perso>V : </perso> 思い切って、高級品で服装を統一してみようと思うんだが</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3334548829030125576</strong> "><vo><perso>Georgina : </perso> 何の用？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751768568301694976</strong> "><vo><perso>V : </perso> 何か… 普通のとは違う、変わった武器を置いてたりしないか？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3366438933452214272</strong> "><vo><perso>Georgina : </perso> ほら、これを見て</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1892222636108042240</strong> "><vo><perso>Panam : </perso> OK、わかった</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775130878825271296</strong> "><vo><perso>Panam : </perso> お好みに合うのをご用意しますよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3281644813173936128</strong> "><vo><perso>V : </perso> すべて計画のうちだ。さあ、しっかり頼んだぞ</vo></span></div>
+<div><commentaire><perso></perso> パナムは試着室に入り、違う服装で出てくる。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> v？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653452276438265856</strong> "><vo><perso>V : </perso> あまり嬉しくなさそうだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472192483344</strong> "><vo><perso>Panam : </perso> そういうタイプじゃないから</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675172672626331648</strong> "><vo><perso>V : </perso> そりゃまぁ… そうだが</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683802107090169856</strong> "><vo><perso>Panam : </perso> 違う。というか、せっかく忘れてたのに</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812369647419912192</strong> "><vo><perso>V : </perso> そうか。なら別の手を考える</vo></span></div>
+<div><commentaire><perso></perso> パナムは試着室に入り、違う服装で出てくる。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2227484015307866112</strong> "><vo><perso>Panam : </perso> V、感想は？ なかなかのもんでしょ？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3541690023801974784</strong> "><vo><perso>V : </perso> これは… 予想外だな…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692215973608288256</strong> "><vo><perso>Panam : </perso> へえ、そうなんだ…？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2005624070852964352</strong> "><vo><perso>Panam : </perso> なら動かせばいい</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811747013125754880</strong> "><vo><perso>V : </perso> まったくだ</vo></span></div>
+<div><commentaire><perso></perso> パナムは試着室に入り、違う服装で出てくる。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1755993001967464448</strong> "><vo><perso>Panam : </perso> こっちよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675013408091414528</strong> "><vo><perso>V : </perso> よし… 特に問題なさそうだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811043757042503680</strong> "><vo><perso>Panam : </perso> ダメ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1866251367616770048</strong> "><vo><perso>V : </perso> んー…</vo></span></div>
+<div><commentaire><perso></perso> パナムは試着室に入り、違う服装で出てくる。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1522962024273809408</strong> "><vo><perso>Panam : </perso> どう？ なかなかのマシンでしょ？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1816936212278161408</strong> "><vo><perso>V : </perso> 覚えてる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1788525976506617860</strong> "><vo><perso>Panam : </perso> あーあ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1922861132602429440</strong> "><vo><perso>V : </perso> もう1回やってみたい</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692261696034959360</strong> "><vo><perso>Panam : </perso> すぐにわかるよ</vo></span></div>
+<div><commentaire><perso></perso> パナムは試着室に入り、違う服装で出てくる。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1824162933980508160</strong> "><vo><perso>Panam : </perso> 何か意見ある？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> あー…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3369417742426554368</strong> "><vo><perso>V : </perso> わかってるくせに</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751740062114639872</strong> "><vo><perso>Panam : </perso> 今どんな気分？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835559903367393280</strong> "><vo><perso>V : </perso> これより美しい光景はそうないだろうな…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1662052409916649472</strong> "><vo><perso>Panam : </perso> うるさいよ、V</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> フッ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1837354992280588288</strong> "><vo><perso>Panam : </perso> ジャケットは気に入った？ 小さくない？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1964609328105779200</strong> "><vo><perso>V : </perso> そうは言ってない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995398049167962112</strong> "><vo><perso>Panam : </perso> それじゃあ決まり</vo></span></div>
+<div><commentaire><perso></perso> パナムとVはダウンタウンの店を出ます。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1782235166898720768</strong> "><vo><perso>Panam : </perso> 助けてくれるんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1976682908473905152</strong> "><vo><perso>V : </perso> いいんだ。気にするな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760908046978736128</strong> "><vo><perso>V : </perso> 行けるか？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1684852624365056000</strong> "><vo><perso>Panam : </perso> いよいよショータイムだ！</vo></span></div>
+<div><commentaire><perso></perso> パナムとVは紺碧に到着したときに服装を選択してもらいます。</commentaire></div>
+<audio id="audio-0035" src="ogg/Sound-0035.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0035')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 15</div>
+<div class='block-container'>
+<div class='block' id='block-0036'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> ホテルに到着してスイートルームに行くまでをなんとかできれば。紺碧広場のクエスト「強盗」のように、ジャッキーを追って続編を進めます...ジャッキーをパナムに置き換えることは可能ですか?このような改造は可能でしょうか？ ... それ以外の場合は、直接続編から始まります。</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 16</div>
+<div class='block-container'>
+<div class='block' id='block-0016'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 「Hangout - Konpeki」や Panam の Lizzies-Braindance MOD のように。</commentaire></div>
+<div><commentaire><perso></perso> パナムとVがスイートルームに入る。彼らはキスをしてソファに座りに行きます。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136691981871419464</strong> "><vo><perso>Panam : </perso> んー、最高！</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1729876797939675136</strong> "><vo><perso>V : </perso> もちろん、やるに決まってる</vo></span></div>
+<div><commentaire><perso></perso> しばらくして...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> v？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1799698894799200256</strong> "><vo><perso>V : </perso> 単なる気晴らしでしょ。リラックスして、のんびり夜を過ごせればいいと思ってた…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760578910445760548</strong> "><vo><perso>Panam : </perso> なるほど、頭いいね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995306323030814720</strong> "><vo><perso>Panam : </perso> ああ、なんだか緊張が解けてきた</vo></span></div>
+<div><commentaire><perso></perso> 「ハングアウト - 紺碧」 > 「抱っこ」</commentaire></div>
+<div><commentaire><perso></perso> パナムはソファに横たわり、頭をVの足の上に乗せています。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1896726949659815960</strong> "><vo><perso>Panam : </perso> 来る日も来る日も車の中で過ごしてるからさ、お尻の下がシートじゃないと、逆に変な感じだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> フッ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1380579642278801408</strong> "><vo><perso>V : </perso> 気持ちはわかる</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 17</div>
+<div class='block-container'>
+<div class='block' id='block-0038'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [訪問は続く]</action></div>
+<div><commentaire><perso></perso> アニメーションを開始するには、どちらかの V が紺碧スイートの特定のエリアに移動する必要があります。アニメーションが自動的に開始されます。</commentaire></div>
+<div><commentaire><perso></perso> 「ハングアウト - 紺碧」 > 「テーブルでキス」</commentaire></div>
+<div><action><perso></perso> 【キスする】</action></div>
+<div><span title="the vo stringId from the game : <strong>1764924610551656448</strong> "><vo><perso>V : </perso> いい店だな。シックで趣がある</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3508383082195644416</strong> "><vo><perso>Panam : </perso> 約束だよ、V</vo></span></div>
+<div><action><perso></perso> 【キスする】</action></div>
+<audio id="audio-0038" src="ogg/Sound-0038.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0038')"></button>
+</div>
+</div>
+<div class='block' id='block-0039'>
+<div class='block-subtitles'>
+<div><action><perso></perso> 【景色を眺める】</action></div>
+<div><commentaire><perso></perso> アニメーションを開始するには、どちらかの V が紺碧スイートの特定のエリアに移動する必要があります。アニメーションが自動的に開始されます。</commentaire></div>
+<div><commentaire><perso></perso> 「たまり場 - 紺碧」 > 「地べたに座る」</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1793773842811637764</strong> "><vo><perso>V : </perso> いい眺めだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653531966486212608</strong> "><vo><perso>Panam : </perso> まあ… そういうこと</vo></span></div>
+<div><action><perso></perso> [近づいてください]</action></div>
+<audio id="audio-0039" src="ogg/Sound-0039.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0039')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 18</div>
+<div class='block-container'>
+<div class='block' id='block-0017'>
+<div class='block-subtitles'>
+<div><action><perso></perso> 【テラスへ行く】</action></div>
+<div><commentaire><perso></perso> アニメーションを開始するには、どちらかの V が紺碧スイートの特定のエリアに移動する必要があります。アニメーションが自動的に開始されます。</commentaire></div>
+<div><commentaire><perso></perso> 「ハングアウト - 紺碧」 > 「一緒に外を見て」</commentaire></div>
+<div><commentaire><perso></perso> 何も言わずにしばらくすると…</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2243448137760657408</strong> "><vo><perso>Panam : </perso> 答えてよ、V</vo></span></div>
+<div><commentaire><perso></perso> しばらくして...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848076328972</strong> "><vo><perso>Panam : </perso> いいよ。何があったの？</vo></span></div>
+<audio id="audio-0017" src="ogg/Sound-0017.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0017')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 19</div>
+<div class='block-container'>
+<div class='block' id='block-0033'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [言う] パナム…</action></div>
+<div><span title="the vo stringId from the game : <strong>1999491326695567360</strong> "><vo><perso>V : </perso> パナム… 俺…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363443233878016</strong> "><vo><perso>V : </perso> ジャッキーや、あの時の仕事を思い出した。結果はパナムも知ってのとおりだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663771767365918720</strong> "><vo><perso>V : </perso> ついこの間のことだ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1680562800159121408</strong> "><vo><perso>V : </perso> クソ… クソ！</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947414952367747072</strong> "><vo><perso>Panam : </perso> 落ち着いて、V。ゆっくりでいいから――いったい何が起きてるのか、ちゃんと説明してよ</vo></span></div>
+<audio id="audio-0033" src="ogg/Sound-0033.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0033')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 20</div>
+<div class='block-container'>
+<div class='block' id='block-0018'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [ベッドに座りに行く] 私は誰かを信頼していました...</action></div>
+<div><action><perso></perso> 「ハングアウト - 紺碧」＞「ベッド」＞「ベッドに移動」</action></div>
+<div><span title="the vo stringId from the game : <strong>1664681160034967552</strong> "><vo><perso>V : </perso> 信用したパートナーに裏切られた。それだけだ</vo></span></div>
+<div><commentaire><perso></perso> Panam が V の隣のベッドに座りに来ます (Lizzie's Braindances: DollHouse mod のように)</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1947486841144471552</strong> "><vo><perso>Panam : </perso> V、よく聞いて</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947490954582290432</strong> "><vo><perso>Panam : </perso> それがどんなことだとしても、私の気持ちは…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663801887585689600</strong> "><vo><perso>V : </perso> 俺はたぶん… 無に還るのが怖いんだ。だからそんな想像を巡らせて気をそらそうとしてる…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882238917184081920</strong> "><vo><perso>Panam : </perso> 聞いて、私…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882203350962556928</strong> "><vo><perso>Panam : </perso> ごめん。こんなふうに自分の気持ちを話すのは得意じゃなくて</vo></span></div>
+<audio id="audio-0018" src="ogg/Sound-0018.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0018')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 21</div>
+<div class='block-container'>
+<div class='block' id='block-0019'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] 未来については何も予測できません。</action></div>
+<div><span title="the vo stringId from the game : <strong>1960480434246791192</strong> "><vo><perso>V : </perso> 未来のことは何にも約束できない。ちょっと問題があってな…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> そんなのわからないでしょ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1793776528441077760</strong> "><vo><perso>V : </perso> あー、うん。どうだろな。ほら、言わなくてもわかるだろ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695211830603542528</strong> "><vo><perso>Panam : </perso> あのガンコ野郎…</vo></span></div>
+<audio id="audio-0019" src="ogg/Sound-0019.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0019')"></button>
+</div>
+</div>
+<div class='block' id='block-0020'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] 私は数か月後に死ぬんですよね？</action></div>
+<div><span title="the vo stringId from the game : <strong>2004115945133412368</strong> "><vo><perso>V : </perso> じゃあ… あと数ヶ月で俺は死ぬんだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> そんなのわからないでしょ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3292616320855941120</strong> "><vo><perso>V : </perso> さあ、どうだろうな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1825427900278108160</strong> "><vo><perso>Panam : </perso> これからは私と一緒よ。頭の中のそれのことも、二人で考えればいい</vo></span></div>
+<audio id="audio-0020" src="ogg/Sound-0020.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0020')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 22</div>
+<div class='block-container'>
+<div class='block' id='block-0021'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [言う] 覚えておいていただきたいのですが…</action></div>
+<div><span title="the vo stringId from the game : <strong>1663798481894727680</strong> "><vo><perso>V : </perso> それでも、どうせ死ぬなら、せめて歴史に名を刻みたい。ほんの脇役でいいんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795150223197728768</strong> "><vo><perso>Panam : </perso> あんたのことは… 絶対、忘れないから</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775205447997132800</strong> "><vo><perso>V : </perso> 何言ってんだ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1877858746209595392</strong> "><vo><perso>V : </perso> 心配するなよ。まだ生きてる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1873771997317320704</strong> "><vo><perso>Panam : </perso> V…</vo></span></div>
+<div><commentaire><perso></perso> 最後の言葉を言いながら、パナムはかがんでベッドにもたれかかります（Lizzie's Braindances: DollHouse mod のように） </commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1708241921529139200</strong> "><vo><perso>Panam : </perso> そう… でも、こうなるはずじゃなかったんでしょ？</vo></span></div>
+<audio id="audio-0021" src="ogg/Sound-0021.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0021')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 23</div>
+<div class='block-container'>
+<div class='block' id='block-0023'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [ベッドに横になる]</action></div>
+<div><commentaire><perso></perso> パナムは彼の隣に横たわっています…</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1913074409953632256</strong> "><vo><perso>Panam : </perso> はー、これで完璧</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1854803273415729152</strong> "><vo><perso>Panam : </perso> ねえ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> あー…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913073066920714240</strong> "><vo><perso>V : </perso> どうぞ、ごゆっくり</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1753334906515746844</strong> "><vo><perso>Panam : </perso> なに？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> あー…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1731570327012298752</strong> "><vo><perso>Panam : </perso> そっか、ごめん</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1902427987491233792</strong> "><vo><perso>Panam : </perso> 羽を伸ばしすぎたか</vo></span></div>
+<audio id="audio-0023" src="ogg/Sound-0023.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0023')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 24</div>
+<div class='block-container'>
+<div class='block' id='block-0024'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [タッチ] いや、全然。</action></div>
+<div><span title="the vo stringId from the game : <strong>1811499757478633472</strong> "><vo><perso>V : </perso> 信じちゃいない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950381236224</strong> "><vo><perso>V : </perso> 何なりとお申し付けください…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949961805840</strong> "><vo><perso>Panam : </perso> そう？ たとえばどんな風に？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913968240093896704</strong> "><vo><perso>Panam : </perso> いいの？ 無茶な要求をしちゃうかもよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3343379596644360192</strong> "><vo><perso>V : </perso> まだ残ってたようだな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> はあ？ 意味不明</vo></span></div>
+<div><commentaire><perso></perso> パナムが最後の言葉を言うのを聞く間、服は消えます</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1883866768744402944</strong> "><vo><perso>Panam : </perso> じゃあ、気をつけて</vo></span></div>
+<div><commentaire><perso></perso> Vの最後の文では彼らは裸になっている</commentaire></div>
+<div><action><perso></perso> [明示的な活動] ああ、わかりました。</action></div>
+<div><span title="the vo stringId from the game : <strong>1653519333661995008</strong> "><vo><perso>V : </perso> 地雷を踏んだか</vo></span></div>
+<audio id="audio-0024" src="ogg/Sound-0024.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0024')"></button>
+</div>
+</div>
+<div class='block' id='block-0025'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [発言] かなり頻繁に、そうですね。</action></div>
+<div><span title="the vo stringId from the game : <strong>3121491535523586048</strong> "><vo><perso>V : </perso> 何度かな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> フッ</vo></span></div>
+<div><commentaire><perso></perso> パナムは腹を立て、最初の一言ですぐに座り込んでしまいました。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1631462611877781512</strong> "><vo><perso>Panam : </perso> 冗談でしょ？ ホントに協力してくれないの？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1845803613288001536</strong> "><vo><perso>V : </perso> あんたにだって、きっと見つかる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1756117848176992288</strong> "><vo><perso>Panam : </perso> 何言って… あっそう… 勝手にしなよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1918384511778512896</strong> "><vo><perso>V : </perso> それじゃ、何かしら埋め合わせをしないとね？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950347681808</strong> "><vo><perso>Panam : </perso> 謝らなくてもいいって。気にしないで</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1325616690627239936</strong> "><vo><perso>V : </perso> 他には？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672374186035245056</strong> "><vo><perso>Panam : </perso> いや、すぐに出る。また今度ね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882357240966172672</strong> "><vo><perso>V : </perso> 次は衝動に従うようにしろよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1885220225346719744</strong> "><vo><perso>Panam : </perso> よくわかったよ、V。もういい</vo></span></div>
+<div><commentaire><perso></perso> 激怒したパナムは最後の一言を言いながら立ち去ります！</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1699503221299081216</strong> "><vo><perso>V : </perso> じゃあ行くよ。またいつか</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 25</div>
+<div class='block-container'>
+<div class='block' id='block-0026'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> その後...彼らはまだベッドの上に裸で横たわっています。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2008211146618302464</strong> "><vo><perso>Panam : </perso> 起こしちゃ悪いと思って</vo></span></div>
+<div><action><perso></perso> [タッチ] こんにちは</action></div>
+<div><span title="the vo stringId from the game : <strong>1978036625878044672</strong> "><vo><perso>V : </perso> おはよ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1539042075245015040</strong> "><vo><perso>Panam : </perso> よく眠れた？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3302620291439247360</strong> "><vo><perso>V : </perso> ああ… 俺の時間は止まってたからな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665019849495670784</strong> "><vo><perso>Panam : </perso> じゃあ… 行ってくる</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262179491753975816</strong> "><vo><perso>V : </perso> はあ…</vo></span></div>
+<audio id="audio-0026" src="ogg/Sound-0026.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0026')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 26</div>
+<div class='block-container'>
+<div class='block' id='block-0022'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [立ち上がる] ああ、いや...</action></div>
+<div><span title="the vo stringId from the game : <strong>2262118195205464072</strong> "><vo><perso>V : </perso> はあ…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1489317527395364864</strong> "><vo><perso>V : </perso> 行かないでくれ。俺には、あんたが必要なんだ</vo></span></div>
+<div><commentaire><perso></perso> パナムはほぼ再び服を着ています。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> ありがとう、助かるよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882241194020065280</strong> "><vo><perso>Panam : </perso> 台無しにしたくないの</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3221530865087410180</strong> "><vo><perso>V : </perso> ああ、それで？</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472175706132</strong> "><vo><perso>Panam : </perso> さて… 私はそろそろ行かなきゃ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3378002583959740416</strong> "><vo><perso>V : </perso> 大丈夫だ、別に気にしてない</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> 黙ってて、V。時間が必要なんだ。それだけよ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1762237637687840780</strong> "><vo><perso>V : </perso> ったく…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4086810525833682944</strong> "><vo><perso>V : </perso> じゃあ、またな</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> うん、いい考えだね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2232855859686469632</strong> "><vo><perso>Panam : </perso> じゃあね、V</vo></span></div>
+<div><commentaire><perso></perso> パナムの葉</commentaire></div>
+<audio id="audio-0022" src="ogg/Sound-0022.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0022')"></button>
+</div>
+</div>
+<div class='block' id='block-0027'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [起きて] 昨日の夜のこと…</action></div>
+<div><commentaire><perso></perso> パナムはほぼ再び服を着ています。</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399748</strong> "><vo><perso>V : </perso> 待った… 昨日の夜のことだが…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399760</strong> "><vo><perso>Panam : </perso> その話はやめとこう</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2881080804631400448</strong> "><vo><perso>V : </perso> わかった。それじゃあ</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389636</strong> "><vo><perso>Panam : </perso> 元気でね</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389648</strong> "><vo><perso>V : </perso> パナムもな</vo></span></div>
+<div><commentaire><perso></perso> パナムの葉</commentaire></div>
+<audio id="audio-0027" src="ogg/Sound-0027.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0027')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 27</div>
+<div class='block-container'>
+<div class='block' id='block-0034'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 閉ざされた紺碧の前にVが再び現れる</commentaire></div>
+<div><commentaire><perso></perso> Aguilar Nubiola という名前で予約された場合、V は見知らぬ人からメッセージを受け取ります。アギラールだよ！ （もちろん答えられませんが…）</commentaire></div>
+<div><message-received><perso></perso> 私のアイデンティティを盗もうとするあなたの性癖は、私に対する賞賛の一形態だと考えてしまうでしょう...次回ノースカロライナ州を訪問する際には、あなたの懇願を聞くことができてとても嬉しいです。しかし、毎日夜が来ることも確かであり、それはあなたを救いません。</message-received></div>
+<div><commentaire><perso></perso> クエストの終了</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<svg id='connections'>
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0028' data-end='block-0029' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0030' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0031' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0030' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0031' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0032' data-end='block-0002' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0003' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0004' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0003' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0004' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0005' data-end='block-0007' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0008' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0009' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0010' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0011' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0012' data-end='block-0037' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0037' data-end='block-0013' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0013' data-end='block-0035' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0035' data-end='block-0036' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0036' data-end='block-0016' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0038' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0039' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0038' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0039' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0033' data-end='block-0018' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0019' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0020' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0019' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0020' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0021' data-end='block-0023' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0024' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0025' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0024' data-end='block-0026' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0025' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0022' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0027' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0022' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0027' data-end='block-0034' />
+</svg>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const svg = document.getElementById('connections');
+    const lines = document.querySelectorAll('line');
+    function updateLinePositions() {
+        lines.forEach(line => {
+            const startBlock = document.getElementById(line.dataset.start);
+            const endBlock = document.getElementById(line.dataset.end);
+            if (startBlock && endBlock) {
+                const startRect = startBlock.getBoundingClientRect();
+                const endRect = endBlock.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                line.setAttribute('x1', startRect.left + startRect.width / 2 - svgRect.left);
+                line.setAttribute('y1', startRect.bottom - svgRect.top);
+                line.setAttribute('x2', endRect.left + endRect.width / 2 - svgRect.left);
+                line.setAttribute('y2', endRect.top - svgRect.top);
+            }
+        });
+    }
+    setTimeout(updateLinePositions, 100);
+});
+</script>
+<script>
+function togglePlay(blockId) {
+    const audio = document.getElementById(`audio-${blockId}`);
+    const button = document.querySelector(`#block-${blockId} .audio-button`);
+    if (audio.paused || audio.ended) {
+        audio.play();
+        button.classList.remove('play');
+        button.classList.add('pause');
+    } else {
+        audio.pause();
+        button.classList.remove('pause');
+        button.classList.add('play');
+    }
+    // Réinitialiser l'état du bouton lorsqu'un audio se termine
+    audio.addEventListener('ended', () => {
+        button.classList.remove('pause');
+        button.classList.add('play');
+    });
+}
+</script>
+</body></html>

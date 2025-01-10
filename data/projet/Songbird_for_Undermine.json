@@ -1,0 +1,382 @@
+{
+    "name": "Songbird for Undermine",
+    "etapes": [
+        {
+            "numero": 0,
+            "y": 45,
+            "width": 783,
+            "blocs": [
+                {
+                    "etape_number": 0,
+                    "etape_position": 0,
+                    "identifiant": "0001",
+                    "title": "1_SoMi_drive_in",
+                    "comment": "songbird:  Hey, V.",
+                    "playlist_lien": "",
+                    "playlist": [
+                        {
+                            "stringId": "3405702543539752968",
+                            "femaleVariant": "Salut, V.",
+                            "maleVariant": "Salut, V.",
+                            "female_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_2f437c6b4e54d008.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_2f437c6b4e54d008.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/vset/vset_songbird"
+                        },
+                        {
+                            "stringId": "3241600467335311360",
+                            "femaleVariant": "So Mi\u00a0? C'est toi\u00a0?",
+                            "maleVariant": "So Mi\u00a0? C'est toi\u00a0?",
+                            "female_vo_path": "ep1/{}/vo/v_q305_f_2cfc7a734742f000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q305_m_2cfc7a734742f000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_07_brain_hack"
+                        },
+                        {
+                            "stringId": "3495653735400607744",
+                            "femaleVariant": "Tu t'attendais pas \u00e0 \u00e7a, hein\u00a0? C'est ma coupe de cheveux\u00a0?",
+                            "maleVariant": "Tu t'attendais pas \u00e0 \u00e7a, hein\u00a0? C'est ma coupe de cheveux\u00a0?",
+                            "female_vo_path": "ep1/{}/vo/songbird_q303_f_30830e8d34521000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q303_f_30830e8d34521000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q303/q303_06_paradise"
+                        },
+                        {
+                            "stringId": "1882306410833530880",
+                            "femaleVariant": "Aha, j'avais remarqu\u00e9.",
+                            "maleVariant": "Aha, j'avais remarqu\u00e9.",
+                            "female_vo_path": "base/{}/vo/v_sq027_f_1a1f4bb5302c5000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq027_m_1a1f4bb5302c5000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq027/sq027_04_preparations_panam"
+                        },
+                        {
+                            "stringId": "1732696322113064960",
+                            "femaleVariant": "Je suis trop content de te voir.",
+                            "maleVariant": "Je suis trop content de te voir.",
+                            "female_vo_path": "base/{}/vo/v_q202_f_180bc61fef2cd000.wem",
+                            "male_vo_path": "base/{}/vo/v_q202_m_180bc61fef2cd000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q202/q202_05_convoy"
+                        },
+                        {
+                            "stringId": "1883944586723704836",
+                            "femaleVariant": "Comment tu vas\u00a0?",
+                            "maleVariant": "Comment tu vas\u00a0?",
+                            "female_vo_path": "base/{}/vo/v_sq026_f_1a251d9ebc2fc004.wem",
+                            "male_vo_path": "base/{}/vo/v_sq026_m_1a251d9ebc2fc004.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq026/sq026_08_plan"
+                        },
+                        {
+                            "stringId": "3534951484843233280",
+                            "femaleVariant": "Je suis super contente que tu sois l\u00e0. Je sais pas ce que je ferais sans toi, V. S\u00e9rieusement.",
+                            "maleVariant": "Je suis super contente que tu sois l\u00e0. Je sais pas ce que je ferais sans toi, V. S\u00e9rieusement.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q303_f_310eaba580521000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q303_f_310eaba580521000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q303/q303_06_paradise"
+                        },
+                        {
+                            "stringId": "1691184013965545472",
+                            "femaleVariant": "Je sais pas quoi dire.",
+                            "maleVariant": "Je sais pas quoi dire.",
+                            "female_vo_path": "base/{}/vo/v_q114_f_17784ae6823c5000.wem",
+                            "male_vo_path": "base/{}/vo/v_q114_m_17784ae6823c5000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q114/q114_04_initiation"
+                        },
+                        {
+                            "stringId": "3004148466519547904",
+                            "femaleVariant": "Je vais tenter ma chance. Laisse-moi une minute.",
+                            "maleVariant": "Je vais tenter ma chance. Laisse-moi une minute.",
+                            "female_vo_path": "ep1/{}/vo/v_q303_f_29b0e11d176ea000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q303_m_29b0e11d176ea000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q303/q303_02_nighthawks"
+                        },
+                        {
+                            "stringId": "2262179492156629000",
+                            "femaleVariant": "Mmh.",
+                            "maleVariant": "Mmh.",
+                            "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1f64e043382b6008.wem",
+                            "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1f64e043382b6008.wem",
+                            "quest_path": "base/{}/subtitles/quest/vset/vset_v"
+                        },
+                        {
+                            "stringId": "3560824361340805120",
+                            "femaleVariant": "Une belle \u00e9nigme qui a eu le courage de voir grand.",
+                            "maleVariant": "Une belle \u00e9nigme qui a eu le courage de voir grand.",
+                            "female_vo_path": "ep1/{}/vo/v_q306_f_316a96e3fd46a000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q306_m_316a96e3fd46a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_13_epilogue"
+                        },
+                        {
+                            "stringId": "3092733176834334720",
+                            "femaleVariant": "Tu le penses vraiment\u00a0?",
+                            "maleVariant": "Tu le penses vraiment\u00a0?",
+                            "female_vo_path": "ep1/{}/vo/songbird_q306_f_2aeb98703646a000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q306_f_2aeb98703646a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_07_somi_duty_free"
+                        },
+                        {
+                            "stringId": "4158092495416963072",
+                            "femaleVariant": "Viens l\u00e0.",
+                            "maleVariant": "Viens l\u00e0.",
+                            "female_vo_path": "base/{}/vo/v_mq055_02_northside_f_39b48318148bb000.wem",
+                            "male_vo_path": "base/{}/vo/v_mq055_02_northside_m_39b48318148bb000.wem",
+                            "quest_path": "base/{}/subtitles/quest/mq055/mq055_05_downtown"
+                        }
+                    ],
+                    "blocs_precedents": [],
+                    "blocs_suivants": [
+                        "0002"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 1,
+            "y": 145,
+            "width": 783,
+            "blocs": [
+                {
+                    "etape_number": 1,
+                    "etape_position": 0,
+                    "identifiant": "0002",
+                    "title": "2_SoMi_stop_V",
+                    "comment": "songbird:  Hang on...",
+                    "playlist_lien": "",
+                    "playlist": [
+                        {
+                            "stringId": "3724855733646938112",
+                            "femaleVariant": "Hang on...",
+                            "maleVariant": "Hang on...",
+                            "female_vo_path": "ep1/{}/vo/songbird_q301_f_33b1588dfb9a5000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q301_f_33b1588dfb9a5000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q301/q301_01_border"
+                        },
+                        {
+                            "stringId": "2262179491753975816",
+                            "femaleVariant": "Heh...",
+                            "maleVariant": "Heh...",
+                            "female_vo_path": "base/{}/vo/v_vs_vset_delamain_f_1f64e043202b6008.wem",
+                            "male_vo_path": "base/{}/vo/v_vs_vset_delamain_m_1f64e043202b6008.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q307/q307_09_cutscene"
+                        },
+                        {
+                            "stringId": "3405702549260783624",
+                            "femaleVariant": "Slow and steady, small moves.",
+                            "maleVariant": "Slow and steady, small moves.",
+                            "female_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_2f437c6ca354d008.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_2f437c6ca354d008.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/vset/vset_songbird"
+                        },
+                        {
+                            "stringId": "1702262878113800192",
+                            "femaleVariant": "Hehh... Sucks to meet like this, huh?",
+                            "maleVariant": "Hehh... It, uh, sucks to meet like this, huh?",
+                            "female_vo_path": "base/{}/vo/v_sq018_f_179fa711944ea000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq018_m_179fa711944ea000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq018/sq018_03b_victor"
+                        },
+                        {
+                            "stringId": "3729053721397927940",
+                            "femaleVariant": "Uh-huh\u2026",
+                            "maleVariant": "Uh-huh\u2026",
+                            "female_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_33c0429a2c45a004.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_33c0429a2c45a004.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/vset/vset_songbird"
+                        },
+                        {
+                            "stringId": "1566340055009288192",
+                            "femaleVariant": "Let's go back to my place.",
+                            "maleVariant": "Let's go back to my place.",
+                            "female_vo_path": "base/{}/vo/v_posessed_sq031_f_15bcc1fb304b6000.wem",
+                            "male_vo_path": "base/{}/vo/v_posessed_sq031_m_15bcc1fb304b6000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq031/sq031_01c_smack_striptease"
+                        },
+                        {
+                            "stringId": "1837520944565542912",
+                            "femaleVariant": "Comin' with?",
+                            "maleVariant": "Ya comin' with?",
+                            "female_vo_path": "base/{}/vo/v_sq030_f_19802f90402b6000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq030_m_19802f90402b6000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq030/sq030_09_pier"
+                        },
+                        {
+                            "stringId": "3729054363260657664",
+                            "femaleVariant": "OK.",
+                            "maleVariant": "OK.",
+                            "female_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_33c0432f9e45a000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_quest_1st_chars_vsets_f_33c0432f9e45a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/vset/vset_songbird"
+                        }
+                    ],
+                    "blocs_precedents": [
+                        "0001"
+                    ],
+                    "blocs_suivants": [
+                        "0003"
+                    ]
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "y": 245,
+            "width": 783,
+            "blocs": [
+                {
+                    "etape_number": 2,
+                    "etape_position": 0,
+                    "identifiant": "0003",
+                    "title": "3_SoMi_wake_up",
+                    "comment": "songbird:  Salut, V.",
+                    "playlist_lien": "",
+                    "playlist": [
+                        {
+                            "stringId": "3001207109956644864",
+                            "femaleVariant": "Salut, V.",
+                            "maleVariant": "Salut, V.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q306_f_29a66df72657b000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q306_f_29a66df72657b000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_00_holo_songbird_hook"
+                        },
+                        {
+                            "stringId": "3337716898021597184",
+                            "femaleVariant": "Bien dormi, cette nuit\u00a0? \u00c7a a \u00e9t\u00e9\u00a0?",
+                            "maleVariant": "Bien dormi, cette nuit\u00a0? \u00c7a a \u00e9t\u00e9\u00a0?",
+                            "female_vo_path": "ep1/{}/vo/v_q302_f_2e51f3d5b3656000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q302_m_2e51f3d5b3656000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q302/q302_04_squot"
+                        },
+                        {
+                            "stringId": "3231661305192210444",
+                            "femaleVariant": "Arr\u00eate...",
+                            "maleVariant": "Arr\u00eate...",
+                            "female_vo_path": "ep1/{}/vo/songbird_q305_f_2cd92ad5c25b600c.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q305_f_2cd92ad5c25b600c.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_07_brain_hack"
+                        },
+                        {
+                            "stringId": "1882230691013087232",
+                            "femaleVariant": "Je savais pas comment t'allais r\u00e9agir. T'es pas la seule \u00e0 t\u00e2tonner, tu sais.",
+                            "maleVariant": "Je savais pas comment t'allais r\u00e9agir. T'es pas la seule \u00e0 t\u00e2tonner, tu sais.",
+                            "female_vo_path": "base/{}/vo/v_sq027_f_1a1f06d74b2c5000.wem",
+                            "male_vo_path": "base/{}/vo/v_sq027_m_1a1f06d74b2c5000.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq027/sq027_04_preparations_panam"
+                        },
+                        {
+                            "stringId": "3256450359026348032",
+                            "femaleVariant": "Pour moi, le pire, c'est toujours ce qui s'est pass\u00e9, pas ce qui va arriver.",
+                            "maleVariant": "Pour moi, le pire, c'est toujours ce qui s'est pass\u00e9, pas ce qui va arriver.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q306_f_2d313c591e757000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q306_f_2d313c591e757000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_09_monorail"
+                        },
+                        {
+                            "stringId": "3256448103396765696",
+                            "femaleVariant": "Mais maintenant, j'aimerais pouvoir ne penser qu'\u00e0 l'avenir.",
+                            "maleVariant": "Mais maintenant, j'aimerais pouvoir ne penser qu'\u00e0 l'avenir.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q306_f_2d313a4bf0757000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q306_f_2d313a4bf0757000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_09_monorail"
+                        },
+                        {
+                            "stringId": "1202569308387950592",
+                            "femaleVariant": "Tu peux me dire \u00e0 quoi tu penses\u00a0?",
+                            "maleVariant": "Tu peux me dire \u00e0 quoi tu penses\u00a0?",
+                            "female_vo_path": "base/{}/vo/v_q114_f_10b0626a1c404000.wem",
+                            "male_vo_path": "base/{}/vo/v_q114_m_10b0626a1c404000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q114/q114_05_quiet_place"
+                        },
+                        {
+                            "stringId": "3256100848794791936",
+                            "femaleVariant": "Tu verras.",
+                            "maleVariant": "Tu verras.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q305_f_2d2ffe786d42f000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q305_f_2d2ffe786d42f000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_07_brain_hack"
+                        },
+                        {
+                            "stringId": "1960480433072386076",
+                            "femaleVariant": "Tu me plais aussi. Alors, raison de plus pour\u2026",
+                            "maleVariant": "Tu me plais aussi. Alors, raison de plus pour\u2026",
+                            "female_vo_path": "base/{}/vo/v_sq029_f_1b3506911a62301c.wem",
+                            "male_vo_path": "base/{}/vo/v_sq029_m_1b3506911a62301c.wem",
+                            "quest_path": "base/{}/subtitles/quest/sq029/sq029_05_morning_after"
+                        },
+                        {
+                            "stringId": "3207149899737374720",
+                            "femaleVariant": "Je veux juste\u2026",
+                            "maleVariant": "Je veux juste\u2026",
+                            "female_vo_path": "ep1/{}/vo/songbird_q306_f_2c8215d77346a000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q306_f_2c8215d77346a000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q306/q306_01_ride_to_spaceport"
+                        },
+                        {
+                            "stringId": "1967909895147339776",
+                            "femaleVariant": "T'as raison\u2026 Je parle comme une conne.",
+                            "maleVariant": "T'as raison\u2026 Je parle comme un con.",
+                            "female_vo_path": "base/{}/vo/v_mq010_f_1b4f6b9f8a3bc000.wem",
+                            "male_vo_path": "base/{}/vo/v_mq010_m_1b4f6b9f8a3bc000.wem",
+                            "quest_path": "base/{}/subtitles/quest/mq010/mq010_03_columbarium"
+                        },
+                        {
+                            "stringId": "3292443517108023296",
+                            "femaleVariant": "J'ai commis beaucoup d'erreurs, V. Trop pour les compter...",
+                            "maleVariant": "J'ai commis beaucoup d'erreurs, V. Trop pour les compter...",
+                            "female_vo_path": "ep1/{}/vo/songbird_q305_f_2db11bef4842f000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q305_f_2db11bef4842f000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_07_brain_hack"
+                        },
+                        {
+                            "stringId": "3292453697556246528",
+                            "femaleVariant": "On fait tous des erreurs. Je le sais, j'en ai fait plus que ma part...",
+                            "maleVariant": "On fait tous des erreurs. Je le sais, j'en ai fait plus que ma part...",
+                            "female_vo_path": "ep1/{}/vo/v_q305_f_2db125319a42f000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q305_m_2db125319a42f000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_07_brain_hack"
+                        },
+                        {
+                            "stringId": "3228991459114008576",
+                            "femaleVariant": "Hm, ouais... C'est dur \u00e0 assumer, mais c'est vrai.",
+                            "maleVariant": "Hm, ouais... C'est dur \u00e0 assumer, mais c'est vrai.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q304_f_2ccfae9fc742c000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q304_f_2ccfae9fc742c000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q304/q304_03_songbird_meeting"
+                        },
+                        {
+                            "stringId": "1489311881946066944",
+                            "femaleVariant": "Je comprends. Vraiment.",
+                            "maleVariant": "Je comprends. Vraiment.",
+                            "female_vo_path": "base/{}/vo/v_q203_f_14ab19441329f000.wem",
+                            "male_vo_path": "base/{}/vo/v_q203_m_14ab19441329f000.wem",
+                            "quest_path": "base/{}/subtitles/quest/q203/q203_02c_judy"
+                        },
+                        {
+                            "stringId": "3732136391711469568",
+                            "femaleVariant": "Hmm...",
+                            "maleVariant": "Hmm...",
+                            "female_vo_path": "ep1/{}/vo/songbird_q304_f_33cb364649453000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q304_f_33cb364649453000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q304/q304_07b_lab"
+                        },
+                        {
+                            "stringId": "3507350653141958656",
+                            "femaleVariant": "Bon, je dois filer. Mais on se voit bient\u00f4t.",
+                            "maleVariant": "Bon, je dois filer. Mais on se voit bient\u00f4t.",
+                            "female_vo_path": "ep1/{}/vo/songbird_q304_f_30ac9cd61742c000.wem",
+                            "male_vo_path": "ep1/{}/vo/songbird_q304_f_30ac9cd61742c000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q304/q304_02_songbird_calls"
+                        },
+                        {
+                            "stringId": "3047647858585899008",
+                            "femaleVariant": "Aaah, tr\u00e8s bien, So Mi.",
+                            "maleVariant": "Aaah, tr\u00e8s bien, So Mi.",
+                            "female_vo_path": "ep1/{}/vo/v_q305_f_2a4b6b948b7e1000.wem",
+                            "male_vo_path": "ep1/{}/vo/v_q305_m_2a4b6b948b7e1000.wem",
+                            "quest_path": "ep1/{}/subtitles/quest/q305/q305_10_songbird_finale"
+                        }
+                    ],
+                    "blocs_precedents": [
+                        "0002"
+                    ],
+                    "blocs_suivants": []
+                }
+            ]
+        }
+    ]
+}

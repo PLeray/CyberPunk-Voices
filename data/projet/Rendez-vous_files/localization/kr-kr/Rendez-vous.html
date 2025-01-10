@@ -1,0 +1,948 @@
+
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rendez-vous</title>
+        
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #ffffff;
+                    margin: 0;
+                    padding: 20px;
+                }
+                .step-container {
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    border-top: 1px solid #bbbbbb;
+                    background-color: #f4f4f4;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                }
+                .step-title {
+                    font-size: 9px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    position: absolute;
+                    color:  #bbbbbb;
+                    top: 10px;
+                    left: 10px;
+                }
+                .block-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 100px; /* Augmente l'espacement entre les blocs */
+                    flex-wrap: wrap;
+                }
+                .block {
+                    padding: 10px;
+                    padding-top: 0px;
+                    padding-right: 25px;
+                    border-top: 2px solid #33acff;
+                    border-bottom: 2px solid #33acff;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    width: 400px;
+                    text-align: left;
+                    position: relative; /* Permet au bouton d’être positionné par rapport au bloc */
+                }
+                .block-subtitles {
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
+                .block-subtitles div {
+                    font-weight: normal;
+                }
+                .block-subtitles div normal {
+                    color:  #444444;
+                }                
+                .block-subtitles div perso {
+                    font-weight: bold;
+                    color:  #33acff;
+                }
+                .block-subtitles div commentaire {
+                    font-weight: normal;
+                    color:  #4b00a0;
+                    font-style: oblique;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }      
+                .block-subtitles div action {
+                    font-weight: normal;
+                    color:  #00598c;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }   
+                .block-subtitles div message-sent {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #dcf8c6;
+                    margin-left: auto;
+                }  
+                .block-subtitles div message-received {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #f1f1f1;
+                    margin-right: auto;
+                }                                                                             
+                svg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 10000px; /* Ajusté pour inclure toutes les étapes */
+                    pointer-events: none;
+                }
+                line {
+                    stroke: #33acff;
+                    stroke-width: 2;
+                }
+                .audio-button {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #33acff;
+                    border: 3px solid white;
+                    border-radius: 50%;
+                    position: absolute; /* Permet de placer le bouton indépendamment */
+                    top: 50%; /* Centre verticalement le bouton */
+                    right: -30px; /* Aligne le bouton à droite du bloc */
+                    transform: translateY(-50%); /* Ajuste pour un centrage parfait */
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                .audio-button:hover {
+                    background-color: #007bb5;
+                }
+                .audio-button::before {
+                    content: '';
+                    position: absolute;
+                    transition: all 0.3s ease;
+                }
+                .audio-button.play::before {
+                    width: 0;
+                    height: 0;
+                    border-left: 15px solid white;
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                }
+                .audio-button.pause::before {
+                    width: 10px;
+                    height: 20px;
+                    background-color: white;
+                    box-shadow: 15px 0 0 white;
+                }                
+                .audio-button::after {
+                    /* Tooltip */
+                    content: "Cliquez sur le bouton ci-dessous pour lire ou arrêter le fichier audio";
+                    position: absolute;
+                    top: -35px; /* Décalage au-dessus du bouton */
+                    right: 50%; /* Centré horizontalement par rapport au bouton */
+                    transform: translateX(50%);
+                    background-color: #000;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+                    z-index: 10;
+                }
+                .audio-button:hover::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .menu-langues {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .menu-langues a {
+                    text-decoration: none;
+                    margin: 0 7px;
+                    color: #000; /* Couleur par défaut */
+                }
+                .menu-langues a:hover {
+                    border-bottom: 2px solid #e74c3c; /* Soulignement rouge au survol */
+                }
+                .menu-langues .current {
+                    font-weight: bold;
+                    padding: 5px 7px;
+                    border: 2px solid #e74c3c; /* Entouré d'une bordure rouge */
+                    border-radius: 5px; /* Bordures arrondies */
+                    color: #000; /* Couleur bleue pour la langue courante */
+                }                
+            </style>
+        </head>
+<body>
+<h1 style='text-align:center;'>Rendez-vous</h1>
+<div class='menu-langues'>
+<a href='../de-de/Rendez-vous.html' class=''>Deutsch</a> | <a href='../en-us/Rendez-vous.html' class=''>English</a> | <a href='../es-es/Rendez-vous.html' class=''>Spanish</a> | <a href='../fr-fr/Rendez-vous.html' class=''>Français</a> | <a href='../it-it/Rendez-vous.html' class=''>Italiano</a> | <a href='../jp-jp/Rendez-vous.html' class=''>日本語 (Japanese)</a> | <a href='../kr-kr/Rendez-vous.html' class='current'>한국어 (Korean)</a> | <a href='../pl-pl/Rendez-vous.html' class=''>Polish</a> | <a href='../pt-br/Rendez-vous.html' class=''>Português</a> | <a href='../ru-ru/Rendez-vous.html' class=''>Russian</a> | <a href='../zh-cn/Rendez-vous.html' class=''>中文 (Simplified Chinese)</a></div>
+<div class='step-container'>
+<div class='step-title'>Step 1</div>
+<div class='block-container'>
+<div class='block' id='block-0028'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 퀘스트 시작</commentaire></div>
+<div><commentaire><perso></perso> V는 파남에게서 메시지를 받습니다.</commentaire></div>
+<div><message-received><perso></perso> V님, 안녕하세요? 그거 알아요, 어제 당신 생각이 났어요!</message-received></div>
+<div><message-sent><perso></perso> 하루에 한 번만 당신 생각이 나지만 24시간 동안 지속됩니다!</message-sent></div>
+<div><message-received><perso></perso> 아 귀여워! <3 <3 <3</message-received></div>
+<div><message-received><perso></perso> 어쨌든, 어제 우리는 Badlands에서 한 남자를 붙잡았고 그에게서 Konpeki Plaza의 스위트룸에서 하룻밤을 보낼 수 있는 패스를 찾았습니다. 콘페키에 대해 말씀해주셨는데...</message-received></div>
+<div><message-received><perso></perso> 사울은 우리가 이 사람과 연결될 수 있는 모든 것을 파괴하기를 원했습니다... 하지만 혹시라도 당신을 생각하면서 패스를 보관해 두었습니다...</message-received></div>
+<div><message-sent><perso></perso> 그걸로 뭘 할 수 있을지 모르겠는데... 콘페키는 나한테는 최고의 추억이 아니야...</message-sent></div>
+<div><message-received><perso></perso> 알았어 그건 바보야! 나는 고개를 파괴할 것이다. 사울의 말이 옳다.</message-received></div>
+<div><message-sent><perso></perso> 아니 잠깐! 이건 어떻게 작동하나요?</message-sent></div>
+<div><message-received><perso></perso> 글쎄, 당신은 그들의 사이트에 가서 이름을 입력하고 예약이 이루어집니다…</message-received></div>
+<div><message-sent><perso></perso> 알았어... 어쩌면 나한테 좋은 생각이 있을 것 같아! 그것을 활용하고 싶습니까?</message-sent></div>
+<div><message-received><perso></perso> 어떻게요?</message-received></div>
+<div><message-sent><perso></perso> 우리 둘 다 갈 거예요! 우리는 콘페키에서 품격 있는 저녁을 보냅니다. 이거 좋을 수도 있는데, 어떻게 생각하세요?</message-sent></div>
+<div><message-received><perso></perso> 당신은 미쳤어요! 당신의 과거를 생각해보면, 당신은 거기에서 건배해야 합니다!</message-received></div>
+<div><message-sent><perso></perso> 응, 확실히 문제가 있어… 생각해 볼게!</message-sent></div>
+<div><message-received><perso></perso> 패스는 48시간 동안 유효합니다... 그 이후에는 소멸되니까 빨리 말씀해주세요.</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 2</div>
+<div class='block-container'>
+<div class='block' id='block-0029'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 잠시 후 V는 아이디어를 얻었고 Panam에게 연락했습니다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>3823267547856580608</strong> "><vo><perso>V : </perso> 뭐, 그럴 수도 있지...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973374915334619140</strong> "><vo><perso>V : </perso> 허...</vo></span></div>
+<div><action><perso></perso> [파남에게 메시지 보내기]</action></div>
+<div><message-sent><perso></perso> 파남 씨, 콘페키 계획에 대한 해결책이 있을지도 모르겠습니다. 이름을 등록해 보시겠어요?</message-sent></div>
+<div><message-received><perso></perso> 원한다면… 어떤 이름을 사용해야 할까요?</message-received></div>
+<audio id="audio-0029" src="ogg/Sound-0029.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0029')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 3</div>
+<div class='block-container'>
+<div class='block' id='block-0030'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> Aguilar Nubiola를 사용해보십시오</message-sent></div>
+</div>
+</div>
+<div class='block' id='block-0031'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> 앤더스 헬만(Anders Hellman)과 함께 해보세요</message-sent></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 4</div>
+<div class='block-container'>
+<div class='block' id='block-0032'>
+<div class='block-subtitles'>
+<div><message-received><perso></perso> 영리한! 노력 중이야, 잠깐...</message-received></div>
+<div><message-received><perso></perso> 녹음을 위해 통과되었습니다. 좋을 것입니다!</message-received></div>
+<div><message-sent><perso></perso> 그래서 당신은 무엇을 말합니까? 오늘 저녁에 콘페키에서 파티하나요?</message-sent></div>
+<div><message-received><perso></perso> 잘 모르겠어요... 콘페키는 내 스타일이 아니에요!</message-received></div>
+<div><message-received><perso></perso> 장식은 내가 할 몫인데... 마땅한 옷도 없어!</message-received></div>
+<div><message-sent><perso></perso> 그건 문제가 되지 않습니다. 당신이 콘페키를 관리했으니 옷은 제가 관리하겠습니다. 센터에서 만나서 쇼핑하러 가요!</message-sent></div>
+<div><message-received><perso></perso> 아직은 위험해, 알아볼 수도 있어! 그리고 젠장, 우리는 여기서 아라사카에 대해 이야기하고 있습니다!</message-received></div>
+<div><message-sent><perso></perso> 저기, 시내에 있는 술집에 만나서 얘기하자, 알았지?</message-sent></div>
+<div><message-received><perso></perso> 원하는 경우…</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 5</div>
+<div class='block-container'>
+<div class='block' id='block-0002'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> V는 미팅 장소로 이동합니다.</commentaire></div>
+<div><action><perso></perso> [파남을 기다려요]</action></div>
+<div><commentaire><perso></perso> 파남은 바 근처 미팅 장소에 도착합니다...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848059551784</strong> "><vo><perso>Panam : </perso> V?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3389921432679321600</strong> "><vo><perso>V : </perso> 어… 너 나 알아?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136385546775486464</strong> "><vo><perso>Panam : </perso> 하하하, 웃기네...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> 헤헤.</vo></span></div>
+<div><commentaire><perso></perso> 뷔와 파남의 키스</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1856113477382119424</strong> "><vo><perso>V : </perso> 안녕, 팬앰.</vo></span></div>
+<div><commentaire><perso></perso> 그들은 바에 가서 술을 마십니다(모드 Lizzie's Braindances: Places of Night City > Bar in Downtown에서처럼).</commentaire></div>
+<audio id="audio-0002" src="ogg/Sound-0002.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0002')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 6</div>
+<div class='block-container'>
+<div class='block' id='block-0003'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [음주] 만나서 너무 기뻐요.</action></div>
+<div><span title="the vo stringId from the game : <strong>1732696322113064960</strong> "><vo><perso>V : </perso> 반가워 죽겠어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1895260328437100560</strong> "><vo><perso>Panam : </perso> 말조심해. 껌딱지처럼 붙어서 너만 따라다니는 수가 있어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1780702616903966720</strong> "><vo><perso>V : </perso> 호, 언제 꼭 봐야겠네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> 잘도 그러겠다.</vo></span></div>
+<audio id="audio-0003" src="ogg/Sound-0003.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0003')"></button>
+</div>
+</div>
+<div class='block' id='block-0004'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [음주] 마음이 바뀌지 않아서 다행이에요.</action></div>
+<div><span title="the vo stringId from the game : <strong>1845833987246387200</strong> "><vo><perso>V : </perso> 이제 마음이 놓이네. 네가 마음 바꿀까 봐 얼마나 졸였는데.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695241105570394112</strong> "><vo><perso>Panam : </perso> 난 약속은 꼭 지켜.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947299147600752640</strong> "><vo><perso>V : </perso> 하, 그거 좋네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> 뒤진다, V. 난 시간이 필요할 뿐이야.</vo></span></div>
+<audio id="audio-0004" src="ogg/Sound-0004.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0004')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 7</div>
+<div class='block-container'>
+<div class='block' id='block-0005'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 그럼 요즘 뭐하세요?</action></div>
+<div><span title="the vo stringId from the game : <strong>1764950158609465344</strong> "><vo><perso>V : </perso> 그래서, 요즘엔 뭐 하고 지내?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703287379660800</strong> "><vo><perso>Panam : </perso> 그게, 전화로는 좀...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1834755541237886976</strong> "><vo><perso>V : </perso> 말해 봐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672027962631385088</strong> "><vo><perso>Panam : </perso> 그 얘긴 하기 싫어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2231532716946550784</strong> "><vo><perso>V : </perso> 팬앰...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1791180838146478080</strong> "><vo><perso>Panam : </perso> 흠, 좋아. 고마워.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949978583044</strong> "><vo><perso>Panam : </perso> 흠, V...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773676286296002560</strong> "><vo><perso>Panam : </perso> 일이 터져서.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703824653225984</strong> "><vo><perso>V : </perso> 또... 사울 때문이지?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773704191755489280</strong> "><vo><perso>Panam : </perso> 날 참 잘 알아.</vo></span></div>
+<audio id="audio-0005" src="ogg/Sound-0005.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0005')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 8</div>
+<div class='block-container'>
+<div class='block' id='block-0007'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [마시며] 사울과 화해한 줄 알았는데…</action></div>
+<div><span title="the vo stringId from the game : <strong>1782192144563638272</strong> "><vo><perso>V : </perso> 사울이랑 예전 일은 묻기로 한 줄 알았는데.</vo></span></div>
+<div><commentaire><perso></perso> Panam은 대답하기 전에 몇 모금을 마셨습니다. 그러다가 말을 하면 점점 더 화를 내는데...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1882216617480048640</strong> "><vo><perso>Panam : </perso> 클랜 앞에서 날 망신 줬다고! 나를 병신으로 만들었어!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835599499677528064</strong> "><vo><perso>V : </perso> 다시?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1935971665480118272</strong> "><vo><perso>Panam : </perso> 내 말이 그 말이야! 나 말고 도대체 누가 하겠냐고...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1946030493684854784</strong> "><vo><perso>Panam : </perso> 그렇겠지...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953166016303984640</strong> "><vo><perso>Panam : </perso> 이제 나도 뭐가 뭔지 모르겠어, V.</vo></span></div>
+<audio id="audio-0007" src="ogg/Sound-0007.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0007')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 9</div>
+<div class='block-container'>
+<div class='block' id='block-0008'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말씀] 사울에게 관심을 기울이지 마십시오. 그것은 그에게 전달될 것입니다.</action></div>
+<div><span title="the vo stringId from the game : <strong>1761834655837450240</strong> "><vo><perso>V : </perso> 사울 걱정은 하지 마. 언젠가 다 알아줄 거야.</vo></span></div>
+<div><action><perso></perso> [마신다] 파남...</action></div>
+<div><span title="the vo stringId from the game : <strong>1886657562660171776</strong> "><vo><perso>V : </perso> 팬앰.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1804041973262520320</strong> "><vo><perso>V : </perso> 우리 처음 만났을 때 기억해? 사울한테 한 소리 들을까 봐 안절부절못했었지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751574754396082176</strong> "><vo><perso>V : </perso> 이젠 아닌 거 같네...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> 난 뭔가 변하길 원했어. 더 나아지는걸. 하지만 사울은 겁쟁이야. 클랜을 말아먹을 거라고.</vo></span></div>
+<audio id="audio-0008" src="ogg/Sound-0008.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0008')"></button>
+</div>
+</div>
+<div class='block' id='block-0009'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [대답] 어쩌면 사울 말이 맞을 수도 있어요...</action></div>
+<div><span title="the vo stringId from the game : <strong>1896559853671952388</strong> "><vo><perso>V : </perso> 화내지 말고... 사울 말도 일리가 있어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1817173075543511040</strong> "><vo><perso>Panam : </perso> 몰라서 물어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1774799202323918848</strong> "><vo><perso>Panam : </perso> 엿이나 먹어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3233251041668595712</strong> "><vo><perso>V : </perso> 진정해. 괜찮아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> 난 뭔가 변하길 원했어. 더 나아지는걸. 하지만 사울은 겁쟁이야. 클랜을 말아먹을 거라고.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953190108704927744</strong> "><vo><perso>Panam : </perso> 네 말이 맞다고 쳐. 그래서 뭐? 내 말 믿어. 문제가 뭔지는 나도 알아. 어떻게 풀지를 몰라서 그렇지.</vo></span></div>
+<audio id="audio-0009" src="ogg/Sound-0009.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0009')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 10</div>
+<div class='block-container'>
+<div class='block' id='block-0010'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 과장하지도 마세요</action></div>
+<div><span title="the vo stringId from the game : <strong>1953696690837413888</strong> "><vo><perso>V : </perso> 뭐래, 과장 좀 하지 마.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953175673303068672</strong> "><vo><perso>Panam : </perso> 그건 알아. 넌 보나 마나 완벽한 가족은 없단 소리나 하겠지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2008402713098448896</strong> "><vo><perso>V : </perso> 맞아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953187199586004992</strong> "><vo><perso>Panam : </perso> 근데, 그 말이 맞아. 나 자신한테 솔직해지고 싶어. 내가 원하는 게 뭔지, 뭘 두려워하는지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812593566245261312</strong> "><vo><perso>V : </perso> 그게 어떤 건지 잘 알지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> 아, 다행이다. 진짜 급하거든.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> 넌?</vo></span></div>
+<audio id="audio-0010" src="ogg/Sound-0010.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0010')"></button>
+</div>
+</div>
+<div class='block' id='block-0011'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 제가 도와드릴 일이 있나요?</action></div>
+<div><span title="the vo stringId from the game : <strong>3270787955500969984</strong> "><vo><perso>V : </perso> 내가 도와줄 건 없어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949995360260</strong> "><vo><perso>Panam : </perso> 싫어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672044600160284672</strong> "><vo><perso>Panam : </perso> 내가 알아서 할 거야. 항상 그래 왔으니까. 신경 꺼.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683799724993933312</strong> "><vo><perso>Panam : </perso> 이제 이런 얘기는 그만하자고.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1667620261151240192</strong> "><vo><perso>V : </perso> 알았어...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> 넌?</vo></span></div>
+<audio id="audio-0011" src="ogg/Sound-0011.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0011')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 11</div>
+<div class='block-container'>
+<div class='block' id='block-0012'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 곤페키 계획에 대해 이야기해보자...</action></div>
+<div><span title="the vo stringId from the game : <strong>1725507041219186688</strong> "><vo><perso>V : </perso> 그럼 좋아. 콘페키 플라자... 그날 나도 거기 있었거든.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3359190432872767488</strong> "><vo><perso>V : </perso> 걱정하지 마.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1893700992943071232</strong> "><vo><perso>Panam : </perso> 뭐...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953091246979936256</strong> "><vo><perso>V : </perso> 결정은 했어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1699504372115435520</strong> "><vo><perso>Panam : </perso> 으음. 그래야지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1724409002612019200</strong> "><vo><perso>V : </perso> 이번에 넌 얼마 받아?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2302325911451791360</strong> "><vo><perso>Panam : </perso> 그거 좋네, V... 음, 전에 사울이 이런 말을 했었어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1863176122928852992</strong> "><vo><perso>Panam : </perso> 사람이 진정 자유로워지는 건, 잃을 게 없다는 걸 안 순간부터래.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795337918150733824</strong> "><vo><perso>V : </perso> 맞아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363324853841920</strong> "><vo><perso>Panam : </perso> 내가 괜한 말 했나?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3509981927846547456</strong> "><vo><perso>V : </perso> 그럴게.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950297350144</strong> "><vo><perso>V : </perso> 아니.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882333620088885248</strong> "><vo><perso>Panam : </perso> 널 정말 아끼니까. 그런데 내가 무슨 멍청한 짓 해서 혼자 사막에 남겨질까 봐.</vo></span></div>
+<audio id="audio-0012" src="ogg/Sound-0012.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0012')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 12</div>
+<div class='block-container'>
+<div class='block' id='block-0037'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 대화, V와 파남을 은밀한 구석으로 데려가 V가 아길라르의 행동 각인을 보여주게 할 수 있다면...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1902560011682299904</strong> "><vo><perso>V : </perso> 생각이 있어, 계획이. 물론 될지는... 아직 몰라도.</vo></span></div>
+<div><action><perso></perso> [아길라르의 발자국 활성화]</action></div>
+<div><span title="the vo stringId from the game : <strong>1853019730599550976</strong> "><vo><perso>Panam : </perso> 네 꼴이 왜 이렇게 더러워?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3689606690401263616</strong> "><vo><perso>Mq304 : </perso> 물론 이건 내 개인적인 의견이야. 넌 내 생각에 동의하지 않을 수도 있겠지, 그렇다면... 널 설득할 수도 있고.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2248159134078902280</strong> "><vo><perso>Panam : </perso> 좀 하는데!? 이건 인정할게.</vo></span></div>
+<div><action><perso></perso> [아길라르의 발자국 비활성화]</action></div>
+<div><span title="the vo stringId from the game : <strong>1782321871533883392</strong> "><vo><perso>V : </perso> 흠, 잘 풀릴 수도 있겠어.</vo></span></div>
+<audio id="audio-0037" src="ogg/Sound-0037.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0037')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 13</div>
+<div class='block-container'>
+<div class='block' id='block-0013'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 그래서, 당신은 그것을 할 준비가 되셨나요?</action></div>
+<div><span title="the vo stringId from the game : <strong>3236363351082635264</strong> "><vo><perso>V : </perso> 그럼 계약하는 거지?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> 그래, 맞아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973377369874874372</strong> "><vo><perso>V : </perso> 아, 이거 참 재밌겠네...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1761779916546371584</strong> "><vo><perso>Panam : </perso> 그리고... 나 없이 너 혼자 어떻게 하겠어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1883902597646737408</strong> "><vo><perso>V : </perso> 당연하지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824331668780609536</strong> "><vo><perso>V : </perso> 그러고 보니 돌고 돌아 결국 다시 아라사카를 털고 있네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1772146926270672896</strong> "><vo><perso>Panam : </perso> 하.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1530043192202760192</strong> "><vo><perso>Panam : </perso> 그래, 이런 게 금상첨화라는 거지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812631457889587200</strong> "><vo><perso>Panam : </perso> 좋아. 자, 그럼.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1904223843040378880</strong> "><vo><perso>V : </perso> 그래, 가자고.</vo></span></div>
+<div><commentaire><perso></perso> 가게가 바 옆에 있으면 함께 가게까지 걸어갑니다. (파남은 뷔를 바짝 따라다닌다.) 아니면 매장에서 만나도 된다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1940242179245694980</strong> "><vo><perso>V : </perso> 거기서 봐.</vo></span></div>
+<audio id="audio-0013" src="ogg/Sound-0013.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0013')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 14</div>
+<div class='block-container'>
+<div class='block' id='block-0035'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 "강탈" 탐색에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1885355494001319940</strong> "><vo><perso>V : </perso> 옷에 터무니없는 돈을 쏟아붓는 게 어떤 기분인지 궁금했는데.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3334548829030125576</strong> "><vo><perso>Georgina : </perso> 무슨 일이야?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751768568301694976</strong> "><vo><perso>V : </perso> 뭔가 좀 괜찮으면서... 독특한 무기는 없어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3366438933452214272</strong> "><vo><perso>Georgina : </perso> 자, 확인해 봐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1892222636108042240</strong> "><vo><perso>Panam : </perso> 그래. 고마워.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775130878825271296</strong> "><vo><perso>Panam : </perso> 그래 뭐 네 마음에 드는 총이 있겠지?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3281644813173936128</strong> "><vo><perso>V : </perso> 전부 다 계획된 거야. 실력을 보여 줘.</vo></span></div>
+<div><commentaire><perso></perso> 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> V?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653452276438265856</strong> "><vo><perso>V : </perso> 표정이 안 좋은데.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472192483344</strong> "><vo><perso>Panam : </perso> 내 스타일이 아니거든. 절대.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675172672626331648</strong> "><vo><perso>V : </perso> 아니... 없지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683802107090169856</strong> "><vo><perso>Panam : </perso> 아니, 그러고 보니 그년도 있었네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812369647419912192</strong> "><vo><perso>V : </perso> 좋아. 다른 방법을 찾지 뭐.</vo></span></div>
+<div><commentaire><perso></perso> 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2227484015307866112</strong> "><vo><perso>Panam : </perso> 그래서 어때? 굉장하지, 응?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3541690023801974784</strong> "><vo><perso>V : </perso> 허, 이런 건...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692215973608288256</strong> "><vo><perso>Panam : </perso> 음. 그래?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2005624070852964352</strong> "><vo><perso>Panam : </perso> 그럼 우리가 고쳐야지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811747013125754880</strong> "><vo><perso>V : </perso> 인정.</vo></span></div>
+<div><commentaire><perso></perso> 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1755993001967464448</strong> "><vo><perso>Panam : </perso> 이거 봐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675013408091414528</strong> "><vo><perso>V : </perso> 흠... 일이 술술 풀리는데.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811043757042503680</strong> "><vo><perso>Panam : </perso> 아니.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1866251367616770048</strong> "><vo><perso>V : </perso> 흐음...</vo></span></div>
+<div><commentaire><perso></perso> 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1522962024273809408</strong> "><vo><perso>Panam : </perso> 어때? 승차감 개쩔지, 그치?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1816936212278161408</strong> "><vo><perso>V : </perso> 응, 알지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1788525976506617860</strong> "><vo><perso>Panam : </perso> 이런.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1922861132602429440</strong> "><vo><perso>V : </perso> 한 번 더 해볼래.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692261696034959360</strong> "><vo><perso>Panam : </perso> 이제 곧 보일 거야.</vo></span></div>
+<div><commentaire><perso></perso> 파남은 피팅룸에 들어가 다른 옷을 입고 나온다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1824162933980508160</strong> "><vo><perso>Panam : </perso> 무슨 좋은 생각이라도 있어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> 음...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3369417742426554368</strong> "><vo><perso>V : </perso> 맞는 거 알면서.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751740062114639872</strong> "><vo><perso>Panam : </perso> 지금 기분이 어때?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835559903367393280</strong> "><vo><perso>V : </perso> 가끔, 이 풍경보다 아름다운 걸 볼 수 있을까 해...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1662052409916649472</strong> "><vo><perso>Panam : </perso> 시끄러, V.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> 헤헤.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1837354992280588288</strong> "><vo><perso>Panam : </perso> 재킷은 어때? 너무 끼지는 않아?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1964609328105779200</strong> "><vo><perso>V : </perso> 아니, 없어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995398049167962112</strong> "><vo><perso>Panam : </perso> 좋아, 그럼 정해졌네.</vo></span></div>
+<div><commentaire><perso></perso> 파남과 뷔는 시내 매장을 떠난다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1782235166898720768</strong> "><vo><perso>Panam : </perso> 고마워, V.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1976682908473905152</strong> "><vo><perso>V : </perso> 뭘 그런 걸 가지고.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760908046978736128</strong> "><vo><perso>V : </perso> 갈까?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1684852624365056000</strong> "><vo><perso>Panam : </perso> 한바탕 놀아 볼까!</vo></span></div>
+<div><commentaire><perso></perso> 파남과 뷔는 콘페키에 도착하면 의상을 선택하게 됩니다.</commentaire></div>
+<audio id="audio-0035" src="ogg/Sound-0035.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0035')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 15</div>
+<div class='block-container'>
+<div class='block' id='block-0036'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 "강도" 퀘스트에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 16</div>
+<div class='block-container'>
+<div class='block' id='block-0016'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> "Hangout - Konpeki" 및 Panam을 사용하는 Lizzies-Braindance 모드와 같습니다.</commentaire></div>
+<div><commentaire><perso></perso> 파남과 뷔가 스위트룸에 들어온다. 그들은 키스하고 소파에 앉으러 간다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136691981871419464</strong> "><vo><perso>Panam : </perso> 씨발. 이거 존나 쩔어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1729876797939675136</strong> "><vo><perso>V : </perso> 존나 당연한 걸 묻고 있어.</vo></span></div>
+<div><commentaire><perso></perso> 잠시 후...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> V?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1799698894799200256</strong> "><vo><perso>V : </perso> 재밌는 오락이었다고. 긴장도 좀 풀고, 즐거운 시간이었잖아...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760578910445760548</strong> "><vo><perso>Panam : </perso> 말이 좀 통하는데!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995306323030814720</strong> "><vo><perso>Panam : </perso> 후, 이제 스트레스가 좀 풀리는 거 같네.</vo></span></div>
+<div><commentaire><perso></perso> "행아웃 - 콘페키" > "껴안기"</commentaire></div>
+<div><commentaire><perso></perso> 파남은 소파에 누워 뷔의 다리에 머리를 기대고 있다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1896726949659815960</strong> "><vo><perso>Panam : </perso> 밤이고 낮이고 길 위에서 살다 보면 엉덩이가 의자에 딱 달라붙어서 지붕 아래 있는 느낌은 까먹는다니까.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> 헤헤.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1380579642278801408</strong> "><vo><perso>V : </perso> 나도 그 느낌은 알지.</vo></span></div>
+<audio id="audio-0016" src="ogg/Sound-0016.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0016')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 17</div>
+<div class='block-container'>
+<div class='block' id='block-0038'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [방문 계속]</action></div>
+<div><commentaire><perso></perso> 애니메이션이 시작되려면 V가 콘페키 제품군의 특정 영역으로 이동해야 합니다. 애니메이션이 자동으로 시작됩니다.</commentaire></div>
+<div><commentaire><perso></perso> "행아웃 - 콘페키" > "테이블에서 키스"</commentaire></div>
+<div><action><perso></perso> [키스하다]</action></div>
+<div><span title="the vo stringId from the game : <strong>1764924610551656448</strong> "><vo><perso>V : </perso> 가게 좋네. 잘해놨는걸.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3508383082195644416</strong> "><vo><perso>Panam : </perso> 뭐, 네가 그러시겠다면.</vo></span></div>
+<div><action><perso></perso> [키스하다]</action></div>
+<audio id="audio-0038" src="ogg/Sound-0038.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0038')"></button>
+</div>
+</div>
+<div class='block' id='block-0039'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [경치를 감상하다]</action></div>
+<div><commentaire><perso></perso> 애니메이션이 시작되려면 V가 콘페키 제품군의 특정 영역으로 이동해야 합니다. 애니메이션이 자동으로 시작됩니다.</commentaire></div>
+<div><commentaire><perso></perso> "행아웃 - 콘페키" > "바닥에 앉으세요"</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1793773842811637764</strong> "><vo><perso>V : </perso> 경치 진짜 좋네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653531966486212608</strong> "><vo><perso>Panam : </perso> 그래, 그렇게 생각해.</vo></span></div>
+<div><action><perso></perso> [더 가까이 다가와]</action></div>
+<audio id="audio-0039" src="ogg/Sound-0039.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0039')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 18</div>
+<div class='block-container'>
+<div class='block' id='block-0017'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [테라스로 가다]</action></div>
+<div><commentaire><perso></perso> 애니메이션이 시작되려면 V가 콘페키 제품군의 특정 영역으로 이동해야 합니다. 애니메이션이 자동으로 시작됩니다.</commentaire></div>
+<div><commentaire><perso></perso> "행아웃 - 콘페키" > "함께 밖을 보세요"</commentaire></div>
+<div><commentaire><perso></perso> 잠시 후 아무 말도 없이...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2243448137760657408</strong> "><vo><perso>Panam : </perso> 뭐라고 말 좀 하지?</vo></span></div>
+<div><commentaire><perso></perso> 잠시 후...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848076328972</strong> "><vo><perso>Panam : </perso> 뭐야, 무슨 일인데?</vo></span></div>
+<audio id="audio-0017" src="ogg/Sound-0017.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0017')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 19</div>
+<div class='block-container'>
+<div class='block' id='block-0033'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 파남…</action></div>
+<div><span title="the vo stringId from the game : <strong>1999491326695567360</strong> "><vo><perso>V : </perso> 팬앰... 나...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363443233878016</strong> "><vo><perso>V : </perso> 재키 생각이 나서. 아라사카를 털었을 때 어떻게 끝났는지 알잖아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663771767365918720</strong> "><vo><perso>V : </perso> 얼마 전까지만 해도...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1680562800159121408</strong> "><vo><perso>V : </perso> 이런 씨발!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947414952367747072</strong> "><vo><perso>Panam : </perso> 알았어, V. 천천히 알아보자. 어떻게 된 거야? 나한테 얘기해봐.</vo></span></div>
+<audio id="audio-0033" src="ogg/Sound-0033.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0033')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 20</div>
+<div class='block-container'>
+<div class='block' id='block-0018'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [침대에 앉으러 가며] 누군가를 믿었는데..</action></div>
+<div><action><perso></perso> 「ハングアウト - 紺碧」＞「ベッド」＞「ベッドに移動」</action></div>
+<div><span title="the vo stringId from the game : <strong>1664681160034967552</strong> "><vo><perso>V : </perso> 누군가를 믿었다가 배신당했지. 그게 다야.</vo></span></div>
+<div><commentaire><perso></perso> Panam이 V 옆 침대에 앉으러 옵니다. (Lizzie's Braindances: DollHouse 모드에서와 같이)</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1947486841144471552</strong> "><vo><perso>Panam : </perso> V, 내 말 잘 들어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947490954582290432</strong> "><vo><perso>Panam : </perso> 네가 무슨 말을 하더라도 내 마음은...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663801887585689600</strong> "><vo><perso>V : </perso> 그냥 난... 두려운가 봐. 죽은 뒤 찾아올 공허를 생각하지 않으려고 이런저런 생각을 해 보는 거지.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882238917184081920</strong> "><vo><perso>Panam : </perso> 있지, V... 어...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882203350962556928</strong> "><vo><perso>Panam : </perso> 미안해. 내가 잘 못하거든. 그 감정을 드러내는 뭐 그런 거.</vo></span></div>
+<audio id="audio-0018" src="ogg/Sound-0018.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0018')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 21</div>
+<div class='block-container'>
+<div class='block' id='block-0019'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 나는 미래에 대해 아무것도 예측할 수 없습니다.</action></div>
+<div><span title="the vo stringId from the game : <strong>1960480434246791192</strong> "><vo><perso>V : </perso> 난 미래를 기약할 수가 없어. 사정이 있어서...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> 지랄. 어떻게 알아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1793776528441077760</strong> "><vo><perso>V : </perso> 그래. 그러지. 좀 보고. 그게... 어떤지 알잖아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695211830603542528</strong> "><vo><perso>Panam : </perso> 고집쟁이 새끼.</vo></span></div>
+<audio id="audio-0019" src="ogg/Sound-0019.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0019')"></button>
+</div>
+</div>
+<div class='block' id='block-0020'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 나 몇 달 후면 죽는 거 맞죠?</action></div>
+<div><span title="the vo stringId from the game : <strong>2004115945133412368</strong> "><vo><perso>V : </perso> 내가 몇 달 안에 죽는다며? 아니야?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> 지랄. 어떻게 알아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3292616320855941120</strong> "><vo><perso>V : </perso> 두고 봐야 알겠지. 안 그래?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1825427900278108160</strong> "><vo><perso>Panam : </perso> 이제 내가 있잖아. 그 머릿속에 든 것도 처리할 방법이 있겠지.</vo></span></div>
+<audio id="audio-0020" src="ogg/Sound-0020.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0020')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 22</div>
+<div class='block-container'>
+<div class='block' id='block-0021'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [말] 기억되고 싶은데…</action></div>
+<div><span title="the vo stringId from the game : <strong>1663798481894727680</strong> "><vo><perso>V : </perso> 이왕 죽을 거 역사에 이름을 남기고 싶어. 뭐, 전설까지는 아니더라도 말이야.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795150223197728768</strong> "><vo><perso>Panam : </perso> 기억할게, V. 언제까지나.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775205447997132800</strong> "><vo><perso>V : </perso> 에이, 아냐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1877858746209595392</strong> "><vo><perso>V : </perso> 걱정 마. 아직 안 죽었어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1873771997317320704</strong> "><vo><perso>Panam : </perso> V...</vo></span></div>
+<div><commentaire><perso></perso> 마지막 문장을 말하면서 Panam은 몸을 굽혀 침대에 기댄다(Lizzie의 Braindances: DollHouse 모드에서처럼). </commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1708241921529139200</strong> "><vo><perso>Panam : </perso> 씨발. 원래는 그럴 계획이 아니었던 거지?</vo></span></div>
+<audio id="audio-0021" src="ogg/Sound-0021.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0021')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 23</div>
+<div class='block-container'>
+<div class='block' id='block-0023'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [ベッドに横になる]</action></div>
+<div><commentaire><perso></perso> 파남이 옆에 누워 있는데…</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1913074409953632256</strong> "><vo><perso>Panam : </perso> 으으음. 지금 딱 좋은데.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1854803273415729152</strong> "><vo><perso>Panam : </perso> 야...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> 음...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913073066920714240</strong> "><vo><perso>V : </perso> 필요한 건 없으십니까?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1753334906515746844</strong> "><vo><perso>Panam : </perso> 응?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> 음...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1731570327012298752</strong> "><vo><perso>Panam : </perso> 씨발, 어떡하냐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1902427987491233792</strong> "><vo><perso>Panam : </perso> 내가 정신줄을 놨나?</vo></span></div>
+<audio id="audio-0023" src="ogg/Sound-0023.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0023')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 24</div>
+<div class='block-container'>
+<div class='block' id='block-0024'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [터치] 아니요, 전혀 그렇지 않습니다.</action></div>
+<div><span title="the vo stringId from the game : <strong>1811499757478633472</strong> "><vo><perso>V : </perso> 그런 건 안 믿어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950381236224</strong> "><vo><perso>V : </perso> 원하는 걸 말씀하시죠...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949961805840</strong> "><vo><perso>Panam : </perso> 그래요? 그럼 어떤 코스가 있죠?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913968240093896704</strong> "><vo><perso>Panam : </perso> 조심해, 내가 뭘 원할 줄 알고...?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3343379596644360192</strong> "><vo><perso>V : </perso> 전부 다는 아니었나 보네.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> 잘도 그러겠다.</vo></span></div>
+<div><commentaire><perso></perso> 파남이 마지막 문장을 말하는 동안 옷은 사라진다</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1883866768744402944</strong> "><vo><perso>Panam : </perso> 그럼, 이제 준비해.</vo></span></div>
+<div><commentaire><perso></perso> V 마지막 문장에서 알몸이네</commentaire></div>
+<div><action><perso></perso> [노골적인 활동] 아, 그렇군요.</action></div>
+<div><span title="the vo stringId from the game : <strong>1653519333661995008</strong> "><vo><perso>V : </perso> 아, 알았어.</vo></span></div>
+<audio id="audio-0024" src="ogg/Sound-0024.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0024')"></button>
+</div>
+</div>
+<div class='block' id='block-0025'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [대본] 꽤 자주 그렇죠.</action></div>
+<div><span title="the vo stringId from the game : <strong>3121491535523586048</strong> "><vo><perso>V : </perso> 새삼스럽게.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> 헤헤.</vo></span></div>
+<div><commentaire><perso></perso> Panam은 기분이 상해서 첫 번째 문장에서 재빨리 자리에 앉았습니다!</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1631462611877781512</strong> "><vo><perso>Panam : </perso> 농담이지? 도와주겠다고 해, 당장.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1845803613288001536</strong> "><vo><perso>V : </perso> 너도 찾을 걸 아니까 말하는 거야.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1756117848176992288</strong> "><vo><perso>Panam : </perso> 무슨... 그래. 끊어, 씨발.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1918384511778512896</strong> "><vo><perso>V : </perso> 그럼, 뭐. 내가 어떻게든 보상해 줘야겠네?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950347681808</strong> "><vo><perso>Panam : </perso> 괜찮아. 진짜야. 마음에 담아두지 마.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1325616690627239936</strong> "><vo><perso>V : </perso> 그게 다야?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672374186035245056</strong> "><vo><perso>Panam : </perso> 아니, 금방 가 봐야 돼. 나중에 얘기하자.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882357240966172672</strong> "><vo><perso>V : </perso> 다음번엔, 끌리는 대로 해.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1885220225346719744</strong> "><vo><perso>Panam : </perso> 아 됐어, V. 씨발 꺼져.</vo></span></div>
+<div><commentaire><perso></perso> 분노한 파남은 마지막 말을 남기고 떠난다!</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1699503221299081216</strong> "><vo><perso>V : </perso> 이제 작별이네. 다음에 또 봐.</vo></span></div>
+<audio id="audio-0025" src="ogg/Sound-0025.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0025')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 25</div>
+<div class='block-container'>
+<div class='block' id='block-0026'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 나중에... 그들은 여전히 ​​침대 위에 알몸으로 누워있습니다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2008211146618302464</strong> "><vo><perso>Panam : </perso> 깨우고 싶지 않았거든.</vo></span></div>
+<div><action><perso></perso> [터치] 안녕하세요</action></div>
+<div><span title="the vo stringId from the game : <strong>1978036625878044672</strong> "><vo><perso>V : </perso> 안녕...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1539042075245015040</strong> "><vo><perso>Panam : </perso> 잠은 잘 잤어?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3302620291439247360</strong> "><vo><perso>V : </perso> 그게... 시간이 멈췄었거든.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665019849495670784</strong> "><vo><perso>Panam : </perso> 그럼... 갈게.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262179491753975816</strong> "><vo><perso>V : </perso> 하아...</vo></span></div>
+<audio id="audio-0026" src="ogg/Sound-0026.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0026')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 26</div>
+<div class='block-container'>
+<div class='block' id='block-0022'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [일어나] 아 안돼...</action></div>
+<div><span title="the vo stringId from the game : <strong>2262118195205464072</strong> "><vo><perso>V : </perso> 아, 이런...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1489317527395364864</strong> "><vo><perso>V : </perso> 어디 안 갔으면 좋겠어. 지금은 안 돼. 여기 있어.</vo></span></div>
+<div><commentaire><perso></perso> Panam은 거의 다시 옷을 입었습니다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> 아, 다행이다. 진짜 급하거든.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882241194020065280</strong> "><vo><perso>Panam : </perso> 우리 사이가 망가지는 건 싫어.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3221530865087410180</strong> "><vo><perso>V : </perso> 그리고?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472175706132</strong> "><vo><perso>Panam : </perso> 이제 곧 가야 한다니, 너무 싫다.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3378002583959740416</strong> "><vo><perso>V : </perso> 그래, 지금은 괜찮아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> 뒤진다, V. 난 시간이 필요할 뿐이야.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1762237637687840780</strong> "><vo><perso>V : </perso> 좋아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4086810525833682944</strong> "><vo><perso>V : </perso> 또 보자고.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> 그래, 맞아.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2232855859686469632</strong> "><vo><perso>Panam : </perso> 또 연락해, V!</vo></span></div>
+<div><commentaire><perso></perso> 파남 잎</commentaire></div>
+<audio id="audio-0022" src="ogg/Sound-0022.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0022')"></button>
+</div>
+</div>
+<div class='block' id='block-0027'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [일어나다] 어젯밤쯤…</action></div>
+<div><commentaire><perso></perso> Panam은 거의 다시 옷을 입었습니다.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399748</strong> "><vo><perso>V : </perso> 음, 저기... 어젯밤 일 말인데...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399760</strong> "><vo><perso>Panam : </perso> 그 얘기는 하지 말자, 우리.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2881080804631400448</strong> "><vo><perso>V : </perso> 그래, 거기서 봐.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389636</strong> "><vo><perso>Panam : </perso> 몸조심해.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389648</strong> "><vo><perso>V : </perso> 너도. 팬앰.</vo></span></div>
+<div><commentaire><perso></perso> 파남 잎</commentaire></div>
+<audio id="audio-0027" src="ogg/Sound-0027.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0027')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 27</div>
+<div class='block-container'>
+<div class='block' id='block-0034'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> 닫힌 콘페키 앞에 다시 나타난 뷔</commentaire></div>
+<div><commentaire><perso></perso> 아길라르 누비올라라는 이름으로 예약이 이루어진 경우, 뷔는 낯선 사람으로부터 메시지를 받는다. 아길라르입니다! (물론 대답은 불가능하지만…)</commentaire></div>
+<div><message-received><perso></perso> 내 신분을 훔치려는 당신의 성향이 나를 향한 일종의 아첨이라고 생각하게 될 것입니다. 다음 NC 방문에서 당신이 간청하는 말을 들으면 큰 기쁨을 얻을 것입니다. 그러나 밤이 매일 뒤따른다는 것 또한 확실합니다. 그것이 당신을 구원하지는 못할 것입니다.</message-received></div>
+<div><commentaire><perso></perso> 퀘스트 종료</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<svg id='connections'>
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0028' data-end='block-0029' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0030' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0031' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0030' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0031' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0032' data-end='block-0002' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0003' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0004' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0003' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0004' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0005' data-end='block-0007' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0008' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0009' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0010' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0011' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0012' data-end='block-0037' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0037' data-end='block-0013' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0013' data-end='block-0035' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0035' data-end='block-0036' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0036' data-end='block-0016' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0038' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0039' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0038' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0039' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0017' data-end='block-0033' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0033' data-end='block-0018' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0019' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0020' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0019' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0020' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0021' data-end='block-0023' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0024' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0025' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0024' data-end='block-0026' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0025' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0022' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0027' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0022' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0027' data-end='block-0034' />
+</svg>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const svg = document.getElementById('connections');
+    const lines = document.querySelectorAll('line');
+    function updateLinePositions() {
+        lines.forEach(line => {
+            const startBlock = document.getElementById(line.dataset.start);
+            const endBlock = document.getElementById(line.dataset.end);
+            if (startBlock && endBlock) {
+                const startRect = startBlock.getBoundingClientRect();
+                const endRect = endBlock.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                line.setAttribute('x1', startRect.left + startRect.width / 2 - svgRect.left);
+                line.setAttribute('y1', startRect.bottom - svgRect.top);
+                line.setAttribute('x2', endRect.left + endRect.width / 2 - svgRect.left);
+                line.setAttribute('y2', endRect.top - svgRect.top);
+            }
+        });
+    }
+    setTimeout(updateLinePositions, 100);
+});
+</script>
+<script>
+function togglePlay(blockId) {
+    const audio = document.getElementById(`audio-${blockId}`);
+    const button = document.querySelector(`#block-${blockId} .audio-button`);
+    if (audio.paused || audio.ended) {
+        audio.play();
+        button.classList.remove('play');
+        button.classList.add('pause');
+    } else {
+        audio.pause();
+        button.classList.remove('pause');
+        button.classList.add('play');
+    }
+    // Réinitialiser l'état du bouton lorsqu'un audio se termine
+    audio.addEventListener('ended', () => {
+        button.classList.remove('pause');
+        button.classList.add('play');
+    });
+}
+</script>
+</body></html>

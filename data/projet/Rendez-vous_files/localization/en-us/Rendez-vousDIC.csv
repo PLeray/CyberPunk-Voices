@@ -1,0 +1,108 @@
+femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
+V goes to the meeting point.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Drinking] I'm so happy to see you.,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Drink] I'm glad you haven't changed your mind.,[Drinking] I'm glad you haven't changed your mind.,1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+They go to the bar and have a drink (Like in the mod Lizzie's Braindances: Places of Night City > Bar in Downtown),,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Wait for Panam],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam arrives at the meeting point near the bar...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Drink],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Drinking] So, what are you doing these days?",,1734887624815712,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"So, what are you doing these days?",,1734887658486519,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"A dialogue, if it is possible to get V and Panam to go to a discreet corner and have V show her Aguilar's behavioral imprint...",,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V and Panam kiss,,1734910406863562,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Panam takes several sips before answering. Then when she speaks, she gets more and more angry...",,1734912057581613,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+AND/OR,,1734912403652319,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V receives a message from Panam,,1735040401780488,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Hi V, how are you? You know what, yesterday I thought of you!",,1735040679408670,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+I only think of you once a day but it lasts 24 hours!,,1735040846812203,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Oh you're cute! <3 <3 <3,,1735056244885189,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Saul wanted us to destroy anything that could connect us to this guy... But hey, I kept the pass thinking of you just in case...",,1735056295732630,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+I don't know what I could do with it and then... Konpeki isn't the best memory for me...,,1735056326435636,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Ok that’s stupid! I'm going to destroy the pass, Saul is right.",,1735056379716323,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+No wait! How does this thing work?,,1735056393052657,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Well, you go to their site and enter a name and the reservation is made…",,1735056411224054,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Ok… maybe I have an idea! Would you like to take advantage of it?,,1735056425988329,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+How so?,,1735056446949704,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"We're both going! We spend a classy evening at Konpeki. This could be nice, what do you think?",,1735056484397280,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"You're crazy! Considering your past, you must be toast there!",,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Yeah for sure, it’s a problem… Let me think about that!",,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"The pass is valid for 48 hours… Tell me quickly, because after that it’s dead.",,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam I may have a solution for the Konpeki plan. Could you try registering a name?,,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+If you want… What name should I use?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Try with Aguilar Nubiola,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Try it with Anders Hellman,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Clever! I'm trying, wait...",,1735060913044546,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+It was passed for recording. It should be good!,,1735060935091683,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+So what do you say? Are we having it this evening at Konpeki?,,1735060982596671,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+I don't really know... Konpeki is not my style!,,1735061008088637,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+I'm going to do my part in the decor... I don't even have a fucking suitable outfit!,,1735061024059582,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"That's not a problem. You managed the Konpeki, so let me take care of our clothes. Let's meet in the center, we'll go shopping!",,1735061039903586,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"It's still dangerous, you could be recognized! And damn, we're talking about Arasaka here!",,1735061055747094,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Look, let's meet at this bar downtown and talk about it, okay?",,1735061077597131,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+If you want…,,1735061089758378,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Say] So, what are you doing these days?",,1735142209504692,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Drinking] I thought you reconciled with Saul…,,1735142588439618,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V sits on the bed. Panam could sit across from V. (Like in Lizzie's Braindances: DollHouse mod),,1735146101955345,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+After a while without saying anything...,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Panam comes to sit on the bed, next to V. (As in the Lizzie's Braindances: DollHouse mod)",,1735146139634145,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Saying her last sentence, Panam bends down and leans on the bed (Like in Lizzie's Braindances: DollHouse mod) ",,1735146177514793,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam lies down next to him…,,1735146190854713,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Panam is offended, she sits down quickly on her first sentence!",,1735146208634254,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Furious, Panam leaves while saying her last sentence!",,1735146218671463,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+END OF QUEST,,1735146262371852,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+The clothes disappear while Panam is heard saying her last sentence,,1735148577111890,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+They are naked on the last sentence of V,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Explicit Activities] Ooh, OK.",,1735148603319961,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Later... they are still on the bed, lying naked.",,1735148655590069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam leaves,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V reappears in front of the closed Konpeki,,1735148683898389,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If the reservation was made under the name Aguilar Nubiola, V receives a message from a stranger. It's Aguilar! (But impossible to answer, of course…)",,1735149083786826,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"I'm going to end up thinking that your propensity to steal my identity is a form of adulation towards me... I'm going to take great pleasure in listening to you beg me during my next visit to NC. But it is also certain that night follows each day, it will not save you.",,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"A little later, V has an idea and contacts Panam:",,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Drink] Panam...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Anyway, yesterday we caught a guy in the Badlands and found on him a pass for a night in a suite at Konpeki Plaza. You told me about Konpeki…",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If it is possible to manage the arrival at the hotel and going to the suite. As in the quest for ""the heist"" at Konpeki Plaza where we follow Jackie to the sequel... Is it possible to replace Jackie with Panam? Is this kind of modification possible? ... Otherwise it starts directly in the sequel.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam enters the fitting room and comes out with a different outfit.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam and V will have the outfit selected when they arrive at Konpeki.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If the shop is next to the bar, they walk to the shop together. (Panam follows V closely.) Otherwise, they can meet at the store",,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Like in the Lizzies-Braindance mod with ""Hangout - Konpeki"" and with Panam.",,1735584121915575,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Activate Aguilar's Footprint],,1735756411635207,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Disable Aguilar's Footprint],,1735756509206727,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Send a message to Panam],,1735769077098714,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] Don't pay attention to Saul. It will pass to him.,,1735769360126834,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Saying] Maybe Saul is right...,,1735769421066106,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] Don't exaggerate either,,1735826347203087,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] Can I do something to help you?,,1735826373383827,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] Let's talk about our plan for Konpeki...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Say] So, are you up for it?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam and V leave the downtown store.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"If it is possible to manage the arrival at the hotel and going to the suite. As in the quest ""the heist"" at Konpeki Plaza where we follow Jackie to the sequel... Is it possible to replace Jackie with Panam? Is this kind of modification possible? ... Otherwise it starts directly in the sequel.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+START OF QUEST,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] Panam…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Going to sit on the bed] I trusted someone...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] I can't predict anything for the future.,,1735855065255565,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Saying] I'll be dead in a few months, right?",,1735855145057790,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Say] I would like to be remembered…,,1735855287877249,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Lie down] Come here.,,1735856480847855,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Say] Quite often, yeah.",,1735857543721684,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[Touch] No, not at all.",,1735857606826433,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Get up] Oh no...,,1735858958994359,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Get up] About last night…,,1735859033963587,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam is almost dressed again.,,1735859520752215,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Touch] Hello,,1735860454689494,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Look outside together""",,1736440090987431,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam and V enter the suite. They kiss and go to sit on the couch.,,1736440090987432,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Cuddle""",,1736440090987433,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Dance""",,1736440090987434,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Kiss at table""",,1736440090987435,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Sit on the ground""",,1736440090987436,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[To kiss],,1736440090987437,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Go to the terrace],,1736440090987438,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[come closer],,1736440090987439,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Visit continued],,1736440090987440,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"Panam lies down on the couch, her head resting on V's legs.",,1736440090987441,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Admire the view],,1736440090987442,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Either V must go to a specific area of ​​the Konpeki suite for the animation to start. Either the animation starts automatically.,,1736440090987443,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+After a while...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" > ""Bed"" > ""Move to the bed""",,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Lie on the bed],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv

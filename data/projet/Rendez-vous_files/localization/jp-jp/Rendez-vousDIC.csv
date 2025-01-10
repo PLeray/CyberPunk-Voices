@@ -1,0 +1,108 @@
+femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
+Vは待ち合わせ場所に行きます。,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【お酒】お会いできてとても嬉しいです。,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[飲み物] あなたの考えが変わっていなくてよかったです。,[飲酒] 考えが変わっていなくて良かったです。,1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+彼らはバーに行き、飲み物を飲みます（MOD「Lizzie's Braindances: Places of Night City > Bar in Downtown」のように）,,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[パナムを待って],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムはバーの近くの待ち合わせ場所に到着します...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[飲む],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[飲酒] それで、最近は何をしていますか?,,1734887624815712,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+それで、最近は何をしていますか？,,1734887658486519,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+対話、V と Panam を目立たない隅に行き、V にアギラールの行動の痕跡を見せてもらうことができれば...,,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Vとパナムがキス,,1734910406863562,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムは答える前に数口飲みます。そして、彼女が話すと、彼女はますます怒ります...,,1734912057581613,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+および/または,,1734912403652319,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Vはパナムからメッセージを受け取ります,,1735040401780488,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+こんにちは、V、お元気ですか？昨日、私はあなたのことを思い出しました。,,1735040679408670,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+あなたのことを考えるのは1日に1回だけですが、それは24時間続きます。,,1735040846812203,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+ああ、かわいいですね！ <3 <3 <3,,1735056244885189,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+ソールは、私たちとこの男を繋ぐものはすべて破壊してほしいと思っていました...でも、念のためにあなたのことを考えてパスを残しておきました...,,1735056295732630,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+それで何ができるか分からないけど…紺碧は私にとって最高の思い出ではない…,,1735056326435636,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+わかりました、それは愚かです！パスを破壊するつもりだ、ソールは正しい。,,1735056379716323,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+待ってください！これはどのように機能するのでしょうか?,,1735056393052657,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+さて、サイトにアクセスして名前を入力すると予約が完了します...,,1735056411224054,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+わかりました…アイデアがあるかもしれません!ぜひ活用してみてはいかがでしょうか？,,1735056425988329,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+どうして？,,1735056446949704,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+二人とも行きますよ！紺碧で優雅な夜を過ごします。これはいいかもしれません、どう思いますか？,,1735056484397280,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+頭がおかしいよ！あなたの過去を考えると、そこで乾杯するに違いありません！,,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+そうですね、それは問題です…考えさせてください!,,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パスは 48 時間有効です…それを過ぎると無効になるため、すぐに教えてください。,,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナム 紺碧計画の解決策があるかも知れません。名前を登録してみてはいかがでしょうか？,,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+希望する場合は…どのような名前を使用すればよいでしょうか?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+アギラール・ヌビオラを試してみる,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+アンダース・ヘルマンと一緒に試してみる,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+頭がいい！頑張ってます、待ってください...,,1735060913044546,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+録音のために渡されました。それは良いはずです！,,1735060935091683,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+それで、何と言いますか？今晩は紺碧でやりますか？,,1735060982596671,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+よくわかりません...紺碧は私のスタイルではありません!,,1735061008088637,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+私は装飾で自分の役割を果たすつもりです...私はクソ適切な服さえ持っていません!,,1735061024059582,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+それは問題ではありません。あなたが紺碧を管理したので、私たちの服の世話をさせてください。センターで会いましょう、買い物に行きます！,,1735061039903586,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+まだ危険です、認識される可能性があります!そしてくそー、ここではアラサカのことを話しているんだ！,,1735061055747094,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+ほら、ダウンタウンのこのバーで会って、それについて話しましょう、いいですか？,,1735061077597131,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+あなたが望むなら…,,1735061089758378,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] それで、最近は何をしていますか?,,1735142209504692,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[飲酒] サウルと和解したと思ったのですが…,,1735142588439618,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Vはベッドに座っています。 Panam は V の向かい側に座ることができます (Lizzie's Braindances: DollHouse mod のように),,1735146101955345,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+何も言わずにしばらくすると…,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam が V の隣のベッドに座りに来ます (Lizzie's Braindances: DollHouse mod のように),,1735146139634145,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+最後の言葉を言いながら、パナムはかがんでベッドにもたれかかります（Lizzie's Braindances: DollHouse mod のように） ,,1735146177514793,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムは彼の隣に横たわっています…,,1735146190854713,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムは腹を立て、最初の一言ですぐに座り込んでしまいました。,,1735146208634254,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+激怒したパナムは最後の一言を言いながら立ち去ります！,,1735146218671463,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+クエストの終了,,1735146262371852,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムが最後の言葉を言うのを聞く間、服は消えます,,1735148577111890,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Vの最後の文では彼らは裸になっている,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[明示的な活動] ああ、わかりました。,,1735148603319961,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+その後...彼らはまだベッドの上に裸で横たわっています。,,1735148655590069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムの葉,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+閉ざされた紺碧の前にVが再び現れる,,1735148683898389,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Aguilar Nubiola という名前で予約された場合、V は見知らぬ人からメッセージを受け取ります。アギラールだよ！ （もちろん答えられませんが…）,,1735149083786826,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+私のアイデンティティを盗もうとするあなたの性癖は、私に対する賞賛の一形態だと考えてしまうでしょう...次回ノースカロライナ州を訪問する際には、あなたの懇願を聞くことができてとても嬉しいです。しかし、毎日夜が来ることも確かであり、それはあなたを救いません。,,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+少し後、V はアイデアを思いついて Panam に連絡します。,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【ドリンク】パナム...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+とにかく、昨日私たちはバッドランズで男を捕まえ、紺碧プラザのスイートでの一晩のパスを見つけました。紺碧の話をしてくれましたね…,,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+ホテルに到着してスイートルームに行くまでをなんとかできれば。続編でジャッキーを追って紺碧広場での「強盗」のクエストのように…ジャッキーをパナムに置き換えることは可能ですか？このような改造は可能でしょうか？ ... それ以外の場合は、直接続編から始まります。,,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムは試着室に入り、違う服装で出てくる。,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムとVは紺碧に到着したときに服装を選択してもらいます。,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+お店がバーの隣にある場合、彼らは一緒にお店まで歩きます。 (パナムは V をよくフォローします。) それ以外の場合は、店で会うことができます。,,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「Hangout - Konpeki」や Panam の Lizzies-Braindance MOD のように。,,1735584121915575,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[アギラールの足跡をアクティブにする],,1735756411635207,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[Aguilarの足跡を無効にする],,1735756509206727,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[パナムにメッセージを送る],,1735769077098714,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+［言う］サウルには注意を払わないでください。それは彼に伝わります。,,1735769360126834,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] サウルの言うことは正しいかもしれない...,,1735769421066106,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[言う] どちらも誇張しないでください,,1735826347203087,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[言う] 何か手伝うことはできますか？,,1735826373383827,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] 紺碧の計画について話しましょう...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+］うるせえ、おまえは。,,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムとVはダウンタウンの店を出ます。,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+ホテルに到着してスイートルームに行くまでをなんとかできれば。紺碧広場のクエスト「強盗」のように、ジャッキーを追って続編を進めます...ジャッキーをパナムに置き換えることは可能ですか?このような改造は可能でしょうか？ ... それ以外の場合は、直接続編から始まります。,,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+クエストの開始,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[言う] パナム…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[ベッドに座りに行く] 私は誰かを信頼していました...,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] 未来については何も予測できません。,,1735855065255565,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] 私は数か月後に死ぬんですよね？,,1735855145057790,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[言う] 覚えておいていただきたいのですが…,,1735855287877249,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[横になって] こっちに来て。,,1735856480847855,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[発言] かなり頻繁に、そうですね。,,1735857543721684,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[タッチ] いや、全然。,,1735857606826433,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[立ち上がる] ああ、いや...,,1735858958994359,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[起きて] 昨日の夜のこと…,,1735859033963587,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムはほぼ再び服を着ています。,,1735859520752215,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[タッチ] こんにちは,,1735860454689494,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」 > 「一緒に外を見て」,,1736440090987431,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムとVがスイートルームに入る。彼らはキスをしてソファに座りに行きます。,,1736440090987432,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」 > 「抱っこ」,,1736440090987433,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」 > 「ダンス」,,1736440090987434,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」 > 「テーブルでキス」,,1736440090987435,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「たまり場 - 紺碧」 > 「地べたに座る」,,1736440090987436,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【キスする】,,1736440090987437,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【テラスへ行く】,,1736440090987438,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[近づいてください],,1736440090987439,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[訪問は続く],,1736440090987440,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+パナムはソファに横たわり、頭をVの足の上に乗せています。,,1736440090987441,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+【景色を眺める】,,1736440090987442,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+アニメーションを開始するには、どちらかの V が紺碧スイートの特定のエリアに移動する必要があります。アニメーションが自動的に開始されます。,,1736440090987443,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+しばらくして...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」＞「ベッド」＞「ベッドに移動」,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[ベッドに横になる],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv

@@ -1,0 +1,939 @@
+
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rendez-vous</title>
+        
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #ffffff;
+                    margin: 0;
+                    padding: 20px;
+                }
+                .step-container {
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    border-top: 1px solid #bbbbbb;
+                    background-color: #f4f4f4;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+                }
+                .step-title {
+                    font-size: 9px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    position: absolute;
+                    color:  #bbbbbb;
+                    top: 10px;
+                    left: 10px;
+                }
+                .block-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 100px; /* Augmente l'espacement entre les blocs */
+                    flex-wrap: wrap;
+                }
+                .block {
+                    padding: 10px;
+                    padding-top: 0px;
+                    padding-right: 25px;
+                    border-top: 2px solid #33acff;
+                    border-bottom: 2px solid #33acff;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    width: 400px;
+                    text-align: left;
+                    position: relative; /* Permet au bouton d’être positionné par rapport au bloc */
+                }
+                .block-subtitles {
+                    font-size: 14px;
+                    margin-top: 5px;
+                }
+                .block-subtitles div {
+                    font-weight: normal;
+                }
+                .block-subtitles div normal {
+                    color:  #444444;
+                }                
+                .block-subtitles div perso {
+                    font-weight: bold;
+                    color:  #33acff;
+                }
+                .block-subtitles div commentaire {
+                    font-weight: normal;
+                    color:  #4b00a0;
+                    font-style: oblique;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }      
+                .block-subtitles div action {
+                    font-weight: normal;
+                    color:  #00598c;
+                    display: block; /* S'assure que `commentaire` est traité comme un bloc (comme un paragraphe) */
+                    margin-top: 15px; /* Espace avant le commentaire */
+                    margin-bottom: 15px; /* Espace après le commentaire */
+                }   
+                .block-subtitles div message-sent {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #dcf8c6;
+                    margin-left: auto;
+                }  
+                .block-subtitles div message-received {
+                    display: block;
+                    margin: 10px 0;
+                    padding: 10px;
+                    border-radius: 8px;
+                    max-width: 300px;
+                    text-align: left;
+                    word-wrap: break-word;
+                    width: fit-content;                
+                    background-color: #f1f1f1;
+                    margin-right: auto;
+                }                                                                             
+                svg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 10000px; /* Ajusté pour inclure toutes les étapes */
+                    pointer-events: none;
+                }
+                line {
+                    stroke: #33acff;
+                    stroke-width: 2;
+                }
+                .audio-button {
+                    width: 60px;
+                    height: 60px;
+                    background-color: #33acff;
+                    border: 3px solid white;
+                    border-radius: 50%;
+                    position: absolute; /* Permet de placer le bouton indépendamment */
+                    top: 50%; /* Centre verticalement le bouton */
+                    right: -30px; /* Aligne le bouton à droite du bloc */
+                    transform: translateY(-50%); /* Ajuste pour un centrage parfait */
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                .audio-button:hover {
+                    background-color: #007bb5;
+                }
+                .audio-button::before {
+                    content: '';
+                    position: absolute;
+                    transition: all 0.3s ease;
+                }
+                .audio-button.play::before {
+                    width: 0;
+                    height: 0;
+                    border-left: 15px solid white;
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                }
+                .audio-button.pause::before {
+                    width: 10px;
+                    height: 20px;
+                    background-color: white;
+                    box-shadow: 15px 0 0 white;
+                }                
+                .audio-button::after {
+                    /* Tooltip */
+                    content: "Cliquez sur le bouton ci-dessous pour lire ou arrêter le fichier audio";
+                    position: absolute;
+                    top: -35px; /* Décalage au-dessus du bouton */
+                    right: 50%; /* Centré horizontalement par rapport au bouton */
+                    transform: translateX(50%);
+                    background-color: #000;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+                    z-index: 10;
+                }
+                .audio-button:hover::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .menu-langues {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .menu-langues a {
+                    text-decoration: none;
+                    margin: 0 7px;
+                    color: #000; /* Couleur par défaut */
+                }
+                .menu-langues a:hover {
+                    border-bottom: 2px solid #e74c3c; /* Soulignement rouge au survol */
+                }
+                .menu-langues .current {
+                    font-weight: bold;
+                    padding: 5px 7px;
+                    border: 2px solid #e74c3c; /* Entouré d'une bordure rouge */
+                    border-radius: 5px; /* Bordures arrondies */
+                    color: #000; /* Couleur bleue pour la langue courante */
+                }                
+            </style>
+        </head>
+<body>
+<h1 style='text-align:center;'>Rendez-vous</h1>
+<div class='menu-langues'>
+<a href='../de-de/Rendez-vous.html' class=''>Deutsch</a> | <a href='../en-us/Rendez-vous.html' class=''>English</a> | <a href='../es-es/Rendez-vous.html' class=''>Spanish</a> | <a href='../fr-fr/Rendez-vous.html' class=''>Français</a> | <a href='../it-it/Rendez-vous.html' class=''>Italiano</a> | <a href='../jp-jp/Rendez-vous.html' class=''>日本語 (Japanese)</a> | <a href='../kr-kr/Rendez-vous.html' class=''>한국어 (Korean)</a> | <a href='../pl-pl/Rendez-vous.html' class='current'>Polish</a> | <a href='../pt-br/Rendez-vous.html' class=''>Português</a> | <a href='../ru-ru/Rendez-vous.html' class=''>Russian</a> | <a href='../zh-cn/Rendez-vous.html' class=''>中文 (Simplified Chinese)</a></div>
+<div class='step-container'>
+<div class='step-title'>Step 1</div>
+<div class='block-container'>
+<div class='block' id='block-0028'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> POCZĄTEK ZADANIA</commentaire></div>
+<div><commentaire><perso></perso> V otrzymuje wiadomość z Panamu</commentaire></div>
+<div><message-received><perso></perso> Cześć V, jak się masz? Wiesz co, wczoraj myślałem o Tobie!</message-received></div>
+<div><message-sent><perso></perso> Myślę o Tobie tylko raz dziennie, ale trwa to 24 godziny!</message-sent></div>
+<div><message-received><perso></perso> Och, jesteś słodki! <3 <3 <3</message-received></div>
+<div><message-received><perso></perso> Tak czy siak wczoraj złapaliśmy gościa w Badlands i znaleźliśmy u niego przepustkę na nocleg w apartamencie w Konpeki Plaza. Opowiadałeś mi o Konpekach…</message-received></div>
+<div><message-received><perso></perso> Saul chciał, żebyśmy zniszczyli wszystko, co mogłoby nas połączyć z tym gościem... Ale hej, na wszelki wypadek zachowałem przepustkę, myśląc o tobie...</message-received></div>
+<div><message-sent><perso></perso> Nie wiem co mogłabym z tym zrobić i wtedy... Konpeki nie są dla mnie najlepszym wspomnieniem...</message-sent></div>
+<div><message-received><perso></perso> OK, to głupie! Zamierzam zniszczyć przełęcz, Saul ma rację.</message-received></div>
+<div><message-sent><perso></perso> Nie, czekaj! Jak to działa?</message-sent></div>
+<div><message-received><perso></perso> Cóż, wchodzisz na ich stronę, wpisujesz nazwisko i rezerwacja zostaje dokonana…</message-received></div>
+<div><message-sent><perso></perso> OK… może mam pomysł! Chcesz z tego skorzystać?</message-sent></div>
+<div><message-received><perso></perso> Jak to?</message-received></div>
+<div><message-sent><perso></perso> Oboje jedziemy! Wieczór z klasą spędzamy w Konpekach. To mogłoby być fajne. Co o tym sądzisz?</message-sent></div>
+<div><message-received><perso></perso> Jesteś szalony! Biorąc pod uwagę twoją przeszłość, musisz być tam wzniesiony!</message-received></div>
+<div><message-sent><perso></perso> Tak, na pewno, to problem… Daj mi to przemyśleć!</message-sent></div>
+<div><message-received><perso></perso> Karnet jest ważny 48 godzin… Mów szybko, bo potem już nie ma.</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 2</div>
+<div class='block-container'>
+<div class='block' id='block-0029'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Nieco później V ma pomysł i kontaktuje się z Panamem:</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>3823267547856580608</strong> "><vo><perso>V : </perso> Kto wie... Być może.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973374915334619140</strong> "><vo><perso>V : </perso> O...</vo></span></div>
+<div><action><perso></perso> [Wyślij wiadomość do Panama]</action></div>
+<div><message-sent><perso></perso> Panam Być może mam rozwiązanie dla planu Konpeki. Czy mógłbyś spróbować zarejestrować nazwę?</message-sent></div>
+<div><message-received><perso></perso> Jeśli chcesz... Jakiego imienia mam użyć?</message-received></div>
+<audio id="audio-0029" src="ogg/Sound-0029.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0029')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 3</div>
+<div class='block-container'>
+<div class='block' id='block-0030'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> Spróbuj z Aguilarem Nubiolą</message-sent></div>
+</div>
+</div>
+<div class='block' id='block-0031'>
+<div class='block-subtitles'>
+<div><message-sent><perso></perso> Wypróbuj z Andersem Hellmanem</message-sent></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 4</div>
+<div class='block-container'>
+<div class='block' id='block-0032'>
+<div class='block-subtitles'>
+<div><message-received><perso></perso> Sprytny! Próbuję, czekaj...</message-received></div>
+<div><message-received><perso></perso> Został przekazany do nagrania. Powinno być dobrze!</message-received></div>
+<div><message-sent><perso></perso> Więc co powiesz? Czy dziś wieczorem będziemy go mieć w Konpekach?</message-sent></div>
+<div><message-received><perso></perso> Sama nie wiem... Konpeki to nie mój styl!</message-received></div>
+<div><message-received><perso></perso> Mam zamiar wziąć udział w wystroju... Nie mam nawet, kurwa, odpowiedniego stroju!</message-received></div>
+<div><message-sent><perso></perso> To nie jest problem. Ty zarządzałeś Konpekami, więc pozwól mi zająć się naszymi ubraniami. Spotkajmy się w centrum, pójdziemy na zakupy!</message-sent></div>
+<div><message-received><perso></perso> To nadal niebezpieczne, możesz zostać rozpoznany! I cholera, mówimy tutaj o Arasace!</message-received></div>
+<div><message-sent><perso></perso> Słuchaj, spotkajmy się w tym barze w centrum miasta i porozmawiajmy o tym, dobrze?</message-sent></div>
+<div><message-received><perso></perso> Jeśli chcesz…</message-received></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 5</div>
+<div class='block-container'>
+<div class='block' id='block-0002'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> V udaje się na miejsce spotkania.</commentaire></div>
+<div><action><perso></perso> [Czekaj na Panama]</action></div>
+<div><commentaire><perso></perso> Panam przybywa na miejsce spotkania w pobliżu baru...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848059551784</strong> "><vo><perso>Panam : </perso> V?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3389921432679321600</strong> "><vo><perso>V : </perso> Yyy... Znamy się?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136385546775486464</strong> "><vo><perso>Panam : </perso> Zabawne. Heh.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> Hehe.</vo></span></div>
+<div><commentaire><perso></perso> Pocałunek V i Panama</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1856113477382119424</strong> "><vo><perso>V : </perso> Hej, Panam.</vo></span></div>
+<div><commentaire><perso></perso> Idą usiąść do baru i napić się drinka (jak w modzie Lizzie's Braindances: Places of Night City > Bar in Downtown)</commentaire></div>
+<audio id="audio-0002" src="ogg/Sound-0002.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0002')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 6</div>
+<div class='block-container'>
+<div class='block' id='block-0003'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Picie] Bardzo się cieszę, że cię widzę.</action></div>
+<div><span title="the vo stringId from the game : <strong>1732696322113064960</strong> "><vo><perso>V : </perso> Cieszę się, że cię widzę.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1895260328437100560</strong> "><vo><perso>Panam : </perso> Uważaj. Zapamiętam to i potem się ode mnie nie opędzisz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1780702616903966720</strong> "><vo><perso>V : </perso> Trzymam cię za słowo.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> Pfff.</vo></span></div>
+<audio id="audio-0003" src="ogg/Sound-0003.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0003')"></button>
+</div>
+</div>
+<div class='block' id='block-0004'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Picie] Cieszę się, że nie zmieniłeś zdania.</action></div>
+<div><span title="the vo stringId from the game : <strong>1845833987246387200</strong> "><vo><perso>V : </perso> Cieszę się, że tu jesteś. Że się nie rozmyśliłaś.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695241105570394112</strong> "><vo><perso>Panam : </perso> Ja zawsze dotrzymuję słowa.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947299147600752640</strong> "><vo><perso>V : </perso> Dobrze wiedzieć.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> Wal się. Potrzebuję czasu i tyle.</vo></span></div>
+<audio id="audio-0004" src="ogg/Sound-0004.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0004')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 7</div>
+<div class='block-container'>
+<div class='block' id='block-0005'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Więc, co robisz obecnie?</action></div>
+<div><span title="the vo stringId from the game : <strong>1764950158609465344</strong> "><vo><perso>V : </perso> Co teraz robisz całymi dniami?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703287379660800</strong> "><vo><perso>Panam : </perso> No, może lepiej będzie...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1834755541237886976</strong> "><vo><perso>V : </perso> Opowiedz mi o tym.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672027962631385088</strong> "><vo><perso>Panam : </perso> Nie gadajmy już o tym.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2231532716946550784</strong> "><vo><perso>V : </perso> Panam...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1791180838146478080</strong> "><vo><perso>Panam : </perso> Mhm, okej, dzięki.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949978583044</strong> "><vo><perso>Panam : </perso> Ekhm, V...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773676286296002560</strong> "><vo><perso>Panam : </perso> Mam problem.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773703824653225984</strong> "><vo><perso>V : </perso> Niech zgadnę, chodzi o Saula, co?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1773704191755489280</strong> "><vo><perso>Panam : </perso> Jak ty mnie znasz.</vo></span></div>
+<audio id="audio-0005" src="ogg/Sound-0005.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0005')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 8</div>
+<div class='block-container'>
+<div class='block' id='block-0007'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Picie] Myślałem, że pogodziłeś się z Saulem…</action></div>
+<div><span title="the vo stringId from the game : <strong>1782192144563638272</strong> "><vo><perso>V : </perso> Myślałem, że zaczęłaś się dogadywać z Saulem.</vo></span></div>
+<div><commentaire><perso></perso> Panam bierze kilka łyków, zanim odpowiada. Potem, kiedy mówi, wścieka się coraz bardziej...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1882216617480048640</strong> "><vo><perso>Panam : </perso> Ośmieszył mnie przed całą rodziną! Wyszłam na idiotkę!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835599499677528064</strong> "><vo><perso>V : </perso> Znowu?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1935971665480118272</strong> "><vo><perso>Panam : </perso> I o to chodzi! Zrozum, to nie powinnam być ja...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1946030493684854784</strong> "><vo><perso>Panam : </perso> Wiedziałam.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953166016303984640</strong> "><vo><perso>Panam : </perso> Nie wiem, V. Już nic nie wiem.</vo></span></div>
+<audio id="audio-0007" src="ogg/Sound-0007.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0007')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 9</div>
+<div class='block-container'>
+<div class='block' id='block-0008'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Nie zwracaj uwagi na Saula. To mu przejdzie.</action></div>
+<div><span title="the vo stringId from the game : <strong>1761834655837450240</strong> "><vo><perso>V : </perso> Nie przejmuj się Saulem. Przejdzie mu.</vo></span></div>
+<div><action><perso></perso> [Pij] Panam...</action></div>
+<div><span title="the vo stringId from the game : <strong>1886657562660171776</strong> "><vo><perso>V : </perso> Panam.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1804041973262520320</strong> "><vo><perso>V : </perso> Pamiętasz, jak się pierwszy raz spotkaliśmy? Strasznie się bałeś podpaść Saulowi.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751574754396082176</strong> "><vo><perso>V : </perso> Nie wygląda...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> A ja chciałam dla nas czegoś innego. Ale Saul to pierdolony tchórz. On ten klan wkrótce zupełnie pogrąży.</vo></span></div>
+<audio id="audio-0008" src="ogg/Sound-0008.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0008')"></button>
+</div>
+</div>
+<div class='block' id='block-0009'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Mówi] Może Saul ma rację...</action></div>
+<div><span title="the vo stringId from the game : <strong>1896559853671952388</strong> "><vo><perso>V : </perso> Nie wkurzaj się, ale... Myślę, że Saul może mieć rację.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1817173075543511040</strong> "><vo><perso>Panam : </perso> Czekaj, niech pomyślę.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1774799202323918848</strong> "><vo><perso>Panam : </perso> Wal się.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3233251041668595712</strong> "><vo><perso>V : </perso> Spokojnie, spokojnie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665024486785282060</strong> "><vo><perso>Panam : </perso> A ja chciałam dla nas czegoś innego. Ale Saul to pierdolony tchórz. On ten klan wkrótce zupełnie pogrąży.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953190108704927744</strong> "><vo><perso>Panam : </perso> Nawet jeśli masz rację, to co z tego, V? Ja naprawdę rozumiem, w czym problem, ale nie umiem go chwilowo rozwiązać.</vo></span></div>
+<audio id="audio-0009" src="ogg/Sound-0009.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0009')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 10</div>
+<div class='block-container'>
+<div class='block' id='block-0010'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Ty też nie przesadzaj</action></div>
+<div><span title="the vo stringId from the game : <strong>1953696690837413888</strong> "><vo><perso>V : </perso> Przesadzasz...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953175673303068672</strong> "><vo><perso>Panam : </perso> Wiem, ale... No dobra, zaraz mi powiesz, że żadna rodzina nie jest idealna.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2008402713098448896</strong> "><vo><perso>V : </perso> Jasne.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953187199586004992</strong> "><vo><perso>Panam : </perso> I będziesz miał rację. Ja po prostu muszę w końcu być ze sobą szczera i ustalić, czego chcę. Oraz czego się boję.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812593566245261312</strong> "><vo><perso>V : </perso> Wiem dokładnie, o czym mówisz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> Nawet nie wiesz, jak dobrze to słyszeć.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> A ty?</vo></span></div>
+<audio id="audio-0010" src="ogg/Sound-0010.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0010')"></button>
+</div>
+</div>
+<div class='block' id='block-0011'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Czy mogę w czymś pomóc?</action></div>
+<div><span title="the vo stringId from the game : <strong>3270787955500969984</strong> "><vo><perso>V : </perso> Mogę ci jakoś pomóc?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949995360260</strong> "><vo><perso>Panam : </perso> Nie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672044600160284672</strong> "><vo><perso>Panam : </perso> Dam sobie radę. Zawsze sobie dawałam radę. Serio.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683799724993933312</strong> "><vo><perso>Panam : </perso> Pogadajmy lepiej o czymś innym.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1667620261151240192</strong> "><vo><perso>V : </perso> Okej, okej…</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471907270676</strong> "><vo><perso>Panam : </perso> A ty?</vo></span></div>
+<audio id="audio-0011" src="ogg/Sound-0011.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0011')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 11</div>
+<div class='block-container'>
+<div class='block' id='block-0012'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Porozmawiajmy o naszym planie na Konpeki...</action></div>
+<div><span title="the vo stringId from the game : <strong>1725507041219186688</strong> "><vo><perso>V : </perso> No dobrze. Tamtego wieczoru byłem w Konpeki Plaza.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3359190432872767488</strong> "><vo><perso>V : </perso> Okej, przeprosiny przyjęte.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1893700992943071232</strong> "><vo><perso>Panam : </perso> Tak, ale...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953091246979936256</strong> "><vo><perso>V : </perso> Podjęłaś decyzję?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1699504372115435520</strong> "><vo><perso>Panam : </perso> Taaak. Chyba tak.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1724409002612019200</strong> "><vo><perso>V : </perso> A ty co myślisz o planie?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2302325911451791360</strong> "><vo><perso>Panam : </perso> To dobry plan... Hmm, wiesz, co mi Saul kiedyś powiedział?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1863176122928852992</strong> "><vo><perso>Panam : </perso> Że tylko w jednym momencie człowiek jest naprawdę wolny. Gdy wie, że nie ma już nic do stracenia.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795337918150733824</strong> "><vo><perso>V : </perso> Mhm.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363324853841920</strong> "><vo><perso>Panam : </perso> Coś powiedziałam nie tak?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3509981927846547456</strong> "><vo><perso>V : </perso> Idę.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950297350144</strong> "><vo><perso>V : </perso> Nie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882333620088885248</strong> "><vo><perso>Panam : </perso> Bo tym razem naprawdę mi zależy. I boję się, że z czymś głupio wyskoczę - i zostanę na lodzie.</vo></span></div>
+<audio id="audio-0012" src="ogg/Sound-0012.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0012')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 12</div>
+<div class='block-container'>
+<div class='block' id='block-0037'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Dialog, jeśli możliwe jest nakłonienie V i Panama do dyskretnego zakątka i poproszenia V o pokazanie wzorca zachowania Aguilara...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1902560011682299904</strong> "><vo><perso>V : </perso> Mam pomysł, co z tym zrobić, ale... nie wiem, czy się uda.</vo></span></div>
+<div><action><perso></perso> [Aktywuj ślad Aguilara]</action></div>
+<div><span title="the vo stringId from the game : <strong>1853019730599550976</strong> "><vo><perso>Panam : </perso> Kurwa, faktycznie kiepsko wyglądasz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3689606690401263616</strong> "><vo><perso>Mq304 : </perso> Ale to tylko moja prywatna opinia. Jeśli się z nią nie zgadasz, kolejną może wygłosić herold.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2248159134078902280</strong> "><vo><perso>Panam : </perso> To było nawet imponujące, przyznaję.</vo></span></div>
+<div><action><perso></perso> [Wyłącz ślad Aguilara]</action></div>
+<div><span title="the vo stringId from the game : <strong>1782321871533883392</strong> "><vo><perso>V : </perso> Ten plan może się udać.</vo></span></div>
+<audio id="audio-0037" src="ogg/Sound-0037.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0037')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 13</div>
+<div class='block-container'>
+<div class='block' id='block-0013'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Więc, jesteś na to gotowy?</action></div>
+<div><span title="the vo stringId from the game : <strong>3236363351082635264</strong> "><vo><perso>V : </perso> Rozumiem, że mamy umowę?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> Weźmiesz parę oddechów...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1973377369874874372</strong> "><vo><perso>V : </perso> Oho. Będzie wesoło.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1761779916546371584</strong> "><vo><perso>Panam : </perso> Poza tym beze mnie nie dasz sobie rady.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1883902597646737408</strong> "><vo><perso>V : </perso> Jasne.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824331668780609536</strong> "><vo><perso>V : </perso> Właśnie sobie zdałem sprawę, że kolejny raz okradam Arasakę.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1772146926270672896</strong> "><vo><perso>Panam : </perso> Hah.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1530043192202760192</strong> "><vo><perso>Panam : </perso> I ostatni jako wisienka na torcie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812631457889587200</strong> "><vo><perso>Panam : </perso> Dobra, a teraz uważaj.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1904223843040378880</strong> "><vo><perso>V : </perso> Chodź.</vo></span></div>
+<div><commentaire><perso></perso> Jeśli sklep znajduje się obok baru, idą do niego razem. (Panam uważnie podąża za V.) W przeciwnym razie mogą spotkać się w sklepie</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1940242179245694980</strong> "><vo><perso>V : </perso> Spotkajmy się na miejscu.</vo></span></div>
+<audio id="audio-0013" src="ogg/Sound-0013.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0013')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 14</div>
+<div class='block-container'>
+<div class='block' id='block-0035'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Jeśli to możliwe, uda nam się zorganizować przyjazd do hotelu i wyjazd do apartamentu. Podobnie jak w poszukiwaniu „napadu” na Konpeki Plaza, gdzie podążamy za Jackiem do kontynuacji… Czy da się zastąpić Jackie Panamem? Czy taka modyfikacja jest możliwa? ... W przeciwnym razie zaczyna się bezpośrednio w sequelu.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1885355494001319940</strong> "><vo><perso>V : </perso> Zawsze chciałem kupić coś, w czym będę wyglądał na bogatszego, niż jestem.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3334548829030125576</strong> "><vo><perso>Georgina : </perso> Czego chcesz?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751768568301694976</strong> "><vo><perso>V : </perso> Polecisz jakąś fajną broń? Coś nietypowego?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3366438933452214272</strong> "><vo><perso>Georgina : </perso> No dalej. Zobacz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1892222636108042240</strong> "><vo><perso>Panam : </perso> Okej, dzięki.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775130878825271296</strong> "><vo><perso>Panam : </perso> Na pewno znajdziemy coś, co cię zainteresuje.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3281644813173936128</strong> "><vo><perso>V : </perso> Wszystko idzie zgodnie z planem. Do boju, tygrysico.</vo></span></div>
+<div><commentaire><perso></perso> Panam wchodzi do przymierzalni i wychodzi w innym stroju.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> I jak?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653452276438265856</strong> "><vo><perso>V : </perso> Jakoś nie wyczuwam entuzjazmu.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472192483344</strong> "><vo><perso>Panam : </perso> To nie w moim stylu.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675172672626331648</strong> "><vo><perso>V : </perso> Nie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1683802107090169856</strong> "><vo><perso>Panam : </perso> Nie. Ale dzięki, że mi o niej przypomniałeś.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1812369647419912192</strong> "><vo><perso>V : </perso> Dobra. Ogarniemy to inaczej.</vo></span></div>
+<div><commentaire><perso></perso> Panam wchodzi do przymierzalni i wychodzi w innym stroju.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2227484015307866112</strong> "><vo><perso>Panam : </perso> No? Co powiesz? Robi wrażenie, nie?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3541690023801974784</strong> "><vo><perso>V : </perso> To... nieoczekiwane.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692215973608288256</strong> "><vo><perso>Panam : </perso> Mhm, może...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2005624070852964352</strong> "><vo><perso>Panam : </perso> Zacznie działać.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811747013125754880</strong> "><vo><perso>V : </perso> Pełna zgoda.</vo></span></div>
+<div><commentaire><perso></perso> Panam wchodzi do przymierzalni i wychodzi w innym stroju.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1755993001967464448</strong> "><vo><perso>Panam : </perso> Popatrz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1675013408091414528</strong> "><vo><perso>V : </perso> Mhm... Wygląda na to, że pójdzie gładko.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1811043757042503680</strong> "><vo><perso>Panam : </perso> Nie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1866251367616770048</strong> "><vo><perso>V : </perso> Mhm...?</vo></span></div>
+<div><commentaire><perso></perso> Panam wchodzi do przymierzalni i wychodzi w innym stroju.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1522962024273809408</strong> "><vo><perso>Panam : </perso> I jak? Zajebisty wóz, co?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1816936212278161408</strong> "><vo><perso>V : </perso> Mhm. Pamiętam.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1788525976506617860</strong> "><vo><perso>Panam : </perso> No, trudno.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1922861132602429440</strong> "><vo><perso>V : </perso> Chcę spróbować kolejnej medytacji.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1692261696034959360</strong> "><vo><perso>Panam : </perso> Zaraz zobaczysz.</vo></span></div>
+<div><commentaire><perso></perso> Panam wchodzi do przymierzalni i wychodzi w innym stroju.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1824162933980508160</strong> "><vo><perso>Panam : </perso> No powiesz coś?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> Yyy...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3369417742426554368</strong> "><vo><perso>V : </perso> Dobrze wiesz, że właściwy.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1751740062114639872</strong> "><vo><perso>Panam : </perso> Jak się z tym czujesz?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1835559903367393280</strong> "><vo><perso>V : </perso> Czasem się zastanawiam, czy kiedykolwiek zobaczę coś piękniejszego niż to miasto.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1662052409916649472</strong> "><vo><perso>Panam : </perso> Zamknij się, V.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> Hehe.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1837354992280588288</strong> "><vo><perso>Panam : </perso> A kurtka jak? Nie uwiera?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1964609328105779200</strong> "><vo><perso>V : </perso> Nie, to żaden problem.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995398049167962112</strong> "><vo><perso>Panam : </perso> No to wszystko ustalone.</vo></span></div>
+<div><commentaire><perso></perso> Panam i V wychodzą ze sklepu w centrum miasta.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1782235166898720768</strong> "><vo><perso>Panam : </perso> Dzięki, V.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1976682908473905152</strong> "><vo><perso>V : </perso> Polecam się na przyszłość.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760908046978736128</strong> "><vo><perso>V : </perso> Idziemy?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1684852624365056000</strong> "><vo><perso>Panam : </perso> Zaczynamy przedstawienie. Teraz!</vo></span></div>
+<div><commentaire><perso></perso> Panam i V będą mieli wybrany strój po przybyciu do Konpeków.</commentaire></div>
+<audio id="audio-0035" src="ogg/Sound-0035.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0035')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 15</div>
+<div class='block-container'>
+<div class='block' id='block-0036'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Jeśli to możliwe, uda nam się zorganizować przyjazd do hotelu i wyjazd do apartamentu. Podobnie jak w zadaniu „Napad” w Konpeki Plaza, gdzie podążamy za Jackiem do kontynuacji... Czy da się zastąpić Jackie Panamem? Czy taka modyfikacja jest możliwa? ... W przeciwnym razie zaczyna się bezpośrednio w sequelu.</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 16</div>
+<div class='block-container'>
+<div class='block' id='block-0016'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Podobnie jak w modzie Lizzies-Braindance z „Hangout - Konpeki” i z Panamem.</commentaire></div>
+<div><commentaire><perso></perso> Panam i V wchodzą do apartamentu. Całują się i idą usiąść na kanapie.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136691981871419464</strong> "><vo><perso>Panam : </perso> Kurwa, jest zajebisty!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1729876797939675136</strong> "><vo><perso>V : </perso> A wiesz, że chętnie?</vo></span></div>
+<div><commentaire><perso></perso> Po chwili...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>4136131667467493376</strong> "><vo><perso>Panam : </perso> I jak?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1799698894799200256</strong> "><vo><perso>V : </perso> Miłe urozmaicenie, chwila zapomnienia. Sympatycznie spędzony wieczór...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1760578910445760548</strong> "><vo><perso>Panam : </perso> No to się, widzę, rozumiemy!</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1995306323030814720</strong> "><vo><perso>Panam : </perso> Cały ten stres zaczyna ze mnie schodzić.</vo></span></div>
+<div><commentaire><perso></perso> „Hangout – Konpeki” > „Przytulanie”</commentaire></div>
+<div><commentaire><perso></perso> Panam kładzie się na kanapie, z głową opartą na nogach V.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1896726949659815960</strong> "><vo><perso>Panam : </perso> Kiedy jesteś w trasie tak długo, że dupa zaczyna ci wrastać w fotel, zapominasz, jak to jest mieć sufit nad głową.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> Hehe.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1380579642278801408</strong> "><vo><perso>V : </perso> Chyba wiem, jakie to uczucie.</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 17</div>
+<div class='block-container'>
+<div class='block' id='block-0038'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Wizyta ciąg dalszy]</action></div>
+<div><commentaire><perso></perso> Albo V musi udać się do określonego obszaru pakietu Konpeki, aby animacja się rozpoczęła. Albo animacja rozpoczyna się automatycznie.</commentaire></div>
+<div><commentaire><perso></perso> "Hangout - Konpeki" > "Pocałunek przy stole"</commentaire></div>
+<div><action><perso></perso> [Pocałować]</action></div>
+<div><span title="the vo stringId from the game : <strong>1764924610551656448</strong> "><vo><perso>V : </perso> Ładny lokalik.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3508383082195644416</strong> "><vo><perso>Panam : </perso> No mam nadzieję.</vo></span></div>
+<div><action><perso></perso> [Pocałować]</action></div>
+<audio id="audio-0038" src="ogg/Sound-0038.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0038')"></button>
+</div>
+</div>
+<div class='block' id='block-0039'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Podziwiaj widok]</action></div>
+<div><commentaire><perso></perso> Albo V musi udać się do określonego obszaru pakietu Konpeki, aby animacja się rozpoczęła. Albo animacja rozpoczyna się automatycznie.</commentaire></div>
+<div><commentaire><perso></perso> "Hangout - Konpeki" > "Usiądź na ziemi"</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1793773842811637764</strong> "><vo><perso>V : </perso> Niezły widok.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1653531966486212608</strong> "><vo><perso>Panam : </perso> No, coś w tym stylu.</vo></span></div>
+<div><action><perso></perso> [podejdź bliżej]</action></div>
+<audio id="audio-0039" src="ogg/Sound-0039.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0039')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 18</div>
+<div class='block-container'>
+<div class='block' id='block-0017'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Wyjdź na taras]</action></div>
+<div><commentaire><perso></perso> Albo V musi udać się do określonego obszaru pakietu Konpeki, aby animacja się rozpoczęła. Albo animacja rozpoczyna się automatycznie.</commentaire></div>
+<div><commentaire><perso></perso> "Hangout - Konpeki" > "Wyjrzyjcie razem na zewnątrz"</commentaire></div>
+<div><commentaire><perso></perso> Po chwili nic nie mówiąc...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2243448137760657408</strong> "><vo><perso>Panam : </perso> No powiedz coś.</vo></span></div>
+<div><commentaire><perso></perso> Po chwili...</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1756117848076328972</strong> "><vo><perso>Panam : </perso> Co jest grane?</vo></span></div>
+<audio id="audio-0017" src="ogg/Sound-0017.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0017')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 19</div>
+<div class='block-container'>
+<div class='block' id='block-0033'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Panam…</action></div>
+<div><span title="the vo stringId from the game : <strong>1999491326695567360</strong> "><vo><perso>V : </perso> Panam... ja...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1824363443233878016</strong> "><vo><perso>V : </perso> Przypomniał mi się Jackie. I ten nasz skok na Arasakę. Opowiadałem ci, jak się skończyło.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663771767365918720</strong> "><vo><perso>V : </perso> To nie było tak dawno temu...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1680562800159121408</strong> "><vo><perso>V : </perso> Kurwa.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947414952367747072</strong> "><vo><perso>Panam : </perso> V, spokojnie, po kolei. Co się z tobą dzieje?</vo></span></div>
+<audio id="audio-0033" src="ogg/Sound-0033.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0033')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 20</div>
+<div class='block-container'>
+<div class='block' id='block-0018'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Idę usiąść na łóżku] Zaufałam komuś...</action></div>
+<div><action><perso></perso> "Hangout - Konpeki" > "Łóżko" > "Przejdź do łóżka"</action></div>
+<div><span title="the vo stringId from the game : <strong>1664681160034967552</strong> "><vo><perso>V : </perso> Zostałem zdradzony przez kogoś, na kim polegałem.</vo></span></div>
+<div><commentaire><perso></perso> Panam przychodzi i siada na łóżku obok V. (Jak w modzie Lizzie's Braindances: DollHouse)</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1947486841144471552</strong> "><vo><perso>Panam : </perso> V, posłuchaj mnie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947490954582290432</strong> "><vo><perso>Panam : </perso> Nie możesz mi powiedzieć niczego, co zmieniłoby moje...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1663801887585689600</strong> "><vo><perso>V : </perso> Myślę, że po prostu się boję. Wyobraźnia podpowiada rozwiązania, które ukoją lęk przed pustką.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882238917184081920</strong> "><vo><perso>Panam : </perso> Słuchaj, V... Ja...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882203350962556928</strong> "><vo><perso>Panam : </perso> Po prostu nie jestem w tym zbyt dobra. W mówieniu o swoich uczuciach i tak dalej.</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 21</div>
+<div class='block-container'>
+<div class='block' id='block-0019'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Nie mogę przewidzieć niczego na przyszłość.</action></div>
+<div><span title="the vo stringId from the game : <strong>1960480434246791192</strong> "><vo><perso>V : </perso> Nie bardzo mogę robić plany na przyszłość. Jest coś...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> Pierdolenie. Nie wiesz tego.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1793776528441077760</strong> "><vo><perso>V : </perso> Mhm, może. Zobaczymy. Wiesz, jak jest.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1695211830603542528</strong> "><vo><perso>Panam : </perso> Uparty sukinsyn.</vo></span></div>
+<audio id="audio-0019" src="ogg/Sound-0019.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0019')"></button>
+</div>
+</div>
+<div class='block' id='block-0020'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Mówiąc] Za kilka miesięcy umrę, prawda?</action></div>
+<div><span title="the vo stringId from the game : <strong>2004115945133412368</strong> "><vo><perso>V : </perso> Czyli zostało mi kilka miesięcy życia?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1947378274454335488</strong> "><vo><perso>Panam : </perso> Pierdolenie. Nie wiesz tego.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3292616320855941120</strong> "><vo><perso>V : </perso> Może i tak. Zobaczymy.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1825427900278108160</strong> "><vo><perso>Panam : </perso> Teraz jesteś ze mną. I poradzimy sobie z tym kurewstwem w twojej głowie, wiesz?</vo></span></div>
+<audio id="audio-0020" src="ogg/Sound-0020.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0020')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 22</div>
+<div class='block-container'>
+<div class='block' id='block-0021'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Chciałbym, żeby o mnie pamiętano…</action></div>
+<div><span title="the vo stringId from the game : <strong>1663798481894727680</strong> "><vo><perso>V : </perso> Jednak jeśli mam umrzeć, chciałbym zostawić po sobie jakiś ślad.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1795150223197728768</strong> "><vo><perso>Panam : </perso> Nie zapomnę, V.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1775205447997132800</strong> "><vo><perso>V : </perso> Daj spokój.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1877858746209595392</strong> "><vo><perso>V : </perso> Nie martw się, jeszcze żyję.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1873771997317320704</strong> "><vo><perso>Panam : </perso> V...</vo></span></div>
+<div><commentaire><perso></perso> Wypowiadając ostatnie zdanie, Panam pochyla się i opiera o łóżko (jak w modzie Lizzie's Braindances: DollHouse) </commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1708241921529139200</strong> "><vo><perso>Panam : </perso> To chyba nie tak miało być?</vo></span></div>
+<audio id="audio-0021" src="ogg/Sound-0021.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0021')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 23</div>
+<div class='block-container'>
+<div class='block' id='block-0023'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Połóż się na łóżku]</action></div>
+<div><commentaire><perso></perso> Panam kładzie się obok niego…</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1913074409953632256</strong> "><vo><perso>Panam : </perso> Mhm, lepszej mieć nie mogłam.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1854803273415729152</strong> "><vo><perso>Panam : </perso> Hej...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> Yyy...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913073066920714240</strong> "><vo><perso>V : </perso> Czy jest pani zadowolona z obsługi?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1753334906515746844</strong> "><vo><perso>Panam : </perso> Co?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1990837708660744192</strong> "><vo><perso>V : </perso> Yyy...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1731570327012298752</strong> "><vo><perso>Panam : </perso> Przykro mi.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1902427987491233792</strong> "><vo><perso>Panam : </perso> Trochę się zapominam, co?</vo></span></div>
+<audio id="audio-0023" src="ogg/Sound-0023.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0023')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 24</div>
+<div class='block-container'>
+<div class='block' id='block-0024'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Dotknij] Nie, wcale.</action></div>
+<div><span title="the vo stringId from the game : <strong>1811499757478633472</strong> "><vo><perso>V : </perso> Nie wierzę.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950381236224</strong> "><vo><perso>V : </perso> Czego sobie pani zażyczy.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726949961805840</strong> "><vo><perso>Panam : </perso> Hmmm...? Co masz na myśli?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1913968240093896704</strong> "><vo><perso>Panam : </perso> Nie wiesz, czego bym chciała...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3343379596644360192</strong> "><vo><perso>V : </perso> Najwyraźniej nie wszystkich.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665067044190154752</strong> "><vo><perso>Panam : </perso> Pfff.</vo></span></div>
+<div><commentaire><perso></perso> Ubrania znikają, gdy Panam wypowiada ostatnie zdanie</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1883866768744402944</strong> "><vo><perso>Panam : </perso> To teraz uważaj.</vo></span></div>
+<div><commentaire><perso></perso> Są nadzy w ostatnim zdaniu V</commentaire></div>
+<div><action><perso></perso> [Jawne działania] Och, OK.</action></div>
+<div><span title="the vo stringId from the game : <strong>1653519333661995008</strong> "><vo><perso>V : </perso> Okeeej.</vo></span></div>
+<audio id="audio-0024" src="ogg/Sound-0024.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0024')"></button>
+</div>
+</div>
+<div class='block' id='block-0025'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Powiedz] Dość często, tak.</action></div>
+<div><span title="the vo stringId from the game : <strong>3121491535523586048</strong> "><vo><perso>V : </perso> Zazwyczaj.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262118194987360264</strong> "><vo><perso>V : </perso> Hehe.</vo></span></div>
+<div><commentaire><perso></perso> Panam jest obrażona, szybko siada przy pierwszym zdaniu!</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1631462611877781512</strong> "><vo><perso>Panam : </perso> Żartujesz? Powiedz, że żartujesz.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1845803613288001536</strong> "><vo><perso>V : </perso> Mówię tak, bo wiem, że i tobie się uda.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1756117848176992288</strong> "><vo><perso>Panam : </perso> Wiesz co...? Spieprzaj.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1918384511778512896</strong> "><vo><perso>V : </perso> No to będę musiała jakoś ci wynagrodzić te pokrzyżowane plany...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1896726950347681808</strong> "><vo><perso>Panam : </perso> W porządku. Nie przejmuj się tym.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1325616690627239936</strong> "><vo><perso>V : </perso> Nic więcej?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1672374186035245056</strong> "><vo><perso>Panam : </perso> Zaraz się stąd zmywam. Pogadamy następnym razem.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882357240966172672</strong> "><vo><perso>V : </perso> Następnym razem idź za impulsem.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1885220225346719744</strong> "><vo><perso>Panam : </perso> Wiesz co, V? Pierdol się.</vo></span></div>
+<div><commentaire><perso></perso> Wściekła Panam odchodzi, wypowiadając ostatnie zdanie!</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1699503221299081216</strong> "><vo><perso>V : </perso> To chyba wszystko. Do następnego.</vo></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 25</div>
+<div class='block-container'>
+<div class='block' id='block-0026'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> Później... nadal leżą na łóżku, leżąc nago.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>2008211146618302464</strong> "><vo><perso>Panam : </perso> Nie chciałam cię budzić.</vo></span></div>
+<div><action><perso></perso> [Dotknij] Witam</action></div>
+<div><span title="the vo stringId from the game : <strong>1978036625878044672</strong> "><vo><perso>V : </perso> Hej...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1539042075245015040</strong> "><vo><perso>Panam : </perso> Jak się spało?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3302620291439247360</strong> "><vo><perso>V : </perso> Ta... Zatrzymałem się w czasie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1665019849495670784</strong> "><vo><perso>Panam : </perso> No... to uciekam.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2262179491753975816</strong> "><vo><perso>V : </perso> Echch...</vo></span></div>
+<audio id="audio-0026" src="ogg/Sound-0026.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0026')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 26</div>
+<div class='block-container'>
+<div class='block' id='block-0022'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Wstawaj] O nie...</action></div>
+<div><span title="the vo stringId from the game : <strong>2262118195205464072</strong> "><vo><perso>V : </perso> Nieee...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1489317527395364864</strong> "><vo><perso>V : </perso> Nie chcę, żebyś zniknęła. Nie teraz. Potrzebuję cię.</vo></span></div>
+<div><commentaire><perso></perso> Panam znów jest prawie ubrany.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1345658545965649920</strong> "><vo><perso>Panam : </perso> Nawet nie wiesz, jak dobrze to słyszeć.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1882241194020065280</strong> "><vo><perso>Panam : </perso> Nie chcę tego spierdolić.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3221530865087410180</strong> "><vo><perso>V : </perso> Mhm, powiedzmy.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947472175706132</strong> "><vo><perso>Panam : </perso> Aż żałuję, że zaraz będę musiała się zbierać.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>3378002583959740416</strong> "><vo><perso>V : </perso> Nic osobistego.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1953192000755462144</strong> "><vo><perso>Panam : </perso> Wal się. Potrzebuję czasu i tyle.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1762237637687840780</strong> "><vo><perso>V : </perso> Okej.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4086810525833682944</strong> "><vo><perso>V : </perso> Do zobaczenia wkrótce?</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>4136126501729132544</strong> "><vo><perso>Panam : </perso> Weźmiesz parę oddechów...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2232855859686469632</strong> "><vo><perso>Panam : </perso> To na razie, V!</vo></span></div>
+<div><commentaire><perso></perso> Panama odchodzi</commentaire></div>
+</div>
+</div>
+<div class='block' id='block-0027'>
+<div class='block-subtitles'>
+<div><action><perso></perso> [Wstawaj] O ostatniej nocy…</action></div>
+<div><commentaire><perso></perso> Panam znów jest prawie ubrany.</commentaire></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399748</strong> "><vo><perso>V : </perso> Umm, poczekaj... Odnośnie wczorajszego wieczoru...</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471370399760</strong> "><vo><perso>Panam : </perso> Mhm, nie musimy o tym gadać.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>2881080804631400448</strong> "><vo><perso>V : </perso> Jasne, do zobaczenia.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389636</strong> "><vo><perso>Panam : </perso> Uważaj na siebie.</vo></span></div>
+<div><span title="the vo stringId from the game : <strong>1897947471672389648</strong> "><vo><perso>V : </perso> Ty na siebie też.</vo></span></div>
+<div><commentaire><perso></perso> Panama odchodzi</commentaire></div>
+<audio id="audio-0027" src="ogg/Sound-0027.ogg"></audio>
+<button class="audio-button play" onclick="togglePlay('0027')"></button>
+</div>
+</div>
+</div>
+</div>
+<div class='step-container'>
+<div class='step-title'>Step 27</div>
+<div class='block-container'>
+<div class='block' id='block-0034'>
+<div class='block-subtitles'>
+<div><commentaire><perso></perso> V pojawia się ponownie przed zamkniętymi Konpekami</commentaire></div>
+<div><commentaire><perso></perso> Jeżeli rezerwacja została dokonana na nazwisko Aguilar Nubiola, V otrzymuje wiadomość od nieznajomego. To jest Aguilar! (Ale oczywiście nie da się odpowiedzieć…)</commentaire></div>
+<div><message-received><perso></perso> Skończę na tym, że pomyślę, że twoja skłonność do kradzieży mojej tożsamości jest formą uwielbienia wobec mnie... Z wielką przyjemnością wysłucham, jak mnie błagasz podczas mojej następnej wizyty w NC. Ale pewne jest również, że noc nadchodzi każdego dnia, ona cię nie uratuje.</message-received></div>
+<div><commentaire><perso></perso> KONIEC ZADANIA</commentaire></div>
+</div>
+</div>
+</div>
+</div>
+<svg id='connections'>
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0028' data-end='block-0029' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0030' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0029' data-end='block-0031' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0030' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0031' data-end='block-0032' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0032' data-end='block-0002' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0003' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0002' data-end='block-0004' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0003' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0004' data-end='block-0005' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0005' data-end='block-0007' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0008' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0007' data-end='block-0009' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0008' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0011' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0009' data-end='block-0010' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0010' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0011' data-end='block-0012' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0012' data-end='block-0037' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0037' data-end='block-0013' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0013' data-end='block-0035' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0035' data-end='block-0036' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0036' data-end='block-0016' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0038' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0016' data-end='block-0039' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0038' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0039' data-end='block-0017' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0033' data-end='block-0018' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0019' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0018' data-end='block-0020' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0019' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0020' data-end='block-0021' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0021' data-end='block-0023' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0024' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0023' data-end='block-0025' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0024' data-end='block-0026' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0025' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0022' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0026' data-end='block-0027' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0022' data-end='block-0034' />
+<line x1='0' y1='0' x2='0' y2='0' data-start='block-0027' data-end='block-0034' />
+</svg>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const svg = document.getElementById('connections');
+    const lines = document.querySelectorAll('line');
+    function updateLinePositions() {
+        lines.forEach(line => {
+            const startBlock = document.getElementById(line.dataset.start);
+            const endBlock = document.getElementById(line.dataset.end);
+            if (startBlock && endBlock) {
+                const startRect = startBlock.getBoundingClientRect();
+                const endRect = endBlock.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                line.setAttribute('x1', startRect.left + startRect.width / 2 - svgRect.left);
+                line.setAttribute('y1', startRect.bottom - svgRect.top);
+                line.setAttribute('x2', endRect.left + endRect.width / 2 - svgRect.left);
+                line.setAttribute('y2', endRect.top - svgRect.top);
+            }
+        });
+    }
+    setTimeout(updateLinePositions, 100);
+});
+</script>
+<script>
+function togglePlay(blockId) {
+    const audio = document.getElementById(`audio-${blockId}`);
+    const button = document.querySelector(`#block-${blockId} .audio-button`);
+    if (audio.paused || audio.ended) {
+        audio.play();
+        button.classList.remove('play');
+        button.classList.add('pause');
+    } else {
+        audio.pause();
+        button.classList.remove('pause');
+        button.classList.add('play');
+    }
+    // Réinitialiser l'état du bouton lorsqu'un audio se termine
+    audio.addEventListener('ended', () => {
+        button.classList.remove('pause');
+        button.classList.add('play');
+    });
+}
+</script>
+</body></html>

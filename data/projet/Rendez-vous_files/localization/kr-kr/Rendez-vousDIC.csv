@@ -1,0 +1,108 @@
+femaleVariant,maleVariant,stringId,female_vo_path,male_vo_path,quest_path
+V는 미팅 장소로 이동합니다.,,1734639643012578,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[음주] 만나서 너무 기뻐요.,,1734733486045460,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[마십니다] 마음이 바뀌지 않아서 다행이에요.,[음주] 마음이 바뀌지 않아서 다행이에요.,1734733573905763,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그들은 바에 가서 술을 마십니다(모드 Lizzie's Braindances: Places of Night City > Bar in Downtown에서처럼).,,1734736588881117,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[파남을 기다려요],,1734824689179729,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남은 바 근처 미팅 장소에 도착합니다...,,1734885474362720,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[마시다],,1734887593907139,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[술] 그럼 요즘 뭐하세요?,,1734887624815712,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그럼 요즘 뭐하세요?,,1734887658486519,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"대화, V와 파남을 은밀한 구석으로 데려가 V가 아길라르의 행동 각인을 보여주게 할 수 있다면...",,1734904017055777,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+뷔와 파남의 키스,,1734910406863562,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam은 대답하기 전에 몇 모금을 마셨습니다. 그러다가 말을 하면 점점 더 화를 내는데...,,1734912057581613,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그리고/또는,,1734912403652319,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V는 파남에게서 메시지를 받습니다.,,1735040401780488,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"V님, 안녕하세요? 그거 알아요, 어제 당신 생각이 났어요!",,1735040679408670,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+하루에 한 번만 당신 생각이 나지만 24시간 동안 지속됩니다!,,1735040846812203,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+아 귀여워! <3 <3 <3,,1735056244885189,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+사울은 우리가 이 사람과 연결될 수 있는 모든 것을 파괴하기를 원했습니다... 하지만 혹시라도 당신을 생각하면서 패스를 보관해 두었습니다...,,1735056295732630,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그걸로 뭘 할 수 있을지 모르겠는데... 콘페키는 나한테는 최고의 추억이 아니야...,,1735056326435636,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+알았어 그건 바보야! 나는 고개를 파괴할 것이다. 사울의 말이 옳다.,,1735056379716323,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+아니 잠깐! 이건 어떻게 작동하나요?,,1735056393052657,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"글쎄, 당신은 그들의 사이트에 가서 이름을 입력하고 예약이 이루어집니다…",,1735056411224054,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+알았어... 어쩌면 나한테 좋은 생각이 있을 것 같아! 그것을 활용하고 싶습니까?,,1735056425988329,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+어떻게요?,,1735056446949704,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"우리 둘 다 갈 거예요! 우리는 콘페키에서 품격 있는 저녁을 보냅니다. 이거 좋을 수도 있는데, 어떻게 생각하세요?",,1735056484397280,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"당신은 미쳤어요! 당신의 과거를 생각해보면, 당신은 거기에서 건배해야 합니다!",,1735056494932607,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"응, 확실히 문제가 있어… 생각해 볼게!",,1735056506194362,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+패스는 48시간 동안 유효합니다... 그 이후에는 소멸되니까 빨리 말씀해주세요.,,1735056519235413,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"파남 씨, 콘페키 계획에 대한 해결책이 있을지도 모르겠습니다. 이름을 등록해 보시겠어요?",,1735058535475344,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+원한다면… 어떤 이름을 사용해야 할까요?,,1735058563071521,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Aguilar Nubiola를 사용해보십시오,,1735058593043166,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+앤더스 헬만(Anders Hellman)과 함께 해보세요,,1735058645656583,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"영리한! 노력 중이야, 잠깐...",,1735060913044546,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+녹음을 위해 통과되었습니다. 좋을 것입니다!,,1735060935091683,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그래서 당신은 무엇을 말합니까? 오늘 저녁에 콘페키에서 파티하나요?,,1735060982596671,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+잘 모르겠어요... 콘페키는 내 스타일이 아니에요!,,1735061008088637,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+장식은 내가 할 몫인데... 마땅한 옷도 없어!,,1735061024059582,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+그건 문제가 되지 않습니다. 당신이 콘페키를 관리했으니 옷은 제가 관리하겠습니다. 센터에서 만나서 쇼핑하러 가요!,,1735061039903586,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"아직은 위험해, 알아볼 수도 있어! 그리고 젠장, 우리는 여기서 아라사카에 대해 이야기하고 있습니다!",,1735061055747094,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"저기, 시내에 있는 술집에 만나서 얘기하자, 알았지?",,1735061077597131,MSG-OUT,MSG-OUT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+원하는 경우…,,1735061089758378,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 그럼 요즘 뭐하세요?,,1735142209504692,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[마시며] 사울과 화해한 줄 알았는데…,,1735142588439618,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V는 침대에 앉았다. Panam은 V 맞은편에 앉을 수 있습니다. (Lizzie의 Braindances: DollHouse 모드에서처럼),,1735146101955345,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+잠시 후 아무 말도 없이...,,1735146120956956,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam이 V 옆 침대에 앉으러 옵니다. (Lizzie's Braindances: DollHouse 모드에서와 같이),,1735146139634145,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+마지막 문장을 말하면서 Panam은 몸을 굽혀 침대에 기댄다(Lizzie의 Braindances: DollHouse 모드에서처럼). ,,1735146177514793,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남이 옆에 누워 있는데…,,1735146190854713,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam은 기분이 상해서 첫 번째 문장에서 재빨리 자리에 앉았습니다!,,1735146208634254,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+분노한 파남은 마지막 말을 남기고 떠난다!,,1735146218671463,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+퀘스트 종료,,1735146262371852,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남이 마지막 문장을 말하는 동안 옷은 사라진다,,1735148577111890,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+V 마지막 문장에서 알몸이네,,1735148591380400,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[노골적인 활동] 아, 그렇군요.",,1735148603319961,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+나중에... 그들은 여전히 ​​침대 위에 알몸으로 누워있습니다.,,1735148655590069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남 잎,,1735148670146144,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+닫힌 콘페키 앞에 다시 나타난 뷔,,1735148683898389,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"아길라르 누비올라라는 이름으로 예약이 이루어진 경우, 뷔는 낯선 사람으로부터 메시지를 받는다. 아길라르입니다! (물론 대답은 불가능하지만…)",,1735149083786826,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+내 신분을 훔치려는 당신의 성향이 나를 향한 일종의 아첨이라고 생각하게 될 것입니다. 다음 NC 방문에서 당신이 간청하는 말을 들으면 큰 기쁨을 얻을 것입니다. 그러나 밤이 매일 뒤따른다는 것 또한 확실합니다. 그것이 당신을 구원하지는 못할 것입니다.,,1735149096392131,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+잠시 후 V는 아이디어를 얻었고 Panam에게 연락했습니다.,,1735472601463996,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[마신다] 파남...,,1735566026604495,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"어쨌든, 어제 우리는 Badlands에서 한 남자를 붙잡았고 그에게서 Konpeki Plaza의 스위트룸에서 하룻밤을 보낼 수 있는 패스를 찾았습니다. 콘페키에 대해 말씀해주셨는데...",,1735567342585502,MSG-IN,MSG-IN,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 ""강탈"" 탐색에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.",,1735567787641759,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남은 피팅룸에 들어가 다른 옷을 입고 나온다.,,1735576178488210,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남과 뷔는 콘페키에 도착하면 의상을 선택하게 됩니다.,,1735583834222710,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+가게가 바 옆에 있으면 함께 가게까지 걸어갑니다. (파남은 뷔를 바짝 따라다닌다.) 아니면 매장에서 만나도 된다.,,1735583990247748,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""Hangout - Konpeki"" 및 Panam을 사용하는 Lizzies-Braindance 모드와 같습니다.",,1735584121915575,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[아길라르의 발자국 활성화],,1735756411635207,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[아길라르의 발자국 비활성화],,1735756509206727,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[파남에게 메시지 보내기],,1735769077098714,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말씀] 사울에게 관심을 기울이지 마십시오. 그것은 그에게 전달될 것입니다.,,1735769360126834,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[대답] 어쩌면 사울 말이 맞을 수도 있어요...,,1735769421066106,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 과장하지도 마세요,,1735826347203087,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 제가 도와드릴 일이 있나요?,,1735826373383827,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 곤페키 계획에 대해 이야기해보자...,,1735827222153488,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[말] 그래서, 당신은 그것을 할 준비가 되셨나요?",,1735831536035375,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남과 뷔는 시내 매장을 떠난다.,,1735832194237069,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"호텔 도착 및 스위트룸 이동 관리가 가능한 경우. Jackie를 후속편으로 따라가는 Konpeki Plaza의 ""강도"" 퀘스트에서와 같이... Jackie를 Panam으로 교체하는 것이 가능합니까? 이런 수정이 가능한가요? ... 그렇지 않으면 속편에서 직접 시작됩니다.",,1735832600444044,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+퀘스트 시작,,1735854459066934,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 파남…,,1735854611598502,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[침대에 앉으러 가며] 누군가를 믿었는데..,,1735854718843424,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 나는 미래에 대해 아무것도 예측할 수 없습니다.,,1735855065255565,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 나 몇 달 후면 죽는 거 맞죠?,,1735855145057790,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[말] 기억되고 싶은데…,,1735855287877249,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[누워서] 이리 오세요.,,1735856480847855,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[대본] 꽤 자주 그렇죠.,,1735857543721684,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"[터치] 아니요, 전혀 그렇지 않습니다.",,1735857606826433,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[일어나] 아 안돼...,,1735858958994359,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[일어나다] 어젯밤쯤…,,1735859033963587,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+Panam은 거의 다시 옷을 입었습니다.,,1735859520752215,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[터치] 안녕하세요,,1735860454689494,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""행아웃 - 콘페키"" > ""함께 밖을 보세요""",,1736440090987431,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남과 뷔가 스위트룸에 들어온다. 그들은 키스하고 소파에 앉으러 간다.,,1736440090987432,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""행아웃 - 콘페키"" > ""껴안기""",,1736440090987433,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""행아웃 - 콘페키"" > ""댄스""",,1736440090987434,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""행아웃 - 콘페키"" > ""테이블에서 키스""",,1736440090987435,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+"""행아웃 - 콘페키"" > ""바닥에 앉으세요""",,1736440090987436,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[키스하다],,1736440090987437,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[테라스로 가다],,1736440090987438,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[더 가까이 다가와],,1736440090987439,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[방문 계속],,1736440090987440,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+파남은 소파에 누워 뷔의 다리에 머리를 기대고 있다.,,1736440090987441,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[경치를 감상하다],,1736440090987442,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+애니메이션이 시작되려면 V가 콘페키 제품군의 특정 영역으로 이동해야 합니다. 애니메이션이 자동으로 시작됩니다.,,1736440090987443,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+잠시 후...,,1736440090987444,COMMENT,COMMENT,Rendez-vous_files/{}/Rendez-vousDIC.csv
+「ハングアウト - 紺碧」＞「ベッド」＞「ベッドに移動」,,1736440090987445,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
+[ベッドに横になる],,1736440090987446,ACTION,ACTION,Rendez-vous_files/{}/Rendez-vousDIC.csv
