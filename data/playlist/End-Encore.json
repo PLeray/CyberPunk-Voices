@@ -1,0 +1,18 @@
+[
+    {
+        "stringId": "1896726950263795724",
+        "femaleVariant": "Et V\u2026 J'suis heureuse que tu sois venue.",
+        "maleVariant": "Et V\u2026 J'suis heureuse que tu sois venu.",
+        "female_vo_path": "base/{}/vo/panam_sq004_f_1a52871caa62300c.wem",
+        "male_vo_path": "base/{}/vo/panam_sq004_f_1a52871caa62300c.wem",
+        "quest_path": "base/{}/subtitles/quest/sq004/sq004_08_farm"
+    },
+    {
+        "stringId": "1896726950263795736",
+        "femaleVariant": "C'\u00e9tait important pour moi.",
+        "maleVariant": "C'\u00e9tait important pour moi.",
+        "female_vo_path": "base/{}/vo/panam_sq004_f_1a52871caa623018.wem",
+        "male_vo_path": "base/{}/vo/panam_sq004_f_1a52871caa623018.wem",
+        "quest_path": "base/{}/subtitles/quest/sq004/sq004_08_farm"
+    }
+]
