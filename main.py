@@ -64,7 +64,7 @@ def maj_Langue(str_langue):
 
 # Créer la fenêtre principale
 root = tk.Tk()
-root.title("CyberPunk Dialog: Tool to assemble and test dialogue sequences for modding CyberPunk 2077")
+root.title("CyberPunk Dialog: Tool to assemble original in-game voices and test dialogue sequences for modding CyberPunk 2077")
 root.geometry("1600x1000")
 root.minsize(1100, 800)
 
