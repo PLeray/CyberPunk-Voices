@@ -64,12 +64,12 @@ class UserConfig:
             root = Tk()
             root.withdraw()  # Masquer la fenêtre principale de tkinter
             project_path = filedialog.askdirectory(
-                title="Sélectionnez le chemin du projet Wolvenkit (localisation des fichiers)"
+                title="Select the Wolvenkit project path (The location where you extracted the game localization files)"
             )
             root.destroy()
 
             if not project_path:
-                raise ValueError("Aucun chemin sélectionné. Impossible de continuer sans définir PROJECT_WOLVENKIT_PATH.")
+                raise ValueError("No path selected. Cannot continue without setting PROJECT_WOLVENKIT_PATH.")
 
             # Initialiser les données par défaut
             self.set("SETTINGS", "PROJECT_WOLVENKIT_PATH", project_path)
