@@ -30,7 +30,7 @@ class LigneManuelle:
         """Crée la fenêtre de saisie manuelle."""
         self.window = tk.Toplevel(self.parent)
         self.window.title("Add/Edit Playlist Row")
-        self.window.geometry("1600x400")
+        self.window.geometry("1500x400")
 
         # Rendre la fenêtre modale
         self.window.grab_set()  # Empêche l'interaction avec les autres fenêtres tant que celle-ci est ouverte
@@ -45,7 +45,7 @@ class LigneManuelle:
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # Ajouter une liste pour afficher les lignes
-        self.line_listbox = tk.Listbox(left_frame, width=130, height=20)
+        self.line_listbox = tk.Listbox(left_frame, width=100, height=20)
         self.line_listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar = tk.Scrollbar(left_frame, orient=tk.VERTICAL, command=self.line_listbox.yview)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)

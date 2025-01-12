@@ -55,15 +55,15 @@ def find_localization_subfolders(project_path):
 
     # Si "localization" n'est pas trouvé, retourner une liste vide
     if not localization_path:
-        print(f"Dossier 'localization' non trouvé dans {project_path}")
+        print(f"Folder 'localization' not found in {project_path}")
         return []
 
-    # Lister uniquement les sous-dossiers immédiats de "localization"
+    # List localization subfolders
     subfolders = [
         name for name in os.listdir(localization_path)
         if os.path.isdir(os.path.join(localization_path, name))
     ]
-    print(f"Lister uniquement les sous-dossiers immédiats de localization : {subfolders}.")   
+    print(f"List localization subfolders : {subfolders}.")   
     return subfolders
 
 def extraire_WOLVENKIT_localise_path(chemin_generic):  #pour recontruire chemin avec {}
@@ -86,10 +86,13 @@ def extraire_WOLVENKIT_localise_path(chemin_generic):  #pour recontruire chemin 
         #print(f"chemin du fichier localiser : {full_path}")
         return full_path
     except Exception as e:
-        print(f"Erreur lors de la génération du chemin : {e}")
+        print(f"Error generating path : {e}")
         return False
 
-def extraire_PROJET_localise_path(chemin_generic):    
+def extraire_PROJET_localise_path(chemin_generic): 
+    if not global_variables.path_dernier_projet:
+        raise ValueError("The project path (path_dernier_projet) is None. Make sure it is properly initialized.")
+           
     # Remplacer '{}' par le chemin de localisation completn'existe pas
     if "{}" in chemin_generic:
         chemin_generic = chemin_generic.replace("{}", global_variables.CheminLocalization + global_variables.CheminLangue)
@@ -100,6 +103,9 @@ def extraire_PROJET_localise_path(chemin_generic):
     return full_path
         
 def Delocalise_project_path(Project_path):
+    if not Project_path:
+        raise ValueError("The project path (Project_path) is None. Make sure it is properly initialized.")
+      
     nomProject = os.path.splitext(os.path.basename(Project_path))[0]
     #directory_path = os.path.dirname(Project_path)
 
@@ -125,13 +131,13 @@ def get_SousTitres_from_csv(file_path, string_id):
                         global_variables.data_F_Voice: row.get(global_variables.data_F_Voice, ""),
                         global_variables.data_M_Voice: row.get(global_variables.data_M_Voice, "")
                     }
-        print(f"Aucun résultat trouvé pour stringId : {string_id}")
+        print(f"No results found for stringId : {string_id}")
         return None
     except FileNotFoundError:
-        print(f"Le fichier csv {file_path} n'existe pas.")
+        print(f"The csv file {file_path} does not exist.")
         return None
     except KeyError as e:
-        print(f"Colonne manquante dans le fichier CSV : {e}")
+        print(f"Missing column in CSV file : {e}")
         return None
 
 
@@ -171,7 +177,7 @@ def charger_sous_titres_from_JSON_playlist(file_path, first_entry_only=False):
             playlist_data = json.load(file)
         return charger_sous_titres_from_data_playlist(playlist_data, first_entry_only)
     else:
-        print("Pas de fichier playlist fourni.")   
+        print("No playlist file provided.")   
         return False 
 
 def charger_sous_titres_from_data_playlist(playlist_data, first_entry_only=False):            
@@ -219,7 +225,7 @@ def charger_sous_titres_from_data_playlist(playlist_data, first_entry_only=False
             if first_entry_only:
                 break
     else:
-        print("Les donnée de playlist sont vide ou mal formaté.")
+        print("The playlist data is empty or poorly formatted.")
 
     return sous_titres
 

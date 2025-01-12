@@ -1,4 +1,6 @@
 # Variables globlaes du projet
+version_Logiciel = "0.91"  #precedente release 0.9
+
 need_to_save_Projet = False
 need_to_save_Playlist = False
 

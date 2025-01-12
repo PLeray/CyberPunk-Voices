@@ -71,7 +71,7 @@ def generate_and_save_json(output_path):
     # Charger les données JSON
     data = load_json(get_file_path(global_variables.bdd_Zhincore))
     if not data:
-        print(f"Aucune donnée trouvée dans {get_file_path(global_variables.bdd_Zhincore)}")
+        print(f"No data found in {get_file_path(global_variables.bdd_Zhincore)}")
         return
 
     processed_data = []
@@ -163,9 +163,9 @@ def save_data_to_json(file_path, data):
     try:
         with open(file_path, "w", encoding="utf-8") as json_file:
             json.dump(data, json_file, indent=4, ensure_ascii=False)
-        print(f"Données sauvegardées dans : {file_path}")
+        print(f"Data saved in : {file_path}")
     except Exception as e:
-        print(f"Erreur lors de la sauvegarde des données : {e}")
+        print(f"Error saving data : {e}")
 
 
 def load_data_into_tree(tree):
@@ -173,9 +173,9 @@ def load_data_into_tree(tree):
         if global_variables.dataSound == None:
             with open(global_variables.bdd_Localisation_Json, "r", encoding="utf-8") as json_file:
                 global_variables.dataSound = json.load(json_file)
-                print(f"Données chargées depuis : {global_variables.bdd_Localisation_Json}")            
+                print(f"Data loaded from : {global_variables.bdd_Localisation_Json}")            
         else :
-            print(f"Données chargées depuis : global_variables.dataSound")
+            print(f"Data loaded from : global_variables.dataSound")
         
         # Supprimer les anciennes données dans le Treeview
         tree.delete(*tree.get_children())
@@ -192,12 +192,12 @@ def load_data_into_tree(tree):
             ))
         
     except Exception as e:
-        print(f"Erreur lors de la lecture des données : {e}")
+        print(f"Error reading data : {e}")
 
 # Fonction pour afficher les données dans le tableau
 def open_and_display_json(tree, file_path):
     if not os.path.exists(global_variables.bdd_Localisation_Json):
-        print(f"Fichier {global_variables.bdd_Localisation_Json} introuvable. Génération du fichier...")
+        print(f"File {global_variables.bdd_Localisation_Json} not found. Generating file...")
         generate_and_save_json(global_variables.bdd_Localisation_Json)
     
     load_data_into_tree(tree)

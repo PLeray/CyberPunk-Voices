@@ -15,7 +15,7 @@ class ProjetSequence:
     def __init__(self, root):
         self.root = root
         self.root.title("Project window dialog sequence")
-        self.root.geometry("800x1000")
+        self.root.geometry("800x900")
         # Variables
         self.sequence = Sequence("Nouvelle Séquence")
         self.selected_etape = None
@@ -113,7 +113,7 @@ class ProjetSequence:
                     unBlocs.isSelected = False  
             block.isSelected = True
             self.selected_etape = None  # Clear étape selection
-            print(f"Bloc sélectionné : {block.title} Rang {block.etape_position} (Étape {etape_idx}).")
+            print(f"Selected block: {block.title} Rank {block.etape_position} (Step {etape_idx}).")
 
         elif "etape" in tags:
             # Select the étape
@@ -121,14 +121,14 @@ class ProjetSequence:
             self.selected_etape = self.sequence.etapes[etape_idx]
             self.selected_block = None  # Clear block selection
             self.selected_to_connect_blocks = {"green": [], "red": []}  # Reset source/target selections
-            print(f"Étape sélectionnée : {etape_idx}.")
+            print(f"Selected step : {etape_idx}.")
 
             for etape in self.sequence.etapes:
                 for unBlocs in etape.blocs:
                     unBlocs.isSelected = False  
         else:
             # No valid selection
-            print("Aucun élément valide sélectionné.")
+            print("No valid items selected.")
             self.selected_block = None
             self.selected_etape = None
 
@@ -150,11 +150,11 @@ class ProjetSequence:
             # Ajouter le bloc à la liste rouge (cibles) s'il n'y est pas déjà
             if block not in self.selected_to_connect_blocks["red"]:
                 self.selected_to_connect_blocks["red"].append(block)
-                print(f"Bloc cible ajouté : {block.title} (Étape {etape_idx}).")
+                print(f"Target block added : {block.title} (Step {etape_idx}).")
             else:
-                print(f"Bloc déjà dans les cibles : {block.title}")
+                print(f"Block already in targets : {block.title}")
         else:
-            print("Aucun bloc valide pour la sélection de cibles.")
+            print("No valid blocks for target selection.")
 
         self.update_button_state()
         # Redessiner après la sélection
@@ -173,11 +173,11 @@ class ProjetSequence:
             # Ajouter le bloc à la liste verte (sources) s'il n'y est pas déjà
             if block not in self.selected_to_connect_blocks["green"]:
                 self.selected_to_connect_blocks["green"].append(block)
-                print(f"Bloc source ajouté : {block.title} (Étape {etape_idx}).")
+                print(f"Source block added : {block.title} (Étape {etape_idx}).")
             else:
-                print(f"Bloc déjà dans les sources : {block.title}")
+                print(f"Block already in sources : {block.title}")
         else:
-            print("Aucun bloc valide pour la sélection des sources.")
+            print("No valid blocks for source selection.")
 
         self.update_button_state()
         # Redessiner après la sélection
@@ -417,17 +417,17 @@ class ProjetSequence:
             self.sequence.remove_etape(self.selected_etape)  # Appel à Sequence.remove_etape
             self.selected_etape = None
             self.draw_sequence()
-            print("Étape supprimée.")
+            print("Step deleted.")
             self.mise_a_jour_info_projet(True)
 
     def add_block(self):
         #Ajouter un bloc dans l'étape sélectionnée.
         if not self.selected_etape:
-            print("Aucune étape sélectionnée pour ajouter un bloc.")
+            print("No steps selected to add a block.")
             return
         self.selected_etape.add_block()
         self.draw_sequence()
-        print(f"Bloc ajouté à l'étape {self.selected_etape.numero}.")
+        print(f"Block added to step {self.selected_etape.numero}.")
         self.mise_a_jour_info_projet(True)
 
     def delete_block(self):
@@ -437,13 +437,13 @@ class ProjetSequence:
             etape.remove_block(self.selected_block)  # Supprimer le bloc de l'étape
             self.selected_block = None
             self.draw_sequence()
-            print("Bloc supprimé.")
+            print("Block deleted.")
             self.mise_a_jour_info_projet(True)
 
     def create_connections(self):
         #Créer des connexions entre les blocs sélectionnés.
         if not self.selected_to_connect_blocks["green"] or not self.selected_to_connect_blocks["red"]:
-            print("Sélectionnez des blocs sources et cibles pour créer une connexion.")
+            print("Select source and target blocks to create a connection.")
             return
         for source in self.selected_to_connect_blocks["green"]:
             for target in self.selected_to_connect_blocks["red"]:
@@ -460,7 +460,7 @@ class ProjetSequence:
         if self.selected_block:
             self.sequence.delete_connection(self.selected_block)
             self.draw_sequence()
-            print(f"Connexions du bloc {self.selected_block.identifiant} supprimées.")
+            print(f"Connections from block {self.selected_block.identifiant} deleted.")
             self.mise_a_jour_info_projet(True)
 
     def save_to_file(self, filename = None):
@@ -508,10 +508,10 @@ class ProjetSequence:
                 filename = filedialog.askopenfilename(filetypes=[("JSON Files", "*.json")])
                 if not filename:
                     return
-                global_variables.user_config.set("SETTINGS", "PROJECT", filename)
             else:
                 filename = LefichierProjet
-
+            global_variables.user_config.set("SETTINGS", "PROJECT", filename)    
+            global_variables.path_dernier_projet = global_variables.user_config.get("SETTINGS", "PROJECT")
             with open(filename, "r") as f:
                 data = json.load(f)
 
@@ -537,9 +537,9 @@ class ProjetSequence:
                         self.selected_block = block
                         try:
                             self.import_playlist_to_block(block.playlist_lien)
-                            print(f"Playlist importée pour le bloc {block.identifiant}.")
+                            print(f"Playlist imported for block {block.identifiant}.")
                         except Exception as e:
-                            print(f"Erreur lors de l'importation de la playlist pour le bloc {block.identifiant}: {e}")
+                            print(f"Error importing playlist for block {block.identifiant}: {e}")
                     # Cas où block.playlist_lien est vide mais block.playlist contient des données
                 
             # Vider les connexions actuelles
@@ -575,7 +575,7 @@ class ProjetSequence:
 
             # Redessiner la séquence
             self.draw_sequence()
-            print(f"Chargé depuis {filename}")
+            print(f"Loaded from {filename}")
             self.mise_a_jour_info_projet()
   
     def generate_project_html(self):
@@ -599,7 +599,7 @@ class ProjetSequence:
         )
         # Si l'utilisateur annule ou laisse vide, ne pas continuer
         if not project_name:
-            print("Création du projet annulée.")
+            print("Project creation canceled.")
             return
 
         # Réinitialiser les variables
@@ -617,7 +617,7 @@ class ProjetSequence:
         self.file_Projet = phrase_to_filename(project_name) + ".json"
         self.file_Projet = self.save_to_file()
         global_variables.user_config.set("SETTINGS", "PROJECT", self.file_Projet)    
-        print(f"Nouveau projet créé : {project_name}")
+        print(f"New project created : {project_name}")
 
     def check_unsaved_Projet_changes(self):
         if global_variables.need_to_save_Projet:
@@ -625,7 +625,7 @@ class ProjetSequence:
                 "Unsaved changes in your PROJECT",
                 "You have unsaved changes. Would you like to save your project before continuing?"
             )
-            print(f"Projet reponse {response}") 
+            print(f"Project response {response}") 
             if response:  # yes : Sauvegarder
                 global_variables.playlist_Block_open.playlist = get_playlist_data(global_variables.playlist_tree)
                 self.save_to_file(self.file_Projet)

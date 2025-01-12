@@ -64,8 +64,8 @@ def maj_Langue(str_langue):
 
 # Créer la fenêtre principale
 root = tk.Tk()
-root.title("CyberPunk Dialog: Tool to assemble original in-game voices and test dialogue sequences for modding CyberPunk 2077")
-root.geometry("1600x1000")
+root.title(f"CyberPunk Dialog {global_variables.version_Logiciel} > Tool to assemble original in-game voices and test dialogue sequences for modding CyberPunk 2077")
+root.geometry("1500x800")
 root.minsize(1100, 800)
 
 #global_variables.rootAccess = root #initialisation de la variable globale root pour y acceder dans les fonctions
@@ -114,7 +114,7 @@ global_variables.bdd_Localisation_Json = "data/BDDjson/Base_" + global_variables
 if global_variables.CheminLangue in localization_languages:
     language_dropdown.set(global_variables.CheminLangue)  # Définit la valeur par défaut
 else:
-    language_dropdown.set("Sélectionnez une langue")  # Définit une valeur par défaut générique
+    language_dropdown.set("Select a language")  # Définit une valeur par défaut générique
 
 language_dropdown.pack(side=tk.LEFT, padx=5, pady=5)
 
@@ -134,15 +134,15 @@ def process_all_languages(root):
     """Parcours toutes les langues et effectue les opérations requises."""
     # Sauvegarder la langue actuelle
     langue_initiale = global_variables.user_config.get("SETTINGS", "LANGUAGE")
-    print(f"Langue initiale : {langue_initiale}")
+    print(f"Initial language : {langue_initiale}")
 
     for langue in localization_languages:
-        print(f"Traitement de la langue : {langue}")
+        print(f"Language processing : {langue}")
 
         # Changer la langue
         maj_Langue(langue)
         global_variables.user_config.set("SETTINGS", "LANGUAGE", langue)
-        print(f"Langue mise à jour : {langue}")
+        print(f"Language update : {langue}")
 
         # Fermer la fenêtre projet si elle est ouverte
         if global_variables.projet_instance is not None:
@@ -155,27 +155,23 @@ def process_all_languages(root):
         try:
             if hasattr(global_variables.projet_instance, "generate_Ogg"):
                 global_variables.projet_instance.generate_Ogg()
-                print(f"Fichiers .ogg générés pour la langue : {langue}")
-            else:
-                print("Méthode generate_Ogg non disponible.")
+                print(f"Generated .ogg files for language : {langue}")
         except Exception as e:
-            print(f"Erreur lors de la génération des fichiers .ogg : {e}")
+            print(f"Error generating .ogg files : {e}")
 
         # Générer la page HTML
         try:
             if hasattr(global_variables.projet_instance, "generate_project_html"):
                 global_variables.projet_instance.generate_project_html()
-                print(f"Page HTML générée pour la langue : {langue}")
-            else:
-                print("Méthode generate_project_html non disponible.")
+                print(f"HTML page generated for language : {langue}")
         except Exception as e:
-            print(f"Erreur lors de la génération de la page HTML : {e}")
+            print(f"Error generating HTML page : {e}")
 
         # Pause entre les langues pour éviter les conflits de ressources (optionnel)
         time.sleep(2)
 
     # Restauration de la langue initiale
-    print(f"Restauration de la langue initiale : {langue_initiale}")
+    print(f"Restoration of the original language : {langue_initiale}")
     maj_Langue(langue_initiale)
     global_variables.user_config.set("SETTINGS", "LANGUAGE", langue_initiale)
     if global_variables.projet_instance is not None:
