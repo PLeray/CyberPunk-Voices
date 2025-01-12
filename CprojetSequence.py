@@ -505,7 +505,10 @@ class ProjetSequence:
         if self.check_unsaved_Projet_changes():     
             #Charger les étapes, blocs et connexions depuis un fichier JSON. 
             if not LefichierProjet:
-                filename = filedialog.askopenfilename(filetypes=[("JSON Files", "*.json")])
+                filename = filedialog.askopenfilename(
+                    title="Open a project in JSON format", 
+                    filetypes=[("JSON Files", "*.json")]
+                    )
                 if not filename:
                     return
             else:

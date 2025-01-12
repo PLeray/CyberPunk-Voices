@@ -197,7 +197,7 @@ def load_data_into_tree(tree):
 # Fonction pour afficher les données dans le tableau
 def open_and_display_json(tree, file_path):
     if not os.path.exists(global_variables.bdd_Localisation_Json):
-        print(f"File {global_variables.bdd_Localisation_Json} not found. Generating file...")
+        print(f"File {global_variables.bdd_Localisation_Json} not found. Generating file, wait ...")
         generate_and_save_json(global_variables.bdd_Localisation_Json)
     
     load_data_into_tree(tree)
