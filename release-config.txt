@@ -1,6 +1,0 @@
-python -m PyInstaller --onefile --windowed --name "Dialog-CyberPunk" main.py
-
-ou
-
-python -m nuitka --standalone --onefile --enable-plugin=tk-inter --output-filename=Dialog-CyberPunk.exe --windows-icon-from-ico=Dialog-CyberPunk.ico main.py
-
