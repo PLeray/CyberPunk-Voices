@@ -7,7 +7,7 @@ from os.path import basename
 from tkinter import ttk, filedialog, Menu, messagebox
 import tkinter as tk
 from LectureOgg import JouerAudio, fusionnerPlaylist
-from general_functions import get_SousTitres_from_csv, get_SousTitres_by_id, extraire_WOLVENKIT_localise_path, extraire_PROJET_localise_path, get_Perso_from_Wem, phrase_to_filename
+from general_functions import get_SousTitres_from_csv, get_SousTitres_by_id, extraire_WOLVENKIT_localise_path, extraire_PROJET_localise_path, get_Perso_from_Wem, phrase_to_filename, get_file_path
 
 import global_variables  # Accéder au Label global
 from CligneManuelle import LigneManuelle
@@ -90,7 +90,9 @@ def setup_playlist(root, tree, columns):
     add_button = tk.Button(button_frame, text="Add selection to playlist ⤵️", command=lambda: add_to_playlist(tree, playlist_tree))
     add_button.pack(side=tk.LEFT, padx=5)
 
-    add_manual_button = tk.Button(button_frame, text="Add Personal line ✏️", command=lambda: open_manual_entry_window(button_frame, playlist_tree))
+    # Déterminez si le bouton doit être désactivé
+    button_state = "disabled" if not global_variables.path_dernier_projet else "normal"
+    add_manual_button = tk.Button(button_frame, text="Add Personal line ✏️", command=lambda: open_manual_entry_window(button_frame, playlist_tree), state=button_state)
     add_manual_button.pack(side=tk.LEFT, padx=5)
 
     move_up_button = tk.Button(button_frame, text="Up ⬆️", command=lambda: move_up_playlist(playlist_tree))
@@ -257,6 +259,7 @@ def Suggestion_Playlist_Name(playlist_tree):
 # Fonction pour sauvegarder la playlist dans un fichier JSON
 def save_playlist_to_file(playlist_tree, file_path = None):
     if not file_path :
+        default_dir = get_file_path("data/playlists/")
         nom_sans_extension = nom_playlist()  
         if nom_sans_extension == global_variables.pas_Info:
             nom_sans_extension = Suggestion_Playlist_Name(playlist_tree)
@@ -264,6 +267,7 @@ def save_playlist_to_file(playlist_tree, file_path = None):
             title="Save the playlist in JSON format",
             initialfile=f"{nom_sans_extension}.json",  # Nom par défaut basé sur la playlist
             defaultextension=".json",
+            initialdir=default_dir , # Dossier pré-sélectionné,
             filetypes=[("JSON files", "*.json")]
             )
     
@@ -303,10 +307,12 @@ def load_playlist_from_file(playlist_tree):
     # Vérifiez les modifications avant de charger
     if not check_unsaved_playlist_changes(playlist_tree):
         return
-        
+
+    default_dir = get_file_path("data/playlists/")    
     file_path = filedialog.askopenfilename(
         title="Load a playlist in JSON format", 
-        filetypes=[("JSON files", "*.json")]
+        filetypes=[("JSON files", "*.json")],
+        initialdir=default_dir  # Dossier pré-sélectionné
         )
     #print(f"Fichier playlist : {file_path}")
     if file_path:
@@ -527,11 +533,13 @@ def colorize_playlist_rows(playlist_tree):
 
 def save_playlist_to_txt(playlist_tree):
     nom_sans_extension = nom_playlist()
+    default_dir = get_file_path("data/playlists/")    
     fichier_sauvegarde = filedialog.asksaveasfilename(
         title="Save the dialog of the playlist",
         initialfile=f"{nom_sans_extension}.txt",  # Nom par défaut basé sur la playlist
         defaultextension=".txt",
         filetypes=[("Fichiers txt", "*.txt")],
+        initialdir=default_dir  # Dossier pré-sélectionné
         )
     if fichier_sauvegarde:
         try:

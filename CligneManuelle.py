@@ -1,6 +1,7 @@
 import os
 import csv
 import tkinter as tk
+from tkinter import messagebox
 import time
 import global_variables  # Importer les variables globales
 from general_functions import Delocalise_project_path, extraire_PROJET_localise_path
@@ -12,6 +13,12 @@ class LigneManuelle:
         self.save_callback = save_callback  # Callback pour la sauvegarde
         self.file_path = extraire_PROJET_localise_path(Delocalise_project_path(global_variables.path_dernier_projet)) 
 
+        if not os.path.exists(self.file_path):
+            # Afficher un message pour informer l'utilisateur
+            messagebox.showinfo(
+                f"Fichier DIC manquant",
+                f"Le fichier n'existe pas et sera créé ici :\n\n{self.file_path}"
+            )
         print(f"file_path calculé : {extraire_PROJET_localise_path(Delocalise_project_path(global_variables.path_dernier_projet))}") 
 
         self.column_names = ["ACTION Female * :", "ACTION Male :"]

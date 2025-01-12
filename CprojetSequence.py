@@ -3,7 +3,7 @@ from tkinter import Menu, filedialog, simpledialog
 import json, os, webbrowser
 
 import global_variables  # Importer les variables globales
-from general_functions import get_Perso_from_Wem, phrase_to_filename
+from general_functions import get_Perso_from_Wem, phrase_to_filename, get_file_path
 from playlist_functions import set_playlist_data, get_playlist_data, check_unsaved_playlist_changes
 from Csequence import Sequence
 from Cetape import Etape
@@ -69,7 +69,10 @@ class ProjetSequence:
         # Ajouter une première étape
         self.add_etape()
         self.mise_a_jour_info_projet()
-        self.load_from_file(global_variables.path_dernier_projet)
+        if global_variables.path_dernier_projet :
+            self.load_from_file(global_variables.path_dernier_projet)
+        else:
+            self.new_project()
         # Redimensionnement
         self.root.bind("<Configure>", self.on_resize)
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
@@ -332,10 +335,12 @@ class ProjetSequence:
 
     def import_playlist_file_to_block(self):
         if self.selected_block:
+            default_dir = get_file_path("data/playlists/")    
             # Ouvrir une boîte de dialogue pour sélectionner le fichier
             file_path = filedialog.askopenfilename(
                 title="Select a JSON playlist",
-                filetypes=[("JSON Files", "*.json")]
+                filetypes=[("JSON Files", "*.json")],
+                initialdir=default_dir  # Dossier pré-sélectionné
             )
             if not file_path:
                 print("No files selected.")
@@ -465,10 +470,13 @@ class ProjetSequence:
 
     def save_to_file(self, filename = None):
         if not filename :
+            # Définir le dossier de sauvegarde pré-sélectionné
+            default_dir = get_file_path("data/projects/")
             #Sauvegarder les étapes et blocs dans un fichier JSON.
             filename = filedialog.asksaveasfilename(
                 filetypes=[("JSON Files", "*.json")],
-                initialfile=self.file_Projet
+                initialfile=os.path.basename(self.file_Projet),
+                initialdir=default_dir  # Dossier pré-sélectionné
                 )
             if not filename:
                 return
@@ -491,6 +499,9 @@ class ProjetSequence:
         print(f"Sauvegardé dans {filename}")
         global_variables.need_to_save_Projet = False
         global_variables.need_to_save_Playlist = False    
+        global_variables.user_config.set("SETTINGS", "PROJECT", filename)    
+        global_variables.path_dernier_projet = global_variables.user_config.get("SETTINGS", "PROJECT")
+
         return filename
 
     def validate_json(data):
@@ -500,14 +511,16 @@ class ProjetSequence:
                 block["blocs_precedents"] = list(set(block["blocs_precedents"]))
                 block["blocs_suivants"] = list(set(block["blocs_suivants"]))
         return data
-        
+    
     def load_from_file(self, LefichierProjet = None):
         if self.check_unsaved_Projet_changes():     
             #Charger les étapes, blocs et connexions depuis un fichier JSON. 
             if not LefichierProjet:
+                default_dir = get_file_path("data/projects/")  
                 filename = filedialog.askopenfilename(
                     title="Open a project in JSON format", 
-                    filetypes=[("JSON Files", "*.json")]
+                    filetypes=[("JSON Files", "*.json")],
+                    initialdir=default_dir  # Dossier pré-sélectionné
                     )
                 if not filename:
                     return

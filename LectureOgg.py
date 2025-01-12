@@ -175,11 +175,13 @@ def fusionnerPlaylist(playlist_tree, NonfichierOGG):
 
         #nom_sans_extension = nom_playlist()
         
+        default_dir = get_file_path("data/playlists/")    
         fichier_sauvegarde = filedialog.asksaveasfilename(
             title="Save the record of the playlist",
             initialfile=f"{NonfichierOGG}.ogg",  # Nom par défaut basé sur la playlist
             defaultextension=".ogg",
             filetypes=[("Fichiers OGG", "*.ogg")],
+            initialdir=default_dir  # Dossier pré-sélectionné
         )
         root.destroy()  # Assurez-vous de détruire la fenêtre après utilisation
         if fichier_sauvegarde:
