@@ -26,3 +26,4 @@ data/playlist/*
 # Ne pas ignorer le fichier spécifique
 !data/playlist/End-Encore.json
 
+userconfig.ini
