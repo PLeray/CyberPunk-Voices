@@ -15,6 +15,8 @@ from filtrage import toggle_columns, filter_NA, reset_filters, filter_tree_with_
 from CuserConfig import UserConfig
 from CprojetSequence import ProjetSequence
 
+from Ctooltip import Tooltip
+
 def ouvrir_projet_instance(root):
     # Vérifier si la fenêtre est déjà ouverte
     if global_variables.projet_instance is not None:
@@ -94,6 +96,10 @@ project_button = tk.Button(
     command=lambda: ouvrir_projet_instance(root)
 )
 project_button.pack(side=tk.LEFT, padx=5, pady=5)
+txt_aide = (
+    "The project window allows you to assemble different playlists to create a scenario with different possible choices for V."
+)
+Tooltip(project_button, txt_aide)
 
 # Ajouter une liste déroulante (ComboBox)
 language_var = tk.StringVar()
@@ -129,6 +135,10 @@ process_button = tk.Button(
     command=lambda: process_all_languages(root)  # Appeler la fonction avec root
 )
 process_button.pack(side=tk.LEFT, padx=5, pady=5)
+txt_aide = (
+    "This button allows you to generate HTML and OGG files for all accessible languages."
+)
+Tooltip(process_button, txt_aide)
 
 def process_all_languages(root):
     """Parcours toutes les langues et effectue les opérations requises."""
@@ -224,6 +234,8 @@ apply_all_filters_button = tk.Button(
     #command=lambda: apply_all_filters(tree, filters)
 )
 apply_all_filters_button.grid(row=1, column=7, padx=5)
+Tooltip(apply_all_filters_button, "Apply filters")
+
 
 root.bind('<Return>', lambda event: filter_tree_with_filters(tree, filters, global_variables.bdd_Localisation_Json))
 
@@ -237,6 +249,7 @@ reset_filter_button = tk.Button(
     
 )
 reset_filter_button.grid(row=1, column=8, padx=5)
+Tooltip(reset_filter_button, "Reset filters")
 
 # Ajouter une case à cocher pour "Afficher N/A"
 na_var = tk.BooleanVar(value=True)  # Initialiser à "coché" (True)

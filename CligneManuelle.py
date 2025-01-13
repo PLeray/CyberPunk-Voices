@@ -5,6 +5,7 @@ from tkinter import messagebox
 import time
 import global_variables  # Importer les variables globales
 from general_functions import Delocalise_project_path, extraire_PROJET_localise_path
+from Ctooltip import Tooltip
 
 class LigneManuelle:
     def __init__(self, parent, playlist_tree, save_callback=None, selected_id=None):
@@ -72,6 +73,7 @@ class LigneManuelle:
         self.prefix_menu = tk.OptionMenu(right_frame, self.prefix_var, *optionsValeur, command=self._on_prefix_change)
         self.prefix_menu.config(width=15)  # Fixez la largeur ici
         self.prefix_menu.grid(row=0, column=1, padx=10, pady=5, sticky="w")  # Placez la drop-list juste après le label
+        #Tooltip(self.prefix_var, "self.prefix_var")
 
         # Champ pour afficher la valeur actuelle de stringId
         self.string_id_var = tk.StringVar(value="NOTHING")
@@ -94,16 +96,20 @@ class LigneManuelle:
 
         self.new_line_button = tk.Button(button_frame, text="New Line", command=self._reset_form, state="disabled")
         self.new_line_button.pack(side=tk.LEFT, padx=5)
+        Tooltip(self.new_line_button, "self.new_line_button")
 
         self.save_button = tk.Button(button_frame, text="Save Line", command=self._save_selected_row, state="disabled")
         self.save_button.pack(side=tk.LEFT, padx=5)
+        Tooltip(self.save_button, "self.save_button")
 
         self.delete_button = tk.Button(button_frame, text="Delete Line", command=self._delete_selected_row, state="disabled")
         self.delete_button.pack(side=tk.LEFT, padx=5)
+        Tooltip(self.delete_button, "self.delete_button")
 
         # Bouton pour insérer une ligne dans le Treeview
         self.insert_playlist_button = tk.Button(self.window, text="Insert Line in playlist", command=self._add_Line_In_Playlist, state="disabled")
         self.insert_playlist_button.place(relx=1.0, rely=1.0, anchor="se", x=-10, y=-10)
+        Tooltip(self.insert_playlist_button, "self.insert_playlist_button")
 
         # Événement pour activer le bouton "Save Line" si le champ global_variables.data_F_SubTitle est rempli
         self.entry_fields["ACTION Female * :"].bind("<KeyRelease>", self._check_save_button_state)

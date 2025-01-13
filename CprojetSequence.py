@@ -270,7 +270,7 @@ class ProjetSequence:
         #Créer les boutons Load, Save, Ajouter Étape, Ajouter Bloc et Connect.
         btn_new_project = tk.Button(self.button_frame, text="New project", command=self.new_project)
         btn_new_project.pack(side=tk.LEFT, padx=5, pady=5)
-        Tooltip(btn_new_project, "Créez un nouveau projet.")
+        Tooltip(btn_new_project, "Create a new project.")
 
         btn_load_from_file = tk.Button(self.button_frame, text="Load project", command=self.load_from_file)
         btn_load_from_file.pack(side=tk.LEFT, padx=5, pady=5)
@@ -282,13 +282,18 @@ class ProjetSequence:
 
         btn_add_etape = tk.Button(self.button_frame, text="Add Step", command=self.add_etape)
         btn_add_etape.pack(side=tk.LEFT, padx=5, pady=5)
-        Tooltip(btn_add_etape, "Add a Step to the project.")
+        txt_aide = (
+            "Add a Step to the project.\n"
+            "Right-click on a Step to add one or more Blocks to that step.\n"
+            "Right-click on a Block to import a playlist into the block."
+        )
+        Tooltip(btn_add_etape, txt_aide)
 
         self.btn_connect = tk.Button(self.button_frame, text="Connect Blocks", command=self.create_connections)     
         self.btn_connect.pack(side=tk.LEFT, padx=5, pady=5)
         #btn_connect.config(state="disabled")  # Désactiver le bouton au départ
         # Ajouter l'infobulle au bouton
-        txt_aide_connect = (
+        txt_aide = (
             "To connect blocks:\n"
             "1) ctrl + click to select one or more Source blocks.\n"
             "2) shift + click to select one or more Destination blocks.\n"
@@ -296,7 +301,7 @@ class ProjetSequence:
             "Note that you can connect several source blocks to a destination block and vice versa, "
             "but not several source blocks to several destination blocks."
         )
-        Tooltip(self.btn_connect, txt_aide_connect)     
+        Tooltip(self.btn_connect, txt_aide)     
 
         btn_generate_project_html = tk.Button(self.button_frame, text="Create HTML Page", command=self.generate_project_html)
         btn_generate_project_html.pack(side=tk.LEFT, padx=5, pady=5)

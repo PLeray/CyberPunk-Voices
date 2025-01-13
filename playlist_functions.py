@@ -12,6 +12,8 @@ from general_functions import get_SousTitres_from_csv, get_SousTitres_by_id, ext
 import global_variables  # Accéder au Label global
 from CligneManuelle import LigneManuelle
 
+from Ctooltip import Tooltip
+
 def select_and_add_to_playlist(event, tree, playlist_tree):
     # Identifier la ligne sous le curseur
     item = tree.identify_row(event.y)
@@ -89,39 +91,50 @@ def setup_playlist(root, tree, columns):
 
     add_button = tk.Button(button_frame, text="Add selection to playlist ⤵️", command=lambda: add_to_playlist(tree, playlist_tree))
     add_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(add_button, "add_button")
 
     # Déterminez si le bouton doit être désactivé
     button_state = "disabled" if not global_variables.path_dernier_projet else "normal"
     add_manual_button = tk.Button(button_frame, text="Add Personal line ✏️", command=lambda: open_manual_entry_window(button_frame, playlist_tree), state=button_state)
     add_manual_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(add_manual_button, "add_manual_button")
 
     move_up_button = tk.Button(button_frame, text="Up ⬆️", command=lambda: move_up_playlist(playlist_tree))
     move_up_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(move_up_button, "move_up_button")
 
     move_down_button = tk.Button(button_frame, text="Down ⬇️", command=lambda: move_down_playlist(playlist_tree))
     move_down_button.pack(side=tk.LEFT, padx=5)
-
+    Tooltip(move_down_button, "move_down_button")
+    
     play_button = tk.Button(button_frame, text="Play to the playlist ▶️", command=lambda: ecouterPlaylist(playlist_tree))
     play_button.pack(side=tk.LEFT, padx=(20, 5))
-    
+    Tooltip(play_button, "play_button")
+
     stop_button = tk.Button(button_frame, text="Stop ⏹️", command=lambda: stopperPlaylist())
     stop_button.pack(side=tk.LEFT, padx=(5, 20))
+    Tooltip(stop_button, "stop_button")
 
     load_button = tk.Button(button_frame, text="Load playlist ↩️", command=lambda: load_playlist_from_file(playlist_tree))
     load_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(load_button, "load_button")
 
     save_button = tk.Button(button_frame, text="Save playlist 🖫", command=lambda: save_playlist_to_file(playlist_tree))
     save_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(save_button, "save_button")    
 
     clear_button = tk.Button(button_frame, text="Clean playlist ❌", command=lambda: clear_playlist(playlist_tree))
     #clear_button = tk.Button(button_frame, text="Fusio FICHIER", command=lambda: fusionner_audio_json(chemin_json="", chemin_ogg="chemin_ogg"))
     clear_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(clear_button, "clear_button")   
 
     record_button = tk.Button(button_frame, text="Record playlist ⭕", command=lambda: record_playlist(playlist_tree))
     record_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(record_button, "record_button")  
 
     txtDialog_button = tk.Button(button_frame, text="Dialog playlist ☷", command=lambda: save_playlist_to_txt(playlist_tree))
     txtDialog_button.pack(side=tk.LEFT, padx=5)
+    Tooltip(txtDialog_button, "txtDialog_button")  
 
     return playlist_tree
 
