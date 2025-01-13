@@ -36,7 +36,7 @@ class UserConfig:
         print(f"Parameter updated : [{section}] {key} = {value}")
         self.save()
 
-    def read_or_initialize(self):
+    def read_or_initialize2(self):
         #Charge ou initialise la configuration si le fichier n'existe pas. Demande à l'utilisateur un chemin de projet Wolvenkit si nécessaire.
         if not os.path.exists(self.file_path):
             root = Tk()
@@ -54,3 +54,40 @@ class UserConfig:
             self.set("SETTINGS", "LANGUAGE", "en-us")
         else:
             self._load_config()
+
+    def read_or_initialize(self):
+        # Charge ou initialise la configuration si le fichier n'existe pas.  Vérifie que PROJECT_WOLVENKIT_PATH est défini et que le chemin existe.
+        # Si le chemin est manquant ou invalide, redemande à l'utilisateur de sélectionner un dossier.
+        if not os.path.exists(self.file_path):
+            # Fichier de configuration inexistant, demander le chemin du projet
+            print(f"File {self.file_path} not found. Initializing.")
+            self._prompt_and_set_project_path()
+        else:
+            # Charger la configuration existante
+            self._load_config()
+
+            # Vérifier si PROJECT_WOLVENKIT_PATH est défini
+            project_path = self.get("SETTINGS", "PROJECT_WOLVENKIT_PATH", default=None)
+            if not project_path or not os.path.exists(project_path):
+                if not project_path:
+                    print("PROJECT_WOLVENKIT_PATH not found or empty.")
+                else:
+                    print(f"Path specified for PROJECT_WOLVENKIT_PATH not found: {project_path}")
+                self._prompt_and_set_project_path()
+
+    def _prompt_and_set_project_path(self):
+        # Demande à l'utilisateur de sélectionner un dossier pour PROJECT_WOLVENKIT_PATH et met à jour la configuration en conséquence.
+        root = Tk()
+        root.withdraw()  # Masquer la fenêtre principale de tkinter
+        project_path = filedialog.askdirectory(
+            title="Select the Wolvenkit project path (The location where you extracted the game localization files)"
+        )
+        root.destroy()
+
+        if not project_path:
+            raise ValueError("No path selected. Cannot continue without defining PROJECT_WOLVENKIT_PATH.")
+
+        # Enregistrer le chemin du projet et initialiser les paramètres par défaut
+        self.set("SETTINGS", "PROJECT_WOLVENKIT_PATH", project_path)
+        if not self.get("SETTINGS", "LANGUAGE", default=None):
+            self.set("SETTINGS", "LANGUAGE", "en-us")
