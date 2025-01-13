@@ -91,50 +91,50 @@ def setup_playlist(root, tree, columns):
 
     add_button = tk.Button(button_frame, text="Add selection to playlist ⤵️", command=lambda: add_to_playlist(tree, playlist_tree))
     add_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(add_button, "add_button")
+    Tooltip(add_button, "Add the search list selection (one or more lines) to the playlist.")
 
     # Déterminez si le bouton doit être désactivé
     button_state = "disabled" if not global_variables.path_dernier_projet else "normal"
-    add_manual_button = tk.Button(button_frame, text="Add Personal line ✏️", command=lambda: open_manual_entry_window(button_frame, playlist_tree), state=button_state)
+    add_manual_button = tk.Button(button_frame, text="Add a line manually ✏️", command=lambda: open_manual_entry_window(button_frame, playlist_tree), state=button_state)
     add_manual_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(add_manual_button, "add_manual_button")
+    Tooltip(add_manual_button, "The Manual Line window allows you to add new sentences to your scenario, for example to specify the actions to be performed by V, such as sitting down, saying something, etc., but also to add text messages and comments.")
 
     move_up_button = tk.Button(button_frame, text="Up ⬆️", command=lambda: move_up_playlist(playlist_tree))
     move_up_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(move_up_button, "move_up_button")
+    Tooltip(move_up_button, "Move up the selected line.")
 
     move_down_button = tk.Button(button_frame, text="Down ⬇️", command=lambda: move_down_playlist(playlist_tree))
     move_down_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(move_down_button, "move_down_button")
+    Tooltip(move_down_button, "Move down the selected line.")
     
     play_button = tk.Button(button_frame, text="Play to the playlist ▶️", command=lambda: ecouterPlaylist(playlist_tree))
     play_button.pack(side=tk.LEFT, padx=(20, 5))
-    Tooltip(play_button, "play_button")
+    Tooltip(play_button, "Plays the vocals (vo) of the playlist starting from the selected line otherwise from the beginning.")
 
     stop_button = tk.Button(button_frame, text="Stop ⏹️", command=lambda: stopperPlaylist())
     stop_button.pack(side=tk.LEFT, padx=(5, 20))
-    Tooltip(stop_button, "stop_button")
+    Tooltip(stop_button, "Stops the playlist playback")
 
     load_button = tk.Button(button_frame, text="Load playlist ↩️", command=lambda: load_playlist_from_file(playlist_tree))
     load_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(load_button, "load_button")
+    Tooltip(load_button, "Load a playlist in json format.")
 
     save_button = tk.Button(button_frame, text="Save playlist 🖫", command=lambda: save_playlist_to_file(playlist_tree))
     save_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(save_button, "save_button")    
+    Tooltip(save_button, "Save a playlist in json format")    
 
     clear_button = tk.Button(button_frame, text="Clean playlist ❌", command=lambda: clear_playlist(playlist_tree))
     #clear_button = tk.Button(button_frame, text="Fusio FICHIER", command=lambda: fusionner_audio_json(chemin_json="", chemin_ogg="chemin_ogg"))
     clear_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(clear_button, "clear_button")   
+    Tooltip(clear_button, "Empty the playlist")   
 
     record_button = tk.Button(button_frame, text="Record playlist ⭕", command=lambda: record_playlist(playlist_tree))
     record_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(record_button, "record_button")  
+    Tooltip(record_button, "Save playlist in ogg sound format.")  
 
     txtDialog_button = tk.Button(button_frame, text="Dialog playlist ☷", command=lambda: save_playlist_to_txt(playlist_tree))
     txtDialog_button.pack(side=tk.LEFT, padx=5)
-    Tooltip(txtDialog_button, "txtDialog_button")  
+    Tooltip(txtDialog_button, "Save playlist in txt format.")  
 
     return playlist_tree
 
@@ -143,7 +143,7 @@ def SelectionLignePlayliste(event, playlist_tree):
         # Vérifiez si une ligne est sélectionnée
         selected_items = playlist_tree.selection()
         if not selected_items:
-            print("Aucune ligne sélectionnée dans le Treeview.")
+            print("No rows selected in the Treeview.")
             return
 
         # Obtenir le premier élément sélectionné
@@ -152,7 +152,7 @@ def SelectionLignePlayliste(event, playlist_tree):
 
         # Vérifiez si les valeurs sélectionnées contiennent les indices nécessaires
         if len(selected_values) < 5:
-            print("Données insuffisantes dans la ligne sélectionnée.")
+            print("Insufficient data in the selected row.")
             return
 
         # Déterminer le genre sélectionné et choisir la valeur audio
@@ -166,9 +166,9 @@ def SelectionLignePlayliste(event, playlist_tree):
         JouerAudio(audio_value)
 
     except IndexError:
-        print("Erreur : Aucun élément sélectionné ou sélection invalide.")
+        print("Error: No items selected or invalid selection.")
     except Exception as e:
-        print(f"Erreur dans SelectionLignePlayliste : {e}")
+        print(f"Error in SelectionLignePlayliste : {e}")
 
 
 #Fonction pour la selection d'une ligne de la playlist
@@ -347,7 +347,7 @@ def charger_playlist_from_file(playlist_tree, file_path):
 
 # Fonction pour charger la playlist à partir d'un fichier JSON
 def set_playlist_data(playlist_tree, playlist_data):                
-    # Effacer l'ancienne playlist avant de charger la nouvelle
+    # Effacer l'ancienne playlist avant de charger la nouvelleno playlist file
     clear_playlist(playlist_tree)
 
     # Ajouter les nouvelles données
@@ -479,9 +479,7 @@ def ecouterPlaylist(playlist_tree):
 
 # Fonction pour stopper Playlist
 def stopperPlaylist():
-    """
-    Stoppe complètement la lecture de la playlist.
-    """
+    #    Stoppe complètement la lecture de la playlist.
     global is_playlist_playing
     try:
         if pygame.mixer.get_init():
@@ -492,9 +490,7 @@ def stopperPlaylist():
         print(f"Erreur lors de l'arrêt de la lecture : {e}")
 
 def count_playlist_rows(playlist_tree):
-    """
-    Compte et affiche le nombre de lignes dans le Treeview de la playlist.
-    """
+    #    Compte et affiche le nombre de lignes dans le Treeview de la playlist.
     row_count = len(playlist_tree.get_children())
     if global_variables.playlist_count_label:  # Mettre à jour le Label global
         global_variables.playlist_count_label.config(text=f"{global_variables.nombre_Ligne}: {row_count}")
@@ -503,12 +499,9 @@ def count_playlist_rows(playlist_tree):
 
 
 def colorize_playlist_rows(playlist_tree):
-    """
-    Colore les lignes de playlist_tree en fonction de la valeur extraite de la 4ème colonne.
-    Les lignes ayant une valeur commune dans la 4ème colonne auront la même couleur.
+    # Colore les lignes de playlist_tree en fonction de la valeur extraite de la 4ème colonne.
+    # Les lignes ayant une valeur commune dans la 4ème colonne auront la même couleur.
 
-    :param playlist_tree: Le Treeview contenant les données.
-    """
     # Dictionnaire pour stocker les couleurs attribuées
     color_mapping = {}
     # Liste de couleurs disponibles
@@ -572,9 +565,9 @@ def save_playlist_to_txt(playlist_tree):
                     line = f"Id: {values[0]}\t{Perso}:  {sousTitre}\n"
                     # Écrire dans le fichier
                     file.write(line)
-            print(f"Fichier sauvegardé avec succès dans : {fichier_sauvegarde}")
+            print(f"File saved successfully in : {fichier_sauvegarde}")
         except Exception as e:
-            print(f"Erreur lors de la sauvegarde : {e}")
+            print(f"Error while saving : {e}")
 
 def open_manual_entry_window(button_frame, playlist_tree):
     def save_playlist():
@@ -585,7 +578,7 @@ def open_manual_entry_window(button_frame, playlist_tree):
         else:
             save_playlist_to_file(playlist_tree, global_variables.playlist_file_open)
             charger_playlist_from_file(playlist_tree, global_variables.playlist_file_open)
-        print("Playlist sauvegardée après la fermeture de LigneManuelle.")
+        print("Playlist saved after closing Manual Line.")
     #_____________________________________________________________________
     # Récupérer l'ID de la ligne sélectionnée dans la playlist
     selected_items = playlist_tree.selection()

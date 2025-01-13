@@ -79,3 +79,7 @@ La fenêtre Manual Line vous permet d'ajouter de nouvelles phrases à votre scé
 ![Cyberpunk-Voices Manual Lines frame](img/image3.png)   
 These items can be added to a .quest file.  
 (Not comments which have no reason to be in a .quest file\!)
+
+Here is a scenario made with this tool:
+https://pleray.github.io/CyberPunk-Voices/data/projects/Rendez-vous_files/localization/en-us/Rendez-vous.html
+

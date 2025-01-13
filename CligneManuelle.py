@@ -5,6 +5,7 @@ from tkinter import messagebox
 import time
 import global_variables  # Importer les variables globales
 from general_functions import Delocalise_project_path, extraire_PROJET_localise_path
+
 from Ctooltip import Tooltip
 
 class LigneManuelle:
@@ -73,7 +74,9 @@ class LigneManuelle:
         self.prefix_menu = tk.OptionMenu(right_frame, self.prefix_var, *optionsValeur, command=self._on_prefix_change)
         self.prefix_menu.config(width=15)  # Fixez la largeur ici
         self.prefix_menu.grid(row=0, column=1, padx=10, pady=5, sticky="w")  # Placez la drop-list juste après le label
-        #Tooltip(self.prefix_var, "self.prefix_var")
+        # Ajouter un tooltip
+        tooltip_text = "Sélectionnez le type de ligne que vous souhaitez ajouter. ('COMMENT', 'ACTION', 'MSG-IN', 'MSG-OUT')"
+        Tooltip(self.prefix_menu, tooltip_text)
 
         # Champ pour afficher la valeur actuelle de stringId
         self.string_id_var = tk.StringVar(value="NOTHING")
@@ -96,20 +99,20 @@ class LigneManuelle:
 
         self.new_line_button = tk.Button(button_frame, text="New Line", command=self._reset_form, state="disabled")
         self.new_line_button.pack(side=tk.LEFT, padx=5)
-        Tooltip(self.new_line_button, "self.new_line_button")
+        Tooltip(self.new_line_button, "Add a new line")
 
         self.save_button = tk.Button(button_frame, text="Save Line", command=self._save_selected_row, state="disabled")
         self.save_button.pack(side=tk.LEFT, padx=5)
-        Tooltip(self.save_button, "self.save_button")
+        Tooltip(self.save_button, "Save the line")
 
         self.delete_button = tk.Button(button_frame, text="Delete Line", command=self._delete_selected_row, state="disabled")
         self.delete_button.pack(side=tk.LEFT, padx=5)
-        Tooltip(self.delete_button, "self.delete_button")
+        Tooltip(self.delete_button, "Delete selected line")
 
         # Bouton pour insérer une ligne dans le Treeview
-        self.insert_playlist_button = tk.Button(self.window, text="Insert Line in playlist", command=self._add_Line_In_Playlist, state="disabled")
+        self.insert_playlist_button = tk.Button(self.window, text="Insert the selected line into the opened playlist", command=self._add_Line_In_Playlist, state="disabled")
         self.insert_playlist_button.place(relx=1.0, rely=1.0, anchor="se", x=-10, y=-10)
-        Tooltip(self.insert_playlist_button, "self.insert_playlist_button")
+        Tooltip(self.insert_playlist_button, "Insert line into open playlist")
 
         # Événement pour activer le bouton "Save Line" si le champ global_variables.data_F_SubTitle est rempli
         self.entry_fields["ACTION Female * :"].bind("<KeyRelease>", self._check_save_button_state)
@@ -125,7 +128,7 @@ class LigneManuelle:
         try:
             # Vérifiez si une ligne est sélectionnée
             if not self.line_listbox.curselection():
-                print("Aucune ligne sélectionnée dans la Listbox.")
+                print("No row selected in Listbox.")
                 return
 
             self._current_selected_index = self.line_listbox.curselection()[0]
@@ -233,12 +236,12 @@ class LigneManuelle:
             self.playlist_tree.insert("", tk.END, values=values)
             #print(f"Ligne ajoutée au Treeview : {values}")
         except IndexError:
-            print("Aucune ligne sélectionnée dans la Listbox.")
+            print("No row selected in Listbox.")
         # Appeler la méthode _on_close pour gérer proprement la fermeture
         #self._on_close()
 
     def _reset_form(self):
-        """Réinitialise le formulaire pour une nouvelle ligne."""
+        #Réinitialise le formulaire pour une nouvelle ligne.
         self.string_id_var.set("NOTHING")  # StringId remis à NOTHING explicitement
         self.entry_fields["ACTION Female * :"].delete(0, tk.END)
         self.entry_fields["ACTION Male :"].delete(0, tk.END)
@@ -251,7 +254,7 @@ class LigneManuelle:
         self._current_selected_index = None  # Plus aucune ligne sélectionnée
 
     def _delete_selected_row(self):
-        """Supprime la ligne sélectionnée du fichier CSV."""
+        #Supprime la ligne sélectionnée du fichier CSV.
         try:
             selected_index = self.line_listbox.curselection()[0]
             del self.data[selected_index]
@@ -271,17 +274,17 @@ class LigneManuelle:
 
             self._load_lines_from_csv()
         except IndexError:
-            print("Aucune ligne sélectionnée pour la suppression.")
+            print("No rows selected for deletion.")
 
     def _check_save_button_state(self, event):
-        """Active ou désactive le bouton 'Save Line' selon les modifications."""
+        #Active ou désactive le bouton 'Save Line' selon les modifications.
         if self.entry_fields["ACTION Female * :"].get():
             self.save_button.config(state="normal")
         else:
             self.save_button.config(state="disabled")
 
     def _save_selected_row(self):
-        """Sauvegarde les modifications de la ligne sélectionnée ou crée une nouvelle ligne."""
+        #Sauvegarde les modifications de la ligne sélectionnée ou crée une nouvelle ligne.
         file_path = self.file_path
 
         # Déterminer si une ligne est sélectionnée ou si c'est une nouvelle ligne
@@ -323,7 +326,7 @@ class LigneManuelle:
         self.line_listbox.selection_clear(0, tk.END)
         self.line_listbox.selection_set(self._current_selected_index)
         self._populate_fields_from_selection()  # Mettre à jour le formulaire
-        print(f"Ligne sauvegardée : {the_row}")
+        print(f"Line saved : {the_row}")
 
     def _on_prefix_change(self, value):
         #Active le bouton Save Line si la valeur de la drop-list change.

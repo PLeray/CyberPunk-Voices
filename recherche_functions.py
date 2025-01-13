@@ -181,6 +181,7 @@ def load_data_into_tree(tree):
         tree.delete(*tree.get_children())
 
         # Ajouter les nouvelles données
+        matching_count = 0  # Compteur de lignes correspondantes
         for entry in global_variables.dataSound:
             tree.insert("", tk.END, values=(
                 entry[global_variables.data_ID],
@@ -190,6 +191,8 @@ def load_data_into_tree(tree):
                 entry[global_variables.data_M_Voice],
                 entry[global_variables.data_Quest]
             ))
+            matching_count += 1  # Incrémenter le compteur si la ligne correspond
+        global_variables.principal_count.config(text=f"{global_variables.nombre_Ligne} : {matching_count}")
         
     except Exception as e:
         print(f"Error reading data : {e}")

@@ -313,7 +313,7 @@ class ProjetSequence:
 
         btn_open_project_web_page = tk.Button(self.button_frame, text="See Html", command=self.open_project_web_page)
         btn_open_project_web_page.pack(side=tk.LEFT, padx=5, pady=5)
-        Tooltip(btn_open_project_web_page, "Open th HTML page.")
+        Tooltip(btn_open_project_web_page, "open html page in default browser.")
 
     def update_button_state(self):
         if self.selected_to_connect_blocks["green"] and self.selected_to_connect_blocks["red"]:
