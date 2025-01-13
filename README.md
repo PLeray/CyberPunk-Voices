@@ -52,8 +52,7 @@ and download the Source code :
 and extract the files wherever you want:
 
 **Step 5:** Launch Cyberpunk-Voices  
-In the "Cyberpunk-Voices-main" folder Open a command prompt with cmd.exe.  
-and type: **python.exe main.py**  
+In the "Cyberpunk-Voices-main" folder Open a command prompt with cmd.exe and type: **python.exe main.py**  
 or launch CyberPunk-Voices.bat (Which does the same thing…)
 
 The software starts and you will have to specify where the files you extracted from the game with Wolvenkit are located.  
